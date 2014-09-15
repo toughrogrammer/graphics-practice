@@ -45,12 +45,16 @@ void renderScene(void) {
     
     glTranslatef(-1.5f, 0.0f, -6.0f);
     glBegin(GL_TRIANGLES); // Drawing Using Triangles
+    glColor3f(1.0f,0.0f,0.0f); // Set The Color To Red
     glVertex3f( 0.0f, 1.0f, 0.0f); // Top
+    glColor3f(0.0f,1.0f,0.0f); // Set The Color To Green
     glVertex3f(-1.0f,-1.0f, 0.0f); // Bottom Left
+    glColor3f(0.0f,0.0f,1.0f); // Set The Color To Blue
     glVertex3f( 1.0f,-1.0f, 0.0f); // Bottom Right
     glEnd(); // Finished Drawing The Triangle
     
     glTranslatef(3.0f, 0.0f, 0.0f);
+    glColor3f(0.5f,0.5f,1.0f); // Set The Color To Blue One Time Only
     glBegin(GL_QUADS); // Start Drawing Quads
     glVertex3f(-1.0f, 1.0f, 0.0f); // Left And Up 1 Unit (Top Left)
     glVertex3f( 1.0f, 1.0f, 0.0f); // Right And Up 1 Unit (Top Right)
