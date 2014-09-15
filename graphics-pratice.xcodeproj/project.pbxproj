@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E61345E619C6EC3600B57A63 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E61345E519C6EC3600B57A63 /* main.cpp */; };
 		E61345E819C6EC3600B57A63 /* graphics_pratice.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E61345E719C6EC3600B57A63 /* graphics_pratice.1 */; };
+		E61345EF19C6EC5F00B57A63 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345EE19C6EC5F00B57A63 /* OpenGL.framework */; };
+		E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345F019C6EC6300B57A63 /* GLUT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,8 @@
 		E61345E219C6EC3600B57A63 /* graphics-pratice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "graphics-pratice"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61345E519C6EC3600B57A63 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E61345E719C6EC3600B57A63 /* graphics_pratice.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = graphics_pratice.1; sourceTree = "<group>"; };
+		E61345EE19C6EC5F00B57A63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		E61345F019C6EC6300B57A63 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */,
+				E61345EF19C6EC5F00B57A63 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,8 @@
 		E61345D919C6EC3600B57A63 = {
 			isa = PBXGroup;
 			children = (
+				E61345F019C6EC6300B57A63 /* GLUT.framework */,
+				E61345EE19C6EC5F00B57A63 /* OpenGL.framework */,
 				E61345E419C6EC3600B57A63 /* graphics-pratice */,
 				E61345E319C6EC3600B57A63 /* Products */,
 			);
@@ -156,7 +164,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -189,7 +197,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Release;
