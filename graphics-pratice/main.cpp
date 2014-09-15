@@ -11,10 +11,16 @@
 #include <GLUT/glut.h>
 
 #include <stdlib.h>
+#include <iostream>
 
 #define WINDOW_TITLE "Loki's Graphics Practice"
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
+
+using namespace std;
+
+float tAngle = 0;
+float qAngle = 0;
 
 
 void changeSize(int w, int h) {
@@ -44,6 +50,8 @@ void renderScene(void) {
     glLoadIdentity();
     
     glTranslatef(-1.5f, 0.0f, -6.0f);
+    glRotatef( tAngle, 0, 1.0f, 0 );
+    
     glBegin(GL_TRIANGLES); // Drawing Using Triangles
     glColor3f(1.0f,0.0f,0.0f); // Set The Color To Red
     glVertex3f( 0.0f, 1.0f, 0.0f); // Top
@@ -54,6 +62,8 @@ void renderScene(void) {
     glEnd(); // Finished Drawing The Triangle
     
     glTranslatef(3.0f, 0.0f, 0.0f);
+    glRotatef( qAngle, 1.0f, 0, 0 );
+    
     glColor3f(0.5f,0.5f,1.0f); // Set The Color To Blue One Time Only
     glBegin(GL_QUADS); // Start Drawing Quads
     glVertex3f(-1.0f, 1.0f, 0.0f); // Left And Up 1 Unit (Top Left)
@@ -71,10 +81,25 @@ void processNormalKeys(unsigned char key, int x, int y) {
 }
 
 void processSpecialKeys(int key, int x, int y) {
-    
 	switch(key) {
 		case GLUT_KEY_F1:
             exit(0);
+            break;
+        case GLUT_KEY_LEFT:
+            tAngle -= 10.0f;
+            glutPostRedisplay();
+            break;
+        case GLUT_KEY_RIGHT:
+            tAngle += 10.0f;
+            glutPostRedisplay();
+            break;
+        case GLUT_KEY_UP:
+            qAngle += 10.0f;
+            glutPostRedisplay();
+            break;
+        case GLUT_KEY_DOWN:
+            qAngle -= 10.0f;
+            glutPostRedisplay();
             break;
 	}
 }
