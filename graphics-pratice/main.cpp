@@ -87,21 +87,21 @@ void processSpecialKeys(int key, int x, int y) {
             break;
         case GLUT_KEY_LEFT:
             tAngle -= 10.0f;
-            glutPostRedisplay();
             break;
         case GLUT_KEY_RIGHT:
             tAngle += 10.0f;
-            glutPostRedisplay();
             break;
         case GLUT_KEY_UP:
             qAngle += 10.0f;
-            glutPostRedisplay();
             break;
         case GLUT_KEY_DOWN:
             qAngle -= 10.0f;
-            glutPostRedisplay();
             break;
 	}
+}
+
+void MainLoop() {
+    glutPostRedisplay();
 }
 
 
@@ -115,12 +115,15 @@ int main(int argc, char **argv) {
    	glutCreateWindow(WINDOW_TITLE);
     
 	// register callbacks
-	glutDisplayFunc(renderScene);
-	glutReshapeFunc(changeSize);
+	glutDisplayFunc(&renderScene);
+	glutReshapeFunc(&changeSize);
+    
+    // set my main loop callback function
+    glutIdleFunc(&MainLoop);
     
     // here are the new entries
-	glutKeyboardFunc(processNormalKeys);
-	glutSpecialFunc(processSpecialKeys);
+	glutKeyboardFunc(&processNormalKeys);
+	glutSpecialFunc(&processSpecialKeys);
     
 	// enter GLUT event processing loop
 	glutMainLoop();
