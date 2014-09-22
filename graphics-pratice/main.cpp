@@ -12,6 +12,9 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
+
+#include "SOIL.h"
 
 #define WINDOW_TITLE "Loki's Graphics Practice"
 #define WINDOW_WIDTH 640
@@ -19,8 +22,10 @@
 
 using namespace std;
 
-float tAngle = 0;
-float qAngle = 0;
+GLfloat     xrot;                               // X Rotation ( NEW )
+GLfloat     yrot;                               // Y Rotation ( NEW )
+GLfloat     zrot;                               // Z Rotation ( NEW )
+GLuint      texture[1];                         // Storage For One Texture ( NEW )
 
 
 void changeSize(int w, int h) {
@@ -46,89 +51,51 @@ void changeSize(int w, int h) {
 }
 
 void renderScene(void) {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear The Screen And The Depth Buffer
-    glLoadIdentity(); // Reset The View
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);         // Clear Screen And Depth Buffer
     
-    glTranslatef(-1.5f,0.0f,-8.0f); // Move Left And Into The Screen
-    glRotatef(tAngle,0.0f,1.0f,0.0f); // Rotate The Pyramid On It's Y Axis
-    
-    glBegin(GL_TRIANGLES); // Drawing Using Triangles
+    glLoadIdentity();                           // Reset The Current Matrix
+    glTranslatef(0.0f,0.0f,-5.0f);                      // Move Into The Screen 5 Units
+    glRotatef(xrot,1.0f,0.0f,0.0f);                     // Rotate On The X Axis
+    glRotatef(yrot,0.0f,1.0f,0.0f);                     // Rotate On The Y Axis
+    glRotatef(zrot,0.0f,0.0f,1.0f);                     // Rotate On The Z Axis
 
-    glColor3f(1.0f,0.0f,0.0f); // Red
-    glVertex3f( 0.0f, 1.0f, 0.0f); // Top Of Triangle (Front)
-    glColor3f(0.0f,1.0f,0.0f); // Green
-    glVertex3f(-1.0f,-1.0f, 1.0f); // Left Of Triangle (Front)
-    glColor3f(0.0f,0.0f,1.0f); // Blue
-    glVertex3f( 1.0f,-1.0f, 1.0f); // Right Of Triangle (Front)
     
-    glColor3f(1.0f,0.0f,0.0f); // Red
-    glVertex3f( 0.0f, 1.0f, 0.0f); // Top Of Triangle (Right)
-    glColor3f(0.0f,0.0f,1.0f); // Blue
-    glVertex3f( 1.0f,-1.0f, 1.0f); // Left Of Triangle (Right)
-    glColor3f(0.0f,1.0f,0.0f); // Green
-    glVertex3f( 1.0f,-1.0f, -1.0f); // Right Of Triangle (Right)
+    glBindTexture(GL_TEXTURE_2D, texture[0]);               // Select Our Texture
+    glBegin(GL_QUADS);
+    // Front Face
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad
+    // Back Face
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);  // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);  // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);  // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);  // Bottom Left Of The Texture and Quad
+    // Top Face
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);  // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);  // Top Right Of The Texture and Quad
+    // Bottom Face
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, -1.0f, -1.0f);  // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, -1.0f, -1.0f);  // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
+    // Right face
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);  // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);  // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
+    // Left Face
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);  // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);  // Top Left Of The Texture and Quad
+    glEnd();
     
-    glColor3f(1.0f,0.0f,0.0f); // Red
-    glVertex3f( 0.0f, 1.0f, 0.0f); // Top Of Triangle (Back)
-    glColor3f(0.0f,1.0f,0.0f); // Green
-    glVertex3f( 1.0f,-1.0f, -1.0f); // Left Of Triangle (Back)
-    glColor3f(0.0f,0.0f,1.0f); // Blue
-    glVertex3f(-1.0f,-1.0f, -1.0f); // Right Of Triangle (Back)
     
-    glColor3f(1.0f,0.0f,0.0f); // Red
-    glVertex3f( 0.0f, 1.0f, 0.0f); // Top Of Triangle (Left)
-    glColor3f(0.0f,0.0f,1.0f); // Blue
-    glVertex3f(-1.0f,-1.0f,-1.0f); // Left Of Triangle (Left)
-    glColor3f(0.0f,1.0f,0.0f); // Green
-    glVertex3f(-1.0f,-1.0f, 1.0f); // Right Of Triangle (Left)
-    
-    glEnd(); // Done Drawing The Pyramid
-    
-    
-    glLoadIdentity();
-    glTranslatef(1.5f,0.0f,-8.0f); // Move Right And Into The Screen
-    glRotatef(qAngle,1.0f,1.0f,1.0f); // Rotate The Cube On X, Y & Z
-    
-    glBegin(GL_QUADS); // Start Drawing The Cube
-    
-    glColor3f(0.0f,1.0f,0.0f); // Set The Color To Green
-    glVertex3f( 1.0f, 1.0f,-1.0f); // Top Right Of The Quad (Top)
-    glVertex3f(-1.0f, 1.0f,-1.0f); // Top Left Of The Quad (Top)
-    glVertex3f(-1.0f, 1.0f, 1.0f); // Bottom Left Of The Quad (Top)
-    glVertex3f( 1.0f, 1.0f, 1.0f); // Bottom Right Of The Quad (Top)
-    
-    glColor3f(1.0f,0.5f,0.0f); // Set The Color To Orange
-    glVertex3f( 1.0f,-1.0f, 1.0f); // Top Right Of The Quad (Bottom)
-    glVertex3f(-1.0f,-1.0f, 1.0f); // Top Left Of The Quad (Bottom)
-    glVertex3f(-1.0f,-1.0f,-1.0f); // Bottom Left Of The Quad (Bottom)
-    glVertex3f( 1.0f,-1.0f,-1.0f); // Bottom Right Of The Quad (Bottom)
-    
-    glColor3f(1.0f,0.0f,0.0f); // Set The Color To Red
-    glVertex3f( 1.0f, 1.0f, 1.0f); // Top Right Of The Quad (Front)
-    glVertex3f(-1.0f, 1.0f, 1.0f); // Top Left Of The Quad (Front)
-    glVertex3f(-1.0f,-1.0f, 1.0f); // Bottom Left Of The Quad (Front)
-    glVertex3f( 1.0f,-1.0f, 1.0f); // Bottom Right Of The Quad (Front)
-    
-    glColor3f(1.0f,1.0f,0.0f); // Set The Color To Yellow
-    glVertex3f( 1.0f,-1.0f,-1.0f); // Bottom Left Of The Quad (Back)
-    glVertex3f(-1.0f,-1.0f,-1.0f); // Bottom Right Of The Quad (Back)
-    glVertex3f(-1.0f, 1.0f,-1.0f); // Top Right Of The Quad (Back)
-    glVertex3f( 1.0f, 1.0f,-1.0f); // Top Left Of The Quad (Back)
-    
-    glColor3f(0.0f,0.0f,1.0f); // Set The Color To Blue
-    glVertex3f(-1.0f, 1.0f, 1.0f); // Top Right Of The Quad (Left)
-    glVertex3f(-1.0f, 1.0f,-1.0f); // Top Left Of The Quad (Left)
-    glVertex3f(-1.0f,-1.0f,-1.0f); // Bottom Left Of The Quad (Left)
-    glVertex3f(-1.0f,-1.0f, 1.0f); // Bottom Right Of The Quad (Left)
-    
-    glColor3f(1.0f,0.0f,1.0f); // Set The Color To Violet
-    glVertex3f( 1.0f, 1.0f,-1.0f); // Top Right Of The Quad (Right)
-    glVertex3f( 1.0f, 1.0f, 1.0f); // Top Left Of The Quad (Right)
-    glVertex3f( 1.0f,-1.0f, 1.0f); // Bottom Left Of The Quad (Right)
-    glVertex3f( 1.0f,-1.0f,-1.0f); // Bottom Right Of The Quad (Right)
-    glEnd(); // Done Drawing The Quad
-    
-	glutSwapBuffers();
+    glutSwapBuffers();
 }
 
 void processNormalKeys(unsigned char key, int x, int y) {
@@ -141,28 +108,50 @@ void processSpecialKeys(int key, int x, int y) {
 		case GLUT_KEY_F1:
             exit(0);
             break;
-        case GLUT_KEY_LEFT:
-            tAngle -= 10.0f;
-            break;
-        case GLUT_KEY_RIGHT:
-            tAngle += 10.0f;
-            break;
-        case GLUT_KEY_UP:
-            qAngle += 10.0f;
-            break;
-        case GLUT_KEY_DOWN:
-            qAngle -= 10.0f;
-            break;
 	}
 }
 
 void MainLoop() {
+    xrot += 0.3f;
+    yrot += 0.2f;
+    zrot += 0.4f;
+    
     glutPostRedisplay();
 }
 
+bool LoadGLTextures() {
+    /* load an image file directly as a new OpenGL texture */
+    texture[0] = SOIL_load_OGL_texture("Textures/NeHe.bmp", SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y );
+    if(texture[0] == 0)
+        return false;
+    
+    // Typical Texture Generation Using Data From The Bitmap
+    glBindTexture(GL_TEXTURE_2D, texture[0]);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    
+    return true;
+}
+
+bool InitGL() {
+    if (!LoadGLTextures())                          // Jump To Texture Loading Routine ( NEW )
+    {
+        return false;                           // If Texture Didn't Load Return FALSE ( NEW )
+    }
+    
+    glEnable(GL_TEXTURE_2D);                        // Enable Texture Mapping ( NEW )
+    glShadeModel(GL_SMOOTH);                        // Enable Smooth Shading
+    glClearColor(0.0f, 0.0f, 0.0f, 0.5f);                   // Black Background
+    glClearDepth(1.0f);                         // Depth Buffer Setup
+    glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
+    glDepthFunc(GL_LEQUAL);                         // The Type Of Depth Testing To Do
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective Calculations
+    return true;
+}
+
+
 
 int main(int argc, char **argv) {
-    
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -181,8 +170,12 @@ int main(int argc, char **argv) {
 	glutKeyboardFunc(&processNormalKeys);
 	glutSpecialFunc(&processSpecialKeys);
     
+    if( ! InitGL() ) {
+        return 0;
+    }
+    
 	// enter GLUT event processing loop
 	glutMainLoop();
     
-	return 1;
+	return 0;
 }
