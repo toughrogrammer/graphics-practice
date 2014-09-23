@@ -35,6 +35,7 @@ GLfloat LightAmbient[]=		{ 0.5f, 0.5f, 0.5f, 1.0f };
 GLfloat LightDiffuse[]=		{ 1.0f, 1.0f, 1.0f, 1.0f };
 GLfloat LightPosition[]=	{ 0.0f, 0.0f, 2.0f, 1.0f };
 bool	light;				// Lighting ON/OFF
+bool    blend;
 
 GLuint	filter;				// Which Filter To Use
 GLuint	texture[3];			// Storage For 3 Textures
@@ -139,6 +140,20 @@ void processNormalKeys(unsigned char key, int x, int y) {
         
         cout << "current filter : " << filter << endl;
     }
+    
+    if ( key == 'b' || key == 'B' ) {
+        blend = !blend;
+        if(blend)
+        {
+            glEnable(GL_BLEND);			// Turn Blending On
+            glDisable(GL_DEPTH_TEST);	// Turn Depth Testing Off
+        }
+        else
+        {
+            glDisable(GL_BLEND);		// Turn Blending Off
+            glEnable(GL_DEPTH_TEST);	// Turn Depth Testing On
+        }
+    }
 }
 
 void processSpecialKeys(int key, int x, int y) {
@@ -158,7 +173,7 @@ void MainLoop() {
 }
 
 bool LoadGLTextures() {
-    MyImage *loadedImage = MyImage::LoadImage("Textures/Crate.bmp");
+    MyImage *loadedImage = MyImage::LoadImage("Textures/Glass.bmp");
     if( loadedImage == NULL ) {
         cout << "loaded image is null" << endl;
         return false;
@@ -214,6 +229,9 @@ bool InitGL() {
     glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);		// Setup The Diffuse Light
     glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);	// Position The Light
     glEnable(GL_LIGHT1);								// Enable Light One
+    
+    glColor4f(1.0f, 1.0f, 1.0f, 0.5);					// Full Brightness.  50% Alpha
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE);					// Set The Blending Function For Translucency
     return true;
 }
 
