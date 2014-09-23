@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E61345E619C6EC3600B57A63 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E61345E519C6EC3600B57A63 /* main.cpp */; };
-		E61345E819C6EC3600B57A63 /* graphics_pratice.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E61345E719C6EC3600B57A63 /* graphics_pratice.1 */; };
 		E61345EF19C6EC5F00B57A63 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345EE19C6EC5F00B57A63 /* OpenGL.framework */; };
 		E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345F019C6EC6300B57A63 /* GLUT.framework */; };
 		E666172D19D0884900FC1F2B /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = E666172C19D0884900FC1F2B /* image_DXT.c */; };
 		E666172F19D0884B00FC1F2B /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = E666172E19D0884B00FC1F2B /* image_helper.c */; };
 		E666173119D0885000FC1F2B /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = E666173019D0885000FC1F2B /* SOIL.c */; };
 		E666173319D0885600FC1F2B /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = E666173219D0885600FC1F2B /* stb_image_aug.c */; };
-		E666173719D1B19900FC1F2B /* MyImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E666173619D1B19900FC1F2B /* MyImage.cpp */; };
+		E6D819A019D1D3DB0073359B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D8199D19D1D3C30073359B /* main.cpp */; };
+		E6D819A119D1D3E00073359B /* MyImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D8199E19D1D3C30073359B /* MyImage.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,16 +24,13 @@
 			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
-				E61345E819C6EC3600B57A63 /* graphics_pratice.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E61345E219C6EC3600B57A63 /* graphics-pratice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "graphics-pratice"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E61345E519C6EC3600B57A63 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E61345E719C6EC3600B57A63 /* graphics_pratice.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = graphics_pratice.1; sourceTree = "<group>"; };
+		E61345E219C6EC3600B57A63 /* graphics-practice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "graphics-practice"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61345EE19C6EC5F00B57A63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E61345F019C6EC6300B57A63 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		E666172C19D0884900FC1F2B /* image_DXT.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = image_DXT.c; path = library/SOIL/src/image_DXT.c; sourceTree = "<group>"; };
@@ -42,9 +38,11 @@
 		E666173019D0885000FC1F2B /* SOIL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = library/SOIL/src/SOIL.c; sourceTree = "<group>"; };
 		E666173219D0885600FC1F2B /* stb_image_aug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = library/SOIL/src/stb_image_aug.c; sourceTree = "<group>"; };
 		E666173419D08A6200FC1F2B /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
-		E666173519D1B0AE00FC1F2B /* MyImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyImage.h; sourceTree = "<group>"; };
-		E666173619D1B19900FC1F2B /* MyImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyImage.cpp; sourceTree = "<group>"; };
 		E681790F19D0640C000ACCE1 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; path = library; sourceTree = "<group>"; };
+		E6D8199C19D1D3C30073359B /* graphics_pratice.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = graphics_pratice.1; sourceTree = "<group>"; };
+		E6D8199D19D1D3C30073359B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E6D8199E19D1D3C30073359B /* MyImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MyImage.cpp; sourceTree = "<group>"; };
+		E6D8199F19D1D3C30073359B /* MyImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyImage.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +66,9 @@
 				E666173019D0885000FC1F2B /* SOIL.c */,
 				E666172E19D0884B00FC1F2B /* image_helper.c */,
 				E666172C19D0884900FC1F2B /* image_DXT.c */,
+				E6D8199B19D1D3C30073359B /* graphics-practice */,
 				E61345F019C6EC6300B57A63 /* GLUT.framework */,
 				E61345EE19C6EC5F00B57A63 /* OpenGL.framework */,
-				E61345E419C6EC3600B57A63 /* graphics-pratice */,
 				E61345E319C6EC3600B57A63 /* Products */,
 				E681790F19D0640C000ACCE1 /* library */,
 			);
@@ -79,28 +77,28 @@
 		E61345E319C6EC3600B57A63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E61345E219C6EC3600B57A63 /* graphics-pratice */,
+				E61345E219C6EC3600B57A63 /* graphics-practice */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E61345E419C6EC3600B57A63 /* graphics-pratice */ = {
+		E6D8199B19D1D3C30073359B /* graphics-practice */ = {
 			isa = PBXGroup;
 			children = (
-				E61345E519C6EC3600B57A63 /* main.cpp */,
-				E61345E719C6EC3600B57A63 /* graphics_pratice.1 */,
-				E666173519D1B0AE00FC1F2B /* MyImage.h */,
-				E666173619D1B19900FC1F2B /* MyImage.cpp */,
+				E6D8199C19D1D3C30073359B /* graphics_pratice.1 */,
+				E6D8199D19D1D3C30073359B /* main.cpp */,
+				E6D8199E19D1D3C30073359B /* MyImage.cpp */,
+				E6D8199F19D1D3C30073359B /* MyImage.h */,
 			);
-			path = "graphics-pratice";
+			path = "graphics-practice";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E61345E119C6EC3600B57A63 /* graphics-pratice */ = {
+		E61345E119C6EC3600B57A63 /* graphics-practice */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E61345EB19C6EC3600B57A63 /* Build configuration list for PBXNativeTarget "graphics-pratice" */;
+			buildConfigurationList = E61345EB19C6EC3600B57A63 /* Build configuration list for PBXNativeTarget "graphics-practice" */;
 			buildPhases = (
 				E61345DE19C6EC3600B57A63 /* Sources */,
 				E61345DF19C6EC3600B57A63 /* Frameworks */,
@@ -110,9 +108,9 @@
 			);
 			dependencies = (
 			);
-			name = "graphics-pratice";
+			name = "graphics-practice";
 			productName = "graphics-pratice";
-			productReference = E61345E219C6EC3600B57A63 /* graphics-pratice */;
+			productReference = E61345E219C6EC3600B57A63 /* graphics-practice */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +122,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = loki;
 			};
-			buildConfigurationList = E61345DD19C6EC3600B57A63 /* Build configuration list for PBXProject "graphics-pratice" */;
+			buildConfigurationList = E61345DD19C6EC3600B57A63 /* Build configuration list for PBXProject "graphics-practice" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -136,7 +134,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E61345E119C6EC3600B57A63 /* graphics-pratice */,
+				E61345E119C6EC3600B57A63 /* graphics-practice */,
 			);
 		};
 /* End PBXProject section */
@@ -146,12 +144,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E61345E619C6EC3600B57A63 /* main.cpp in Sources */,
+				E6D819A019D1D3DB0073359B /* main.cpp in Sources */,
 				E666172D19D0884900FC1F2B /* image_DXT.c in Sources */,
 				E666172F19D0884B00FC1F2B /* image_helper.c in Sources */,
-				E666173719D1B19900FC1F2B /* MyImage.cpp in Sources */,
 				E666173119D0885000FC1F2B /* SOIL.c in Sources */,
 				E666173319D0885600FC1F2B /* stb_image_aug.c in Sources */,
+				E6D819A119D1D3E00073359B /* MyImage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +244,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/library/SOIL/lib",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "graphics-practice";
 			};
 			name = Debug;
 		};
@@ -258,14 +256,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/library/SOIL/lib",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "graphics-practice";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E61345DD19C6EC3600B57A63 /* Build configuration list for PBXProject "graphics-pratice" */ = {
+		E61345DD19C6EC3600B57A63 /* Build configuration list for PBXProject "graphics-practice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E61345E919C6EC3600B57A63 /* Debug */,
@@ -274,7 +272,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E61345EB19C6EC3600B57A63 /* Build configuration list for PBXNativeTarget "graphics-pratice" */ = {
+		E61345EB19C6EC3600B57A63 /* Build configuration list for PBXNativeTarget "graphics-practice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E61345EC19C6EC3600B57A63 /* Debug */,

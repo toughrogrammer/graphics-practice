@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E61345E119C6EC3600B57A63"
-               BuildableName = "graphics-pratice"
-               BlueprintName = "graphics-pratice"
-               ReferencedContainer = "container:graphics-pratice.xcodeproj">
+               BuildableName = "graphics-practice"
+               BlueprintName = "graphics-practice"
+               ReferencedContainer = "container:graphics-practice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E61345E119C6EC3600B57A63"
-            BuildableName = "graphics-pratice"
-            BlueprintName = "graphics-pratice"
-            ReferencedContainer = "container:graphics-pratice.xcodeproj">
+            BuildableName = "graphics-practice"
+            BlueprintName = "graphics-practice"
+            ReferencedContainer = "container:graphics-practice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/loki/programming/xcode-workspace-cpp/graphics-pratice/resources"
+      customWorkingDirectory = "/Users/loki/programming/xcode-workspace-cpp/graphics-practice/resources"
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E61345E119C6EC3600B57A63"
-            BuildableName = "graphics-pratice"
-            BlueprintName = "graphics-pratice"
-            ReferencedContainer = "container:graphics-pratice.xcodeproj">
+            BuildableName = "graphics-practice"
+            BlueprintName = "graphics-practice"
+            ReferencedContainer = "container:graphics-practice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E61345E119C6EC3600B57A63"
-            BuildableName = "graphics-pratice"
-            BlueprintName = "graphics-pratice"
-            ReferencedContainer = "container:graphics-pratice.xcodeproj">
+            BuildableName = "graphics-practice"
+            BlueprintName = "graphics-practice"
+            ReferencedContainer = "container:graphics-practice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
