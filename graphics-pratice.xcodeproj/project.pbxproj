@@ -15,6 +15,7 @@
 		E666172F19D0884B00FC1F2B /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = E666172E19D0884B00FC1F2B /* image_helper.c */; };
 		E666173119D0885000FC1F2B /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = E666173019D0885000FC1F2B /* SOIL.c */; };
 		E666173319D0885600FC1F2B /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = E666173219D0885600FC1F2B /* stb_image_aug.c */; };
+		E666173719D1B19900FC1F2B /* MyImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E666173619D1B19900FC1F2B /* MyImage.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		E666173019D0885000FC1F2B /* SOIL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = library/SOIL/src/SOIL.c; sourceTree = "<group>"; };
 		E666173219D0885600FC1F2B /* stb_image_aug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = library/SOIL/src/stb_image_aug.c; sourceTree = "<group>"; };
 		E666173419D08A6200FC1F2B /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
+		E666173519D1B0AE00FC1F2B /* MyImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyImage.h; sourceTree = "<group>"; };
+		E666173619D1B19900FC1F2B /* MyImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyImage.cpp; sourceTree = "<group>"; };
 		E681790F19D0640C000ACCE1 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; path = library; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +89,8 @@
 			children = (
 				E61345E519C6EC3600B57A63 /* main.cpp */,
 				E61345E719C6EC3600B57A63 /* graphics_pratice.1 */,
+				E666173519D1B0AE00FC1F2B /* MyImage.h */,
+				E666173619D1B19900FC1F2B /* MyImage.cpp */,
 			);
 			path = "graphics-pratice";
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				E61345E619C6EC3600B57A63 /* main.cpp in Sources */,
 				E666172D19D0884900FC1F2B /* image_DXT.c in Sources */,
 				E666172F19D0884B00FC1F2B /* image_helper.c in Sources */,
+				E666173719D1B19900FC1F2B /* MyImage.cpp in Sources */,
 				E666173119D0885000FC1F2B /* SOIL.c in Sources */,
 				E666173319D0885600FC1F2B /* stb_image_aug.c in Sources */,
 			);

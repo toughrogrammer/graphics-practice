@@ -156,6 +156,7 @@ unsigned int
 		int force_channels,
 		unsigned int reuse_texture_ID,
 		unsigned int flags,
+        unsigned char** image_data,
         int* image_width,
         int* image_height
 	);

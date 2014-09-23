@@ -16,17 +16,28 @@
 
 #include "SOIL.h"
 
+#include "MyImage.h"
+
 #define WINDOW_TITLE "Loki's Graphics Practice"
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
 using namespace std;
 
-GLfloat     xrot;                               // X Rotation ( NEW )
-GLfloat     yrot;                               // Y Rotation ( NEW )
-GLfloat     zrot;                               // Z Rotation ( NEW )
-GLuint      texture[1];                         // Storage For One Texture ( NEW )
+GLfloat	xrot;				// X Rotation
+GLfloat	yrot;				// Y Rotation
+GLfloat zrot;               // Z Rotation
+GLfloat xspeed;				// X Rotation Speed
+GLfloat yspeed;				// Y Rotation Speed
+GLfloat	z=-5.0f;			// Depth Into The Screen
 
+GLfloat LightAmbient[]=		{ 0.5f, 0.5f, 0.5f, 1.0f };
+GLfloat LightDiffuse[]=		{ 1.0f, 1.0f, 1.0f, 1.0f };
+GLfloat LightPosition[]=	{ 0.0f, 0.0f, 2.0f, 1.0f };
+bool	light;				// Lighting ON/OFF
+
+GLuint	filter;				// Which Filter To Use
+GLuint	texture[3];			// Storage For 3 Textures
 
 void changeSize(int w, int h) {
 	if (h == 0)
@@ -51,49 +62,54 @@ void changeSize(int w, int h) {
 }
 
 void renderScene(void) {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);         // Clear Screen And Depth Buffer
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear The Screen And The Depth Buffer
+    glLoadIdentity();									// Reset The View
+    glTranslatef(0.0f,0.0f,z);
     
-    glLoadIdentity();                           // Reset The Current Matrix
-    glTranslatef(0.0f,0.0f,-5.0f);                      // Move Into The Screen 5 Units
-    glRotatef(xrot,1.0f,0.0f,0.0f);                     // Rotate On The X Axis
-    glRotatef(yrot,0.0f,1.0f,0.0f);                     // Rotate On The Y Axis
-    glRotatef(zrot,0.0f,0.0f,1.0f);                     // Rotate On The Z Axis
-
+    glRotatef(xrot,1.0f,0.0f,0.0f);
+    glRotatef(yrot,0.0f,1.0f,0.0f);
+    glRotatef(zrot,0.0f,0.0f,1.0f);
     
-    glBindTexture(GL_TEXTURE_2D, texture[0]);               // Select Our Texture
+    glBindTexture(GL_TEXTURE_2D, texture[filter]);
+    
     glBegin(GL_QUADS);
     // Front Face
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad
+    glNormal3f( 0.0f, 0.0f, 1.0f); // Normal Pointing Towards Viewer
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f); // Point 1 (Front)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, 1.0f); // Point 2 (Front)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, 1.0f); // Point 3 (Front)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 1.0f); // Point 4 (Front)
     // Back Face
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);  // Top Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);  // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);  // Bottom Left Of The Texture and Quad
+    glNormal3f( 0.0f, 0.0f,-1.0f); // Normal Pointing Away From Viewer
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f); // Point 1 (Back)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, -1.0f); // Point 2 (Back)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, 1.0f, -1.0f); // Point 3 (Back)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f); // Point 4 (Back)
     // Top Face
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);  // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);  // Top Right Of The Texture and Quad
+    glNormal3f( 0.0f, 1.0f, 0.0f); // Normal Pointing Up
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, -1.0f); // Point 1 (Top)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, 1.0f, 1.0f); // Point 2 (Top)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, 1.0f, 1.0f); // Point 3 (Top)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, -1.0f); // Point 4 (Top)
     // Bottom Face
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, -1.0f, -1.0f);  // Top Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, -1.0f, -1.0f);  // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
+    glNormal3f( 0.0f,-1.0f, 0.0f); // Normal Pointing Down
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, -1.0f, -1.0f); // Point 1 (Bottom)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, -1.0f, -1.0f); // Point 2 (Bottom)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, 1.0f); // Point 3 (Bottom)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f); // Point 4 (Bottom)
     // Right face
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f, -1.0f);  // Top Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
+    glNormal3f( 1.0f, 0.0f, 0.0f); // Normal Pointing Right
+    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f); // Point 1 (Right)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, -1.0f); // Point 2 (Right)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, 1.0f, 1.0f); // Point 3 (Right)
+    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, 1.0f); // Point 4 (Right)
     // Left Face
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);  // Bottom Left Of The Texture and Quad
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);  // Top Left Of The Texture and Quad
-    glEnd();
-    
+    glNormal3f(-1.0f, 0.0f, 0.0f); // Normal Pointing Left
+    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f); // Point 1 (Left)
+    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f); // Point 2 (Left)
+    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 1.0f); // Point 3 (Left)
+    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, -1.0f); // Point 4 (Left)
+    glEnd(); // Done Drawing Quads
     
     glutSwapBuffers();
 }
@@ -101,6 +117,28 @@ void renderScene(void) {
 void processNormalKeys(unsigned char key, int x, int y) {
 	if (key == 27)
 		exit(0);
+    
+    if (key == 'l' || key == 'L' ) {
+        light=!light;
+        if (!light)
+        {
+            glDisable(GL_LIGHTING);
+        }
+        else
+        {
+            glEnable(GL_LIGHTING);
+        }
+    }
+    
+    if( key == 'f' || key == 'F' ) {
+        filter+=1;
+        if (filter>2)
+        {
+            filter=0;
+        }
+        
+        cout << "current filter : " << filter << endl;
+    }
 }
 
 void processSpecialKeys(int key, int x, int y) {
@@ -120,22 +158,41 @@ void MainLoop() {
 }
 
 bool LoadGLTextures() {
-    /* load an image file directly as a new OpenGL texture */
-    int width, height;
-    texture[0] = SOIL_load_OGL_texture("Textures/NeHe.bmp",
-                                       SOIL_LOAD_AUTO,
-                                       SOIL_CREATE_NEW_ID,
-                                       SOIL_FLAG_INVERT_Y,
-                                       &width,
-                                       &height);
-    if(texture[0] == 0)
+    MyImage *loadedImage = MyImage::LoadImage("Textures/Crate.bmp");
+    if( loadedImage == NULL ) {
+        cout << "loaded image is null" << endl;
         return false;
+    }
     
-    // Typical Texture Generation Using Data From The Bitmap
+    int width = loadedImage->GetWidth();
+    int height = loadedImage->GetHeight();
+    unsigned char* data = loadedImage->GetData();
+    
+    cout << width << " " << height << endl;
+    
+    
+    // Create Three Textures
+    glGenTextures(3, &texture[0]);
+    
+    // Create Nearest Filtered Texture
     glBindTexture(GL_TEXTURE_2D, texture[0]);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
     
+    // Create Linear Filtered Texture
+    glBindTexture(GL_TEXTURE_2D, texture[1]);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    
+    // Create MipMapped Texture
+    glBindTexture(GL_TEXTURE_2D, texture[2]);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST);
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
+    
+    delete loadedImage;
     return true;
 }
 
@@ -152,6 +209,11 @@ bool InitGL() {
     glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
     glDepthFunc(GL_LEQUAL);                         // The Type Of Depth Testing To Do
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective Calculations
+    
+    glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);		// Setup The Ambient Light
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);		// Setup The Diffuse Light
+    glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);	// Position The Light
+    glEnable(GL_LIGHT1);								// Enable Light One
     return true;
 }
 
