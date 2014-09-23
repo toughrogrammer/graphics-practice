@@ -111,7 +111,9 @@ unsigned int
 		const char *filename,
 		int force_channels,
 		unsigned int reuse_texture_ID,
-		unsigned int flags
+		unsigned int flags,
+        int* image_width,
+        int* image_height
 	)
 {
 	/*	variables	*/
@@ -154,6 +156,9 @@ unsigned int
 	/*	and nuke the image data	*/
 	SOIL_free_image_data( img );
 	/*	and return the handle, such as it is	*/
+    
+    *image_width = width;
+    *image_height = height;
 	return tex_id;
 }
 
