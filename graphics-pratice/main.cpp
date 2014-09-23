@@ -122,7 +122,7 @@ void MainLoop() {
 bool LoadGLTextures() {
     /* load an image file directly as a new OpenGL texture */
     int width, height;
-    texture[0] = SOIL_load_OGL_texture("Textures/NeHe.png",
+    texture[0] = SOIL_load_OGL_texture("Textures/NeHe.bmp",
                                        SOIL_LOAD_AUTO,
                                        SOIL_CREATE_NEW_ID,
                                        SOIL_FLAG_INVERT_Y,
