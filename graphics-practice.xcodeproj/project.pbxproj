@@ -15,6 +15,12 @@
 		E666173319D0885600FC1F2B /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = E666173219D0885600FC1F2B /* stb_image_aug.c */; };
 		E6D819A019D1D3DB0073359B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D8199D19D1D3C30073359B /* main.cpp */; };
 		E6D819A119D1D3E00073359B /* MyImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D8199E19D1D3C30073359B /* MyImage.cpp */; };
+		E6E9293A19D5290800DC80C3 /* RubiksCube3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9293819D5290800DC80C3 /* RubiksCube3.cpp */; };
+		E6E9293D19D5298E00DC80C3 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9293B19D5298E00DC80C3 /* Vector3.cpp */; };
+		E6E9294019D52A0200DC80C3 /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9293E19D52A0200DC80C3 /* Vector2.cpp */; };
+		E6E9294419D52A5600DC80C3 /* Matrix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294219D52A5600DC80C3 /* Matrix2.cpp */; };
+		E6E9294719D52A7800DC80C3 /* Matrix3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294519D52A7800DC80C3 /* Matrix3.cpp */; };
+		E6E9294A19D52AA100DC80C3 /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294819D52AA100DC80C3 /* Matrix4.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +49,19 @@
 		E6D8199D19D1D3C30073359B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E6D8199E19D1D3C30073359B /* MyImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MyImage.cpp; sourceTree = "<group>"; };
 		E6D8199F19D1D3C30073359B /* MyImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyImage.h; sourceTree = "<group>"; };
+		E6E9293819D5290800DC80C3 /* RubiksCube3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RubiksCube3.cpp; sourceTree = "<group>"; };
+		E6E9293919D5290800DC80C3 /* RubiksCube3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RubiksCube3.h; sourceTree = "<group>"; };
+		E6E9293B19D5298E00DC80C3 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
+		E6E9293C19D5298E00DC80C3 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		E6E9293E19D52A0200DC80C3 /* Vector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2.cpp; sourceTree = "<group>"; };
+		E6E9293F19D52A0200DC80C3 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
+		E6E9294119D52A3D00DC80C3 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		E6E9294219D52A5600DC80C3 /* Matrix2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix2.cpp; sourceTree = "<group>"; };
+		E6E9294319D52A5600DC80C3 /* Matrix2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix2.h; sourceTree = "<group>"; };
+		E6E9294519D52A7800DC80C3 /* Matrix3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix3.cpp; sourceTree = "<group>"; };
+		E6E9294619D52A7800DC80C3 /* Matrix3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix3.h; sourceTree = "<group>"; };
+		E6E9294819D52AA100DC80C3 /* Matrix4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix4.cpp; sourceTree = "<group>"; };
+		E6E9294919D52AA100DC80C3 /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +108,19 @@
 				E6D8199D19D1D3C30073359B /* main.cpp */,
 				E6D8199E19D1D3C30073359B /* MyImage.cpp */,
 				E6D8199F19D1D3C30073359B /* MyImage.h */,
+				E6E9293819D5290800DC80C3 /* RubiksCube3.cpp */,
+				E6E9293919D5290800DC80C3 /* RubiksCube3.h */,
+				E6E9293B19D5298E00DC80C3 /* Vector3.cpp */,
+				E6E9293C19D5298E00DC80C3 /* Vector3.h */,
+				E6E9293E19D52A0200DC80C3 /* Vector2.cpp */,
+				E6E9293F19D52A0200DC80C3 /* Vector2.h */,
+				E6E9294119D52A3D00DC80C3 /* Matrix.h */,
+				E6E9294219D52A5600DC80C3 /* Matrix2.cpp */,
+				E6E9294319D52A5600DC80C3 /* Matrix2.h */,
+				E6E9294519D52A7800DC80C3 /* Matrix3.cpp */,
+				E6E9294619D52A7800DC80C3 /* Matrix3.h */,
+				E6E9294819D52AA100DC80C3 /* Matrix4.cpp */,
+				E6E9294919D52AA100DC80C3 /* Matrix4.h */,
 			);
 			path = "graphics-practice";
 			sourceTree = "<group>";
@@ -145,10 +177,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6D819A019D1D3DB0073359B /* main.cpp in Sources */,
+				E6E9294419D52A5600DC80C3 /* Matrix2.cpp in Sources */,
 				E666172D19D0884900FC1F2B /* image_DXT.c in Sources */,
+				E6E9293D19D5298E00DC80C3 /* Vector3.cpp in Sources */,
+				E6E9294719D52A7800DC80C3 /* Matrix3.cpp in Sources */,
 				E666172F19D0884B00FC1F2B /* image_helper.c in Sources */,
+				E6E9293A19D5290800DC80C3 /* RubiksCube3.cpp in Sources */,
 				E666173119D0885000FC1F2B /* SOIL.c in Sources */,
 				E666173319D0885600FC1F2B /* stb_image_aug.c in Sources */,
+				E6E9294A19D52AA100DC80C3 /* Matrix4.cpp in Sources */,
+				E6E9294019D52A0200DC80C3 /* Vector2.cpp in Sources */,
 				E6D819A119D1D3E00073359B /* MyImage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
