@@ -17,6 +17,8 @@
 #include "SOIL.h"
 
 #include "MyImage.h"
+#include "Sprite.h"
+#include "RubiksCube3.h"
 
 #define WINDOW_TITLE "Loki's Graphics Practice"
 #define WINDOW_WIDTH 640
@@ -29,7 +31,8 @@ GLfloat	yrot;				// Y Rotation
 GLfloat zrot;               // Z Rotation
 GLfloat xspeed;				// X Rotation Speed
 GLfloat yspeed;				// Y Rotation Speed
-GLfloat	z=-5.0f;			// Depth Into The Screen
+
+Vector3 position;
 
 GLfloat LightAmbient[]=		{ 0.5f, 0.5f, 0.5f, 1.0f };
 GLfloat LightDiffuse[]=		{ 1.0f, 1.0f, 1.0f, 1.0f };
@@ -39,6 +42,9 @@ bool    blend;
 
 GLuint	filter;				// Which Filter To Use
 GLuint	texture[3];			// Storage For 3 Textures
+
+
+Sprite *spriteGrass = NULL;
 
 void changeSize(int w, int h) {
 	if (h == 0)
@@ -54,7 +60,7 @@ void changeSize(int w, int h) {
 	glLoadIdentity();
     
 	// Set the correct perspective.
-	gluPerspective(45, ratio, 1, 100);
+	gluPerspective(45, ratio, 1, 10000);
     
     
 	// Get Back to the Modelview
@@ -64,53 +70,13 @@ void changeSize(int w, int h) {
 
 void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear The Screen And The Depth Buffer
-    glLoadIdentity();									// Reset The View
-    glTranslatef(0.0f,0.0f,z);
+    glLoadIdentity();
     
-    glRotatef(xrot,1.0f,0.0f,0.0f);
-    glRotatef(yrot,0.0f,1.0f,0.0f);
-    glRotatef(zrot,0.0f,0.0f,1.0f);
+    // move camera
+    // camera move direction must be inverse
+    glTranslatef( -position.x, -position.y, -position.z );
     
-    glBindTexture(GL_TEXTURE_2D, texture[filter]);
-    
-    glBegin(GL_QUADS);
-    // Front Face
-    glNormal3f( 0.0f, 0.0f, 1.0f); // Normal Pointing Towards Viewer
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f); // Point 1 (Front)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, 1.0f); // Point 2 (Front)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, 1.0f); // Point 3 (Front)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 1.0f); // Point 4 (Front)
-    // Back Face
-    glNormal3f( 0.0f, 0.0f,-1.0f); // Normal Pointing Away From Viewer
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f); // Point 1 (Back)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, -1.0f); // Point 2 (Back)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, 1.0f, -1.0f); // Point 3 (Back)
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f); // Point 4 (Back)
-    // Top Face
-    glNormal3f( 0.0f, 1.0f, 0.0f); // Normal Pointing Up
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, -1.0f); // Point 1 (Top)
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, 1.0f, 1.0f); // Point 2 (Top)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, 1.0f, 1.0f); // Point 3 (Top)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, -1.0f); // Point 4 (Top)
-    // Bottom Face
-    glNormal3f( 0.0f,-1.0f, 0.0f); // Normal Pointing Down
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, -1.0f, -1.0f); // Point 1 (Bottom)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, -1.0f, -1.0f); // Point 2 (Bottom)
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, 1.0f); // Point 3 (Bottom)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f); // Point 4 (Bottom)
-    // Right face
-    glNormal3f( 1.0f, 0.0f, 0.0f); // Normal Pointing Right
-    glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f, -1.0f); // Point 1 (Right)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f, 1.0f, -1.0f); // Point 2 (Right)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f( 1.0f, 1.0f, 1.0f); // Point 3 (Right)
-    glTexCoord2f(0.0f, 0.0f); glVertex3f( 1.0f, -1.0f, 1.0f); // Point 4 (Right)
-    // Left Face
-    glNormal3f(-1.0f, 0.0f, 0.0f); // Normal Pointing Left
-    glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f); // Point 1 (Left)
-    glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, 1.0f); // Point 2 (Left)
-    glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f, 1.0f, 1.0f); // Point 3 (Left)
-    glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f, 1.0f, -1.0f); // Point 4 (Left)
-    glEnd(); // Done Drawing Quads
+    spriteGrass->Draw();
     
     glutSwapBuffers();
 }
@@ -161,7 +127,21 @@ void processSpecialKeys(int key, int x, int y) {
 		case GLUT_KEY_F1:
             exit(0);
             break;
+        case GLUT_KEY_LEFT:
+            position.x -= 1.0f;
+            break;
+        case GLUT_KEY_RIGHT:
+            position.x += 1.0f;
+            break;
+        case GLUT_KEY_UP:
+            position.y += 1.0f;
+            break;
+        case GLUT_KEY_DOWN:
+            position.y -= 1.0f;
+            break;
 	}
+    
+    cout << position.x << " " << position.y << " " << position.z << endl;
 }
 
 void MainLoop() {
@@ -173,41 +153,13 @@ void MainLoop() {
 }
 
 bool LoadGLTextures() {
-    MyImage *loadedImage = MyImage::LoadImage("Textures/Glass.bmp");
-    if( loadedImage == NULL ) {
-        cout << "loaded image is null" << endl;
+    spriteGrass = Sprite::Create("Textures/grass.jpg");
+    if( spriteGrass == NULL ) {
         return false;
     }
     
-    int width = loadedImage->GetWidth();
-    int height = loadedImage->GetHeight();
-    unsigned char* data = loadedImage->GetData();
-    
-    cout << width << " " << height << endl;
-    
-    
-    // Create Three Textures
-    glGenTextures(3, &texture[0]);
-    
-    // Create Nearest Filtered Texture
-    glBindTexture(GL_TEXTURE_2D, texture[0]);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    
-    // Create Linear Filtered Texture
-    glBindTexture(GL_TEXTURE_2D, texture[1]);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    
-    // Create MipMapped Texture
-    glBindTexture(GL_TEXTURE_2D, texture[2]);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST);
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
-    
-    delete loadedImage;
+    spriteGrass->SetPosition( Vector3( 0, -30, -1000 ) );
+    spriteGrass->SetRotation( Vector3( -80, 0, 0 ) );
     return true;
 }
 
@@ -230,8 +182,9 @@ bool InitGL() {
     glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);	// Position The Light
     glEnable(GL_LIGHT1);								// Enable Light One
     
-    glColor4f(1.0f, 1.0f, 1.0f, 0.5);					// Full Brightness.  50% Alpha
-    glBlendFunc(GL_SRC_ALPHA,GL_ONE);					// Set The Blending Function For Translucency
+    // set camera position
+    position.Set( 0, 100, -20 );
+    
     return true;
 }
 

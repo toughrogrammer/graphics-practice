@@ -21,6 +21,9 @@
 		E6E9294419D52A5600DC80C3 /* Matrix2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294219D52A5600DC80C3 /* Matrix2.cpp */; };
 		E6E9294719D52A7800DC80C3 /* Matrix3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294519D52A7800DC80C3 /* Matrix3.cpp */; };
 		E6E9294A19D52AA100DC80C3 /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294819D52AA100DC80C3 /* Matrix4.cpp */; };
+		E6E9294D19D52B4200DC80C3 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294B19D52B4200DC80C3 /* Cube.cpp */; };
+		E6E9295019D52D6B00DC80C3 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9294E19D52D6B00DC80C3 /* Node.cpp */; };
+		E6E9295319D57CC400DC80C3 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6E9295119D57CC400DC80C3 /* Sprite.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +65,13 @@
 		E6E9294619D52A7800DC80C3 /* Matrix3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix3.h; sourceTree = "<group>"; };
 		E6E9294819D52AA100DC80C3 /* Matrix4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix4.cpp; sourceTree = "<group>"; };
 		E6E9294919D52AA100DC80C3 /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
+		E6E9294B19D52B4200DC80C3 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		E6E9294C19D52B4200DC80C3 /* Cube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		E6E9294E19D52D6B00DC80C3 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		E6E9294F19D52D6B00DC80C3 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		E6E9295119D57CC400DC80C3 /* Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
+		E6E9295219D57CC400DC80C3 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		E6E9295419D57E8100DC80C3 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +131,13 @@
 				E6E9294619D52A7800DC80C3 /* Matrix3.h */,
 				E6E9294819D52AA100DC80C3 /* Matrix4.cpp */,
 				E6E9294919D52AA100DC80C3 /* Matrix4.h */,
+				E6E9294B19D52B4200DC80C3 /* Cube.cpp */,
+				E6E9294C19D52B4200DC80C3 /* Cube.h */,
+				E6E9294E19D52D6B00DC80C3 /* Node.cpp */,
+				E6E9294F19D52D6B00DC80C3 /* Node.h */,
+				E6E9295119D57CC400DC80C3 /* Sprite.cpp */,
+				E6E9295219D57CC400DC80C3 /* Sprite.h */,
+				E6E9295419D57E8100DC80C3 /* Macro.h */,
 			);
 			path = "graphics-practice";
 			sourceTree = "<group>";
@@ -176,7 +193,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6E9294D19D52B4200DC80C3 /* Cube.cpp in Sources */,
+				E6E9295019D52D6B00DC80C3 /* Node.cpp in Sources */,
 				E6D819A019D1D3DB0073359B /* main.cpp in Sources */,
+				E6E9295319D57CC400DC80C3 /* Sprite.cpp in Sources */,
 				E6E9294419D52A5600DC80C3 /* Matrix2.cpp in Sources */,
 				E666172D19D0884900FC1F2B /* image_DXT.c in Sources */,
 				E6E9293D19D5298E00DC80C3 /* Vector3.cpp in Sources */,
