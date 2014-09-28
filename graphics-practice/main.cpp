@@ -18,6 +18,7 @@
 
 #include "MyImage.h"
 #include "Sprite.h"
+#include "Cube.h"
 #include "RubiksCube3.h"
 
 #define WINDOW_TITLE "Loki's Graphics Practice"
@@ -36,15 +37,12 @@ Vector3 position;
 
 GLfloat LightAmbient[]=		{ 0.5f, 0.5f, 0.5f, 1.0f };
 GLfloat LightDiffuse[]=		{ 1.0f, 1.0f, 1.0f, 1.0f };
-GLfloat LightPosition[]=	{ 0.0f, 0.0f, 2.0f, 1.0f };
+GLfloat LightPosition[]=	{ 0.0f, 0.0f, 50.0f, 1.0f };
 bool	light;				// Lighting ON/OFF
 bool    blend;
 
-GLuint	filter;				// Which Filter To Use
-GLuint	texture[3];			// Storage For 3 Textures
-
-
 Sprite *spriteGrass = NULL;
+Cube *cube = NULL;
 
 void changeSize(int w, int h) {
 	if (h == 0)
@@ -60,7 +58,7 @@ void changeSize(int w, int h) {
 	glLoadIdentity();
     
 	// Set the correct perspective.
-	gluPerspective(45, ratio, 1, 10000);
+	gluPerspective(45, ratio, 1, 1000);
     
     
 	// Get Back to the Modelview
@@ -77,6 +75,7 @@ void renderScene(void) {
     glTranslatef( -position.x, -position.y, -position.z );
     
     spriteGrass->Draw();
+    cube->Draw();
     
     glutSwapBuffers();
 }
@@ -90,21 +89,13 @@ void processNormalKeys(unsigned char key, int x, int y) {
         if (!light)
         {
             glDisable(GL_LIGHTING);
+            cout << "light off" << endl;
         }
         else
         {
             glEnable(GL_LIGHTING);
+            cout << "light on" << endl;
         }
-    }
-    
-    if( key == 'f' || key == 'F' ) {
-        filter+=1;
-        if (filter>2)
-        {
-            filter=0;
-        }
-        
-        cout << "current filter : " << filter << endl;
     }
     
     if ( key == 'b' || key == 'B' ) {
@@ -113,12 +104,23 @@ void processNormalKeys(unsigned char key, int x, int y) {
         {
             glEnable(GL_BLEND);			// Turn Blending On
             glDisable(GL_DEPTH_TEST);	// Turn Depth Testing Off
+            cout << "blend on" << endl;
         }
         else
         {
             glDisable(GL_BLEND);		// Turn Blending Off
             glEnable(GL_DEPTH_TEST);	// Turn Depth Testing On
+            cout << "blend off" << endl;
         }
+    }
+    
+    if( key == 'z' || key == 'Z' ) {
+        position.z -= 5.0f;
+        cout << "camera - (" << position.x << ", " << position.y << ", " << position.z << ")" << endl;
+    }
+    if( key == 'x' || key == 'X' ) {
+        position.z += 5.0f;
+        cout << "camera - (" << position.x << ", " << position.y << ", " << position.z << ")" << endl;
     }
 }
 
@@ -128,26 +130,28 @@ void processSpecialKeys(int key, int x, int y) {
             exit(0);
             break;
         case GLUT_KEY_LEFT:
-            position.x -= 1.0f;
+            position.x -= 5.0f;
             break;
         case GLUT_KEY_RIGHT:
-            position.x += 1.0f;
+            position.x += 5.0f;
             break;
         case GLUT_KEY_UP:
-            position.y += 1.0f;
+            position.y += 5.0f;
             break;
         case GLUT_KEY_DOWN:
-            position.y -= 1.0f;
+            position.y -= 5.0f;
             break;
 	}
     
-    cout << position.x << " " << position.y << " " << position.z << endl;
+    cout << "camera - (" << position.x << ", " << position.y << ", " << position.z << ")" << endl;
 }
 
 void MainLoop() {
     xrot += 0.3f;
     yrot += 0.2f;
     zrot += 0.4f;
+    
+    cube->SetRotation( Vector3( xrot, yrot, zrot ) );
     
     glutPostRedisplay();
 }
@@ -158,8 +162,14 @@ bool LoadGLTextures() {
         return false;
     }
     
-    spriteGrass->SetPosition( Vector3( 0, -30, -1000 ) );
-    spriteGrass->SetRotation( Vector3( -80, 0, 0 ) );
+    spriteGrass->SetPosition( Vector3( 0, 0, 0 ) );
+    spriteGrass->SetRotation( Vector3( -90, 0, 0 ) );
+    
+    MyImage *boxImage = MyImage::LoadImage("Textures/Crate.bmp");
+    cube = Cube::Create( boxImage->GetTexture(), 100.0f );
+    cube->SetPosition( Vector3( 0, 100, -300 ) );
+    delete boxImage;
+    
     return true;
 }
 
@@ -169,12 +179,13 @@ bool InitGL() {
         return false;                           // If Texture Didn't Load Return FALSE ( NEW )
     }
     
-    glEnable(GL_TEXTURE_2D);                        // Enable Texture Mapping ( NEW )
     glShadeModel(GL_SMOOTH);                        // Enable Smooth Shading
-    glClearColor(0.0f, 0.0f, 0.0f, 0.5f);                   // Black Background
+    glClearColor(0.0f, 0.0f, 0.3f, 1.0f);                   // Black Background
     glClearDepth(1.0f);                         // Depth Buffer Setup
+    
     glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
     glDepthFunc(GL_LEQUAL);                         // The Type Of Depth Testing To Do
+    
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective Calculations
     
     glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);		// Setup The Ambient Light
@@ -183,7 +194,7 @@ bool InitGL() {
     glEnable(GL_LIGHT1);								// Enable Light One
     
     // set camera position
-    position.Set( 0, 100, -20 );
+    position.Set( 0, 100, 20 );
     
     return true;
 }
