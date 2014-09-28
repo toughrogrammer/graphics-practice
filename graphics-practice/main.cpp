@@ -33,16 +33,32 @@ GLfloat zrot;               // Z Rotation
 GLfloat xspeed;				// X Rotation Speed
 GLfloat yspeed;				// Y Rotation Speed
 
-Vector3 position;
-
 GLfloat LightAmbient[]=		{ 0.5f, 0.5f, 0.5f, 1.0f };
 GLfloat LightDiffuse[]=		{ 1.0f, 1.0f, 1.0f, 1.0f };
 GLfloat LightPosition[]=	{ 0.0f, 0.0f, 50.0f, 1.0f };
 bool	light;				// Lighting ON/OFF
 bool    blend;
 
+#define MAX_MODE_COUNT 3
+const int MODE_POSITION = 0;
+const int MODE_ROTATION = 1;
+const int MODE_SCALE = 2;
+int mode;
+
+Vector3 cameraPosition;
+Vector3 cameraRotation;
+Vector3 cameraScale(1.0f, 1.0f, 1.0f);
+
 Sprite *spriteGrass = NULL;
 Cube *cube = NULL;
+
+
+void LogCameraStatus() {
+    cout << "camera position - (" << cameraPosition.x << ", " << cameraPosition.y << ", " << cameraPosition.z << ")" << endl;
+    cout << "camera rotation - (" << cameraRotation.x << ", " << cameraRotation.y << ", " << cameraRotation.z << ")" << endl;
+    cout << "camera scale - (" << cameraScale.x << ", " << cameraScale.y << ", " << cameraScale.z << ")" << endl;
+}
+
 
 void changeSize(int w, int h) {
 	if (h == 0)
@@ -70,9 +86,12 @@ void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear The Screen And The Depth Buffer
     glLoadIdentity();
     
-    // move camera
-    // camera move direction must be inverse
-    glTranslatef( -position.x, -position.y, -position.z );
+    // roughly camera setting
+    glRotatef( cameraRotation.x, 1.0f, 0.0f, 0.0f );
+    glRotatef( cameraRotation.y, 0.0f, 1.0f, 0.0f );
+    glRotatef( cameraRotation.z, 0.0f, 0.0f, 1.0f );
+    glScalef( cameraScale.x, cameraScale.y, cameraScale.z );
+    glTranslatef( -cameraPosition.x, -cameraPosition.y, -cameraPosition.z );
     
     spriteGrass->Draw();
     cube->Draw();
@@ -114,13 +133,39 @@ void processNormalKeys(unsigned char key, int x, int y) {
         }
     }
     
+    if ( key == 'm' || key == 'M' ) {
+        mode = ( mode + 1 ) % MAX_MODE_COUNT;
+    }
+    
     if( key == 'z' || key == 'Z' ) {
-        position.z -= 5.0f;
-        cout << "camera - (" << position.x << ", " << position.y << ", " << position.z << ")" << endl;
+        switch (mode) {
+            case MODE_POSITION:
+                cameraPosition.z -= 5.0f;
+                break;
+            case MODE_ROTATION:
+                cameraRotation.z -= 5.0f;
+                break;
+            case MODE_SCALE:
+                cameraScale.z -= 0.1f;
+                break;
+        }
+        
+        LogCameraStatus();
     }
     if( key == 'x' || key == 'X' ) {
-        position.z += 5.0f;
-        cout << "camera - (" << position.x << ", " << position.y << ", " << position.z << ")" << endl;
+        switch (mode) {
+            case MODE_POSITION:
+                cameraPosition.z += 5.0f;
+                break;
+            case MODE_ROTATION:
+                cameraRotation.z += 5.0f;
+                break;
+            case MODE_SCALE:
+                cameraScale.z += 0.1f;
+                break;
+        }
+        
+        LogCameraStatus();
     }
 }
 
@@ -130,20 +175,48 @@ void processSpecialKeys(int key, int x, int y) {
             exit(0);
             break;
         case GLUT_KEY_LEFT:
-            position.x -= 5.0f;
+            switch (mode) {
+                case MODE_POSITION:
+                    cameraPosition.x -= 5.0f;
+                    break;
+                case MODE_ROTATION:
+                    cameraRotation.y -= 5.0f;
+                    break;
+            }
             break;
         case GLUT_KEY_RIGHT:
-            position.x += 5.0f;
+            switch (mode) {
+                case MODE_POSITION:
+                    cameraPosition.x += 5.0f;
+                    break;
+                case MODE_ROTATION:
+                    cameraRotation.y += 5.0f;
+                    break;
+            }
             break;
         case GLUT_KEY_UP:
-            position.y += 5.0f;
+            switch (mode) {
+                case MODE_POSITION:
+                    cameraPosition.y += 5.0f;
+                    break;
+                case MODE_ROTATION:
+                    cameraRotation.x -= 5.0f;
+                    break;
+            }
             break;
         case GLUT_KEY_DOWN:
-            position.y -= 5.0f;
+            switch (mode) {
+                case MODE_POSITION:
+                    cameraPosition.y -= 5.0f;
+                    break;
+                case MODE_ROTATION:
+                    cameraRotation.x += 5.0f;
+                    break;
+            }
             break;
 	}
     
-    cout << "camera - (" << position.x << ", " << position.y << ", " << position.z << ")" << endl;
+
 }
 
 void MainLoop() {
@@ -194,7 +267,7 @@ bool InitGL() {
     glEnable(GL_LIGHT1);								// Enable Light One
     
     // set camera position
-    position.Set( 0, 100, 20 );
+    cameraPosition.Set( 0, 100, 20 );
     
     return true;
 }
