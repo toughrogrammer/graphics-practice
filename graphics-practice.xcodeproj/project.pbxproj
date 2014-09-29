@@ -139,15 +139,9 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E6D8199B19D1D3C30073359B /* graphics-practice */ = {
+		E6A7971B19D9CC5200725598 /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				E6F4E05B19D9A12600565658 /* Scene */,
-				E6FCECCD19D9001800D29128 /* Action */,
-				E6D8199C19D1D3C30073359B /* graphics_pratice.1 */,
-				E6D8199D19D1D3C30073359B /* main.cpp */,
-				E6D8199E19D1D3C30073359B /* MyImage.cpp */,
-				E6D8199F19D1D3C30073359B /* MyImage.h */,
 				E6E9293B19D5298E00DC80C3 /* Vector3.cpp */,
 				E6E9293C19D5298E00DC80C3 /* Vector3.h */,
 				E6E9293E19D52A0200DC80C3 /* Vector2.cpp */,
@@ -159,6 +153,20 @@
 				E6E9294619D52A7800DC80C3 /* Matrix3.h */,
 				E6E9294819D52AA100DC80C3 /* Matrix4.cpp */,
 				E6E9294919D52AA100DC80C3 /* Matrix4.h */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
+		E6D8199B19D1D3C30073359B /* graphics-practice */ = {
+			isa = PBXGroup;
+			children = (
+				E6A7971B19D9CC5200725598 /* Math */,
+				E6F4E05B19D9A12600565658 /* Scene */,
+				E6FCECCD19D9001800D29128 /* Action */,
+				E6D8199C19D1D3C30073359B /* graphics_pratice.1 */,
+				E6D8199D19D1D3C30073359B /* main.cpp */,
+				E6D8199E19D1D3C30073359B /* MyImage.cpp */,
+				E6D8199F19D1D3C30073359B /* MyImage.h */,
 				E6E9294B19D52B4200DC80C3 /* Cube.cpp */,
 				E6E9294C19D52B4200DC80C3 /* Cube.h */,
 				E6E9294E19D52D6B00DC80C3 /* Node.cpp */,
