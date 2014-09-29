@@ -13,6 +13,8 @@
 #include "Macro.h"
 #include "Vector3.h"
 
+class Action;
+
 class Node {
 protected:
     Vector3 _position;
@@ -27,8 +29,13 @@ public:
     virtual void Update(float dt);
     virtual void Draw();
     
+    Vector3 GetPosition();
     virtual void SetPosition(Vector3 vec);
+    
+    Vector3 GetRotation();
     virtual void SetRotation(Vector3 vec);
+    
+    virtual void RunAction(Action *action);
 };
 
 #endif /* defined(__graphics_practice__Node__) */

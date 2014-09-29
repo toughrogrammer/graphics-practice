@@ -7,7 +7,7 @@
 //
 
 #include "Node.h"
-
+#include "Action.h"
 
 Node::Node()
 {
@@ -34,12 +34,28 @@ void Node::Draw()
     
 }
 
+Vector3 Node::GetPosition()
+{
+    return _position;
+}
+
 void Node::SetPosition(Vector3 vec)
 {
     _position = vec;
 }
 
+Vector3 Node::GetRotation()
+{
+    return _rotation;
+}
+
 void Node::SetRotation(Vector3 vec)
 {
     _rotation = vec;
+}
+
+void Node::RunAction(Action *action)
+{
+    action->SetTarget(this);
+    action->Start();
 }
