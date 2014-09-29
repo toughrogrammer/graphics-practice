@@ -31,6 +31,8 @@ public:
     
     void AddAction(Action *action);
     void RemoveAction(Action *action);
+    
+    void Update(float dt);
 };
 
 #endif /* defined(__graphics_practice__ActionManager__) */

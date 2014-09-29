@@ -13,7 +13,7 @@ MoveBy::MoveBy(float duration, Vector3 dist)
 : Action(duration)
 , _dist(dist)
 {
-    
+    _duration = duration;
 }
 
 MoveBy::~MoveBy()
@@ -46,5 +46,7 @@ void MoveBy::Update(float dt)
 {
     Action::Update(dt);
     
-    
+    float elapsed = _duration - _time;
+    Vector3 move = _dist * (elapsed / _duration);
+    _target->SetPosition( _start + move );
 }

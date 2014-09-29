@@ -41,6 +41,18 @@ void ActionManager::RemoveAction(Action *action)
 {
     auto it = find( _actions.begin(), _actions.end(), action );
     if( it != _actions.end() ) {
+        Action *action = *it;
         _actions.erase( it );
+        
+        delete action;
+    }
+}
+
+void ActionManager::Update(float dt)
+{
+    unsigned long length = _actions.size();
+    for( int i = 0; i < length; i ++ ) {
+        Action *action = _actions[i];
+        action->Update(dt);
     }
 }

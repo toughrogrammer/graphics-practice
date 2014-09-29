@@ -9,7 +9,6 @@
 #include "Action.h"
 #include "ActionManager.h"
 
-
 Action::Action(float time)
 : _time(time)
 {
@@ -35,6 +34,7 @@ void Action::Update(float dt)
 {
     _time -= dt;
     if( _time < 0 ) {
-        
+        ActionManager::Instance()->RemoveAction( this );
+        return;
     }
 }
