@@ -140,41 +140,6 @@ void processNormalKeys(unsigned char key, int x, int y) {
             cout << "blend off" << endl;
         }
     }
-    
-    if ( key == 'm' || key == 'M' ) {
-        mode = ( mode + 1 ) % MAX_MODE_COUNT;
-    }
-    
-    if( key == 'z' || key == 'Z' ) {
-        switch (mode) {
-            case MODE_POSITION:
-                cameraPosition.z -= 5.0f;
-                break;
-            case MODE_ROTATION:
-                cameraRotation.z -= 5.0f;
-                break;
-            case MODE_SCALE:
-                cameraScale.z -= 0.1f;
-                break;
-        }
-        
-        LogCameraStatus();
-    }
-    if( key == 'x' || key == 'X' ) {
-        switch (mode) {
-            case MODE_POSITION:
-                cameraPosition.z += 5.0f;
-                break;
-            case MODE_ROTATION:
-                cameraRotation.z += 5.0f;
-                break;
-            case MODE_SCALE:
-                cameraScale.z += 0.1f;
-                break;
-        }
-        
-        LogCameraStatus();
-    }
 }
 
 void processSpecialKeys(int key, int x, int y) {
@@ -183,44 +148,28 @@ void processSpecialKeys(int key, int x, int y) {
             exit(0);
             break;
         case GLUT_KEY_LEFT:
-            switch (mode) {
-                case MODE_POSITION:
-                    cameraPosition.x -= 5.0f;
-                    break;
-                case MODE_ROTATION:
-                    cameraRotation.y -= 5.0f;
-                    break;
-            }
+        {
+            MoveBy *move = MoveBy::Create( 1.0f, Vector3(-100, 0, 0) );
+            cube->RunAction( move );
+        }
             break;
         case GLUT_KEY_RIGHT:
-            switch (mode) {
-                case MODE_POSITION:
-                    cameraPosition.x += 5.0f;
-                    break;
-                case MODE_ROTATION:
-                    cameraRotation.y += 5.0f;
-                    break;
-            }
+        {
+            MoveBy *move = MoveBy::Create( 1.0f, Vector3(100, 0, 0) );
+            cube->RunAction( move );
+        }
             break;
         case GLUT_KEY_UP:
-            switch (mode) {
-                case MODE_POSITION:
-                    cameraPosition.y += 5.0f;
-                    break;
-                case MODE_ROTATION:
-                    cameraRotation.x -= 5.0f;
-                    break;
-            }
+        {
+            MoveBy *move = MoveBy::Create( 1.0f, Vector3(0, 0, -100) );
+            cube->RunAction( move );
+        }
             break;
         case GLUT_KEY_DOWN:
-            switch (mode) {
-                case MODE_POSITION:
-                    cameraPosition.y -= 5.0f;
-                    break;
-                case MODE_ROTATION:
-                    cameraRotation.x += 5.0f;
-                    break;
-            }
+        {
+            MoveBy *move = MoveBy::Create( 1.0f, Vector3(0, 0, 100) );
+            cube->RunAction( move );
+        }
             break;
 	}
     
