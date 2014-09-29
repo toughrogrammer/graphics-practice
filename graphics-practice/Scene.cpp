@@ -32,6 +32,10 @@ Scene* Scene::Create()
 
 bool Scene::Init()
 {
+    for( int i = GL_LIGHT0; i <= GL_LIGHT7; i ++ ) {
+        glDisable(i);
+    }
+    
     return true;
 }
 
