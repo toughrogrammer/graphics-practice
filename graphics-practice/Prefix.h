@@ -17,7 +17,19 @@
 using namespace std;
 
 // opengl
+#if defined(__APPLE__) && defined(__MACH__)
+/* Apple OSX and iOS (Darwin). ------------------------------ */
+#include <TargetConditionals.h>
+#if TARGET_OS_MAC == 1
+/* OSX */
 #include <GLUT/glut.h>
+#endif
+#endif
+
+#if defined(__linux__)
+#include <GL/gl.h>
+#endif
+
 #include "SOIL.h"
 
 
