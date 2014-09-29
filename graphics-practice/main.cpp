@@ -19,7 +19,6 @@
 #include "MyImage.h"
 #include "Sprite.h"
 #include "Cube.h"
-#include "RubiksCube3.h"
 
 #define WINDOW_TITLE "Loki's Graphics Practice"
 #define WINDOW_WIDTH 640
@@ -224,7 +223,7 @@ void MainLoop() {
     yrot += 0.2f;
     zrot += 0.4f;
     
-    cube->SetRotation( Vector3( xrot, yrot, zrot ) );
+//    cube->SetRotation( Vector3( xrot, yrot, zrot ) );
     
     glutPostRedisplay();
 }
@@ -236,11 +235,11 @@ bool LoadGLTextures() {
     }
     
     spriteGrass->SetPosition( Vector3( 0, 0, 0 ) );
-    spriteGrass->SetRotation( Vector3( -90, 0, 0 ) );
+    spriteGrass->SetRotation( Vector3( 90, 0, 0 ) );
     
     MyImage *boxImage = MyImage::LoadImage("Textures/Crate.bmp");
     cube = Cube::Create( boxImage->GetTexture(), 100.0f );
-    cube->SetPosition( Vector3( 0, 100, -300 ) );
+    cube->SetPosition( Vector3( 0, 50, -300 ) );
     delete boxImage;
     
     return true;
@@ -267,7 +266,8 @@ bool InitGL() {
     glEnable(GL_LIGHT1);								// Enable Light One
     
     // set camera position
-    cameraPosition.Set( 0, 100, 20 );
+    cameraPosition.Set( 0, 600, 20 );
+    cameraRotation.Set( 60, 0, 0 );
     
     return true;
 }
