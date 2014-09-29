@@ -16,15 +16,24 @@
 
 #include "SOIL.h"
 
+#include "ActionManager.h"
 #include "MyImage.h"
 #include "Sprite.h"
 #include "Cube.h"
+#include "MoveBy.h"
 
 #define WINDOW_TITLE "Loki's Graphics Practice"
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
 using namespace std;
+
+#include <sys/time.h>
+struct timeval tPrev, tCurr;
+long GetMillisecond(struct timeval tv) {
+    return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+}
+
 
 GLfloat	xrot;				// X Rotation
 GLfloat	yrot;				// Y Rotation
@@ -219,11 +228,12 @@ void processSpecialKeys(int key, int x, int y) {
 }
 
 void MainLoop() {
-    xrot += 0.3f;
-    yrot += 0.2f;
-    zrot += 0.4f;
+    gettimeofday( &tCurr, NULL );
+    long msDeltaTime = GetMillisecond(tCurr) - GetMillisecond(tPrev);
+    float dt = msDeltaTime * 0.001;
+    tPrev = tCurr;
     
-//    cube->SetRotation( Vector3( xrot, yrot, zrot ) );
+    ActionManager::Instance()->Update( dt );
     
     glutPostRedisplay();
 }
@@ -266,8 +276,10 @@ bool InitGL() {
     glEnable(GL_LIGHT1);								// Enable Light One
     
     // set camera position
-    cameraPosition.Set( 0, 600, 20 );
+    cameraPosition.Set( 0, 600, 120 );
     cameraRotation.Set( 60, 0, 0 );
+    
+    gettimeofday( &tPrev, NULL );
     
     return true;
 }
