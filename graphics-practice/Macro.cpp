@@ -8,8 +8,11 @@
 
 #include "Macro.h"
 
-
 void GLVertexByVector3(Vector3 &v)
 {
     glVertex3f( v.x, v.y, v.z );
+}
+
+long GetMillisecond(struct timeval tv) {
+    return tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }

@@ -12,9 +12,12 @@
 #include <OpenGL/gl.h>
 #include "Vector3.h"
 
+#include <sys/time.h>
+
 #define SAFE_DELETE(p) if( (p) != NULL ) delete (p); (p) = NULL;
 
 void GLVertexByVector3(Vector3 &v);
+long GetMillisecond(struct timeval tv);
 
 
 #endif

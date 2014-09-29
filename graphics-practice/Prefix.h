@@ -44,6 +44,9 @@ using namespace std;
 #include "ActionInterval.h"
 #include "ActionManager.h"
 
+#include "Scene.h"
+#include "SceneManager.h"
+
 #include "Node.h"
 #include "MyImage.h"
 #include "Sprite.h"
