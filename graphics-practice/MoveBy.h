@@ -12,6 +12,8 @@
 #include "Action.h"
 #include "Vector3.h"
 
+class Node;
+
 class MoveBy : public Action {
 private:
     Vector3 _dist;

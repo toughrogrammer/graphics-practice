@@ -7,6 +7,8 @@
 //
 
 #include "Sprite.h"
+#include "MyImage.h"
+
 
 Sprite::Sprite(MyImage *img)
 : _img(img)

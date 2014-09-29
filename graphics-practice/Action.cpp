@@ -8,6 +8,7 @@
 
 #include "Action.h"
 #include "ActionManager.h"
+#include "Node.h"
 
 Action::Action(float time)
 : _time(time)

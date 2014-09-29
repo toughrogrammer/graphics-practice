@@ -6,6 +6,7 @@
 //  Copyright (c) 2014년 loki. All rights reserved.
 //
 
+#include "Prefix.h"
 #include "MoveBy.h"
 #include "Macro.h"
 

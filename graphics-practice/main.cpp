@@ -6,21 +6,7 @@
 //  Copyright (c) 2014년 loki. All rights reserved.
 //
 
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-#include <GLUT/glut.h>
-
-#include <stdlib.h>
-#include <iostream>
-#include <fstream>
-
-#include "SOIL.h"
-
-#include "ActionManager.h"
-#include "MyImage.h"
-#include "Sprite.h"
-#include "Cube.h"
-#include "MoveBy.h"
+#include "Prefix.h"
 
 #define WINDOW_TITLE "Loki's Graphics Practice"
 #define WINDOW_WIDTH 640

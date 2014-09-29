@@ -45,6 +45,8 @@
 		E61345E219C6EC3600B57A63 /* graphics-practice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "graphics-practice"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61345EE19C6EC5F00B57A63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E61345F019C6EC6300B57A63 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		E6342C3E19D983D000B354BC /* Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
+		E6342C3F19D98D9200B354BC /* ActionInterval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionInterval.h; sourceTree = "<group>"; };
 		E666172C19D0884900FC1F2B /* image_DXT.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = image_DXT.c; path = library/SOIL/src/image_DXT.c; sourceTree = "<group>"; };
 		E666172E19D0884B00FC1F2B /* image_helper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = image_helper.c; path = library/SOIL/src/image_helper.c; sourceTree = "<group>"; };
 		E666173019D0885000FC1F2B /* SOIL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = library/SOIL/src/SOIL.c; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				E6E9295219D57CC400DC80C3 /* Sprite.h */,
 				E6E9295419D57E8100DC80C3 /* Macro.h */,
 				E6E9295519D5AA5E00DC80C3 /* Macro.cpp */,
+				E6342C3E19D983D000B354BC /* Prefix.h */,
 			);
 			path = "graphics-practice";
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				E6FCECD219D9028100D29128 /* ActionManager.h */,
 				E6FCECD419D9047600D29128 /* MoveBy.cpp */,
 				E6FCECD519D9047600D29128 /* MoveBy.h */,
+				E6342C3F19D98D9200B354BC /* ActionInterval.h */,
 			);
 			name = Action;
 			sourceTree = "<group>";

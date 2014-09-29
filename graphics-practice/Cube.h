@@ -11,6 +11,7 @@
 
 #include "Node.h"
 
+
 class Cube : public Node {
 private:
     GLuint _texture;

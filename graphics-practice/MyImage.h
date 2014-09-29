@@ -9,12 +9,7 @@
 #ifndef graphics_pratice_MyImage_h
 #define graphics_pratice_MyImage_h
 
-#include <OpenGL/gl.h>
-#include "SOIL.h"
-
-#include <string>
-
-using namespace std;
+#include "prefix.h"
 
 class MyImage {
 private:

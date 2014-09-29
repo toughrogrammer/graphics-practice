@@ -9,9 +9,6 @@
 #ifndef __graphics_practice__Action__
 #define __graphics_practice__Action__
 
-#include <stdlib.h>
-#include "Node.h"
-
 class Node;
 
 class Action {

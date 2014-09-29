@@ -9,9 +9,9 @@
 #ifndef __graphics_practice__MySprite__
 #define __graphics_practice__MySprite__
 
-#include "Macro.h"
 #include "Node.h"
-#include "MyImage.h"
+
+class MyImage;
 
 class Sprite : public Node
 {

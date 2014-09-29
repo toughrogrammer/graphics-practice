@@ -9,8 +9,6 @@
 #ifndef __graphics_practice__Node__
 #define __graphics_practice__Node__
 
-#include <OpenGL/OpenGL.h>
-#include "Macro.h"
 #include "Vector3.h"
 
 class Action;
