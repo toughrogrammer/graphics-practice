@@ -53,6 +53,7 @@
 		E61345E219C6EC3600B57A63 /* graphics-practice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "graphics-practice"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61345EE19C6EC5F00B57A63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E61345F019C6EC6300B57A63 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		E62115D619E76B3E003A5DE7 /* TutorialScenes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TutorialScenes.h; sourceTree = "<group>"; };
 		E6342C3E19D983D000B354BC /* Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
 		E6342C3F19D98D9200B354BC /* ActionInterval.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionInterval.h; sourceTree = "<group>"; };
 		E652CE3919DA5A9F009A9B60 /* SceneTutorial11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneTutorial11.cpp; sourceTree = "<group>"; };
@@ -205,6 +206,7 @@
 				E6A7971619D9BC2D00725598 /* SceneTutorial9.h */,
 				E652CE3C19DAC79C009A9B60 /* SceneTutorial12.cpp */,
 				E652CE3D19DAC79C009A9B60 /* SceneTutorial12.h */,
+				E62115D619E76B3E003A5DE7 /* TutorialScenes.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
