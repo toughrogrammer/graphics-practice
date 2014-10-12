@@ -14,6 +14,8 @@ Sprite::Sprite(MyImage *img)
 : _img(img)
 {
     _scale.Set( 1.0f, 1.0f, 1.0f );
+    _width = img->GetWidth();
+    _height = img->GetHeight();
 }
 
 Sprite::~Sprite()
@@ -55,8 +57,8 @@ void Sprite::Draw()
     glRotatef( _rotation.z, 0.0f, 0.0f, 1.0f );
     
     GLuint tex = _img->GetTexture();
-    int width = _img->GetWidth();
-    int height = _img->GetHeight();
+    int width = _width;
+    int height = _height;
     
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, tex);
@@ -75,4 +77,25 @@ void Sprite::Draw()
     glDisable(GL_TEXTURE_2D);
     
     glPopMatrix();
+}
+
+MyImage* Sprite::GetImage()
+{
+    return _img;
+}
+
+void Sprite::SetSize(float width, float height)
+{
+    _width = width;
+    _height = height;
+}
+
+float Sprite::GetWidth()
+{
+    return _width;
+}
+
+float Sprite::GetHeight()
+{
+    return _height;
 }
