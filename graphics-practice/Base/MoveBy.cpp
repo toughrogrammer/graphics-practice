@@ -8,7 +8,6 @@
 
 #include "Prefix.h"
 #include "MoveBy.h"
-#include "Macro.h"
 
 MoveBy::MoveBy(float duration, Vector3 dist)
 : Action(duration)

@@ -34,24 +34,27 @@ using namespace std;
 
 
 // my headers
-#include "Macro.h"
+#include "Util/Macro.h"
 
-#include "Vector3.h"
-#include "Vector2.h"
-#include "Matrix.h"
+#include "Math/Vector3.h"
+#include "Math/Vector2.h"
+#include "Math/Matrix.h"
 
-#include "Keyboard.h"
+#include "Util/Keyboard.h"
 
-#include "Action.h"
-#include "ActionInterval.h"
-#include "ActionManager.h"
+// action
+#include "Base/Action.h"
+#include "Base/ActionInterval.h"
+#include "Base/ActionManager.h"
 
-#include "Scene.h"
-#include "SceneManager.h"
+// scene
+#include "Base/Scene.h"
+#include "Base/SceneManager.h"
 
-#include "Node.h"
-#include "MyImage.h"
-#include "Sprite.h"
-#include "Cube.h"
+// base
+#include "Base/Node.h"
+#include "Base/MyImage.h"
+#include "Base/Sprite.h"
+#include "Base/Cube.h"
 
 #endif

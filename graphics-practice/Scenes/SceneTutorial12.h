@@ -9,7 +9,7 @@
 #ifndef __graphics_practice__SceneTutorial12__
 #define __graphics_practice__SceneTutorial12__
 
-#include "Scene.h"
+#include "Prefix.h"
 
 class SceneTutorial12 : public Scene {
 private:

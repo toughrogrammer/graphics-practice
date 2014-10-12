@@ -10,7 +10,6 @@
 #define __graphics_practice__SceneTutorial9__
 
 #include "Prefix.h"
-#include "Scene.h"
 
 
 class Star {

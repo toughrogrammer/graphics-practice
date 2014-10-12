@@ -9,10 +9,6 @@
 #include "SceneTermProject1.h"
 
 
-GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-GLfloat LightPosition[] = { 0.0f, 0.0f, 50.0f, 1.0f };
-
 SceneTermProject1* SceneTermProject1::Create()
 {
     SceneTermProject1 *pRet = new SceneTermProject1;
@@ -35,6 +31,11 @@ bool SceneTermProject1::Init()
     glDepthFunc(GL_LEQUAL);                         // The Type Of Depth Testing To Do
     
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective Calculations
+    
+    
+    GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+    GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    GLfloat LightPosition[] = { 0.0f, 0.0f, 50.0f, 1.0f };
     
     glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);		// Setup The Ambient Light
     glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);		// Setup The Diffuse Light

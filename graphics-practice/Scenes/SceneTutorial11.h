@@ -10,7 +10,6 @@
 #define __graphics_practice__SceneTutorial11__
 
 #include "Prefix.h"
-#include "Scene.h"
 
 
 class SceneTutorial11 : public Scene {

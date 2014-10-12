@@ -10,7 +10,6 @@
 #define __graphics_practice__SceneTermProject1__
 
 #include "Prefix.h"
-#include "Scene.h"
 
 class SceneTermProject1 : public Scene {
 private:

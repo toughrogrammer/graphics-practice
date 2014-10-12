@@ -10,7 +10,7 @@
 #define __graphics_practice__Game__
 
 #include "Prefix.h"
-#include "Keyboard.h"
+#include "Util/Keyboard.h"
 
 class Game {
 private:

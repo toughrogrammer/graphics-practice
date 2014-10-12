@@ -9,7 +9,7 @@
 #ifndef __graphics_practice__Node__
 #define __graphics_practice__Node__
 
-#include "Vector3.h"
+#include "../Math/Vector3.h"
 
 class Action;
 

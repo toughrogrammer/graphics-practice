@@ -10,7 +10,6 @@
 #define __graphics_practice__SceneTutorial10__
 
 #include "Prefix.h"
-#include "Scene.h"
 
 
 class Vertex {
