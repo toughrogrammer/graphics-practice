@@ -36,6 +36,7 @@
 		E680429C19EA49BA00DD2896 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = E680429819EA49BA00DD2896 /* image_helper.c */; };
 		E680429D19EA49BA00DD2896 /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = E680429919EA49BA00DD2896 /* SOIL.c */; };
 		E680429E19EA49BA00DD2896 /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = E680429A19EA49BA00DD2896 /* stb_image_aug.c */; };
+		E68042A219EA7D0900DD2896 /* SceneTutorial13.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */; };
 		E6D819A019D1D3DB0073359B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D8199D19D1D3C30073359B /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		E680429819EA49BA00DD2896 /* image_helper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = image_helper.c; path = library/SOIL/src/image_helper.c; sourceTree = "<group>"; };
 		E680429919EA49BA00DD2896 /* SOIL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = library/SOIL/src/SOIL.c; sourceTree = "<group>"; };
 		E680429A19EA49BA00DD2896 /* stb_image_aug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = library/SOIL/src/stb_image_aug.c; sourceTree = "<group>"; };
+		E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial13.cpp; path = "graphics-practice/Scenes/SceneTutorial13.cpp"; sourceTree = "<group>"; };
 		E681790F19D0640C000ACCE1 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; path = library; sourceTree = "<group>"; };
 		E6D8199C19D1D3C30073359B /* graphics_pratice.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = graphics_pratice.1; sourceTree = "<group>"; };
 		E6D8199D19D1D3C30073359B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		E68042A019EA4B1100DD2896 /* compile-sources */ = {
 			isa = PBXGroup;
 			children = (
+				E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */,
 				E680429719EA49BA00DD2896 /* image_DXT.c */,
 				E680429819EA49BA00DD2896 /* image_helper.c */,
 				E680429919EA49BA00DD2896 /* SOIL.c */,
@@ -241,6 +244,7 @@
 				E680429019EA499500DD2896 /* SceneTutorial10.cpp in Sources */,
 				E680429119EA499500DD2896 /* SceneTutorial11.cpp in Sources */,
 				E680429219EA499500DD2896 /* SceneTutorial12.cpp in Sources */,
+				E68042A219EA7D0900DD2896 /* SceneTutorial13.cpp in Sources */,
 				E680428219EA498000DD2896 /* Matrix2.cpp in Sources */,
 				E680428319EA498000DD2896 /* Matrix3.cpp in Sources */,
 				E680428419EA498000DD2896 /* Matrix4.cpp in Sources */,

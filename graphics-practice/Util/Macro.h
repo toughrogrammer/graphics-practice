@@ -9,7 +9,7 @@
 #ifndef graphics_practice_Macro_h
 #define graphics_practice_Macro_h
 
-#include <OpenGL/gl.h>
+#include <GLUT/GLUT.h>
 #include "../Math/Vector3.h"
 
 #include <sys/time.h>
@@ -18,6 +18,7 @@
 
 void GLVertexByVector3(Vector3 &v);
 long GetMillisecond(struct timeval tv);
+void RenderBitmapString(void* font, float x, float y, const char *string);
 
 
 #endif
