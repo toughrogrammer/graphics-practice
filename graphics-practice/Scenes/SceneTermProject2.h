@@ -15,9 +15,9 @@ class SceneTermProject2 : public Scene
 {
 private:
     Vector3 _cameraPosition, _cameraRotation, _cameraScale;
-    Cube *_cube;
-    GLuint _texFloor;
     Sprite *_floorSprite;
+    Cube *_cube;
+    vector<Cube*> _cubes;
     
     float WalkingSpeed;
 
@@ -26,6 +26,7 @@ public:
     static SceneTermProject2* Create();
     
     virtual bool Init();
+    virtual void OnExit();
     virtual void Update(float dt);
     virtual void Draw();
     

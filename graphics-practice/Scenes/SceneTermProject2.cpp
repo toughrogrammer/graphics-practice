@@ -24,7 +24,7 @@ bool SceneTermProject2::Init()
 {
     // init GL
     glShadeModel(GL_SMOOTH);                        // Enable Smooth Shading
-    glClearColor(0.0f, 0.0f, 0.3f, 1.0f);                   // Black Background
+    glClearColor(0.43f, 0.85f, 0.99f, 1.0f);                   // Black Background
     glClearDepth(1.0f);                         // Depth Buffer Setup
     
     glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
@@ -33,21 +33,48 @@ bool SceneTermProject2::Init()
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective Calculations
     
     
+    //
+    // light
+    //
     GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };
     GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     GLfloat LightPosition[] = { 0.0f, 0.0f, 50.0f, 1.0f };
-    
     glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);		// Setup The Ambient Light
     glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);		// Setup The Diffuse Light
     glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);	// Position The Light
     glEnable(GL_LIGHT1);								// Enable Light One
+    
+    
+    //
+    // fog
+    //
+    GLuint fogFilter = GL_EXP2;
+    GLfloat fogColor[4]= {1.0f, 0.94f, 0.7f, 1.0f};
+    GLfloat fogDensity = 0.05;
+    glFogi(GL_FOG_MODE, fogFilter);        // Fog Mode
+    glFogfv(GL_FOG_COLOR, fogColor);            // Set Fog Color
+    glFogf(GL_FOG_DENSITY, fogDensity);              // How Dense Will The Fog Be
+    glHint(GL_FOG_HINT, GL_DONT_CARE);          // Fog Hint Value
+    glFogf(GL_FOG_START, -50.0f);             // Fog Start Depth
+    glFogf(GL_FOG_END, 50.0f);               // Fog End Depth
+    glEnable(GL_FOG);                   // Enables GL_FOG
 
     
     MyImage *img = MyImage::LoadImage("TermProject2/Treasure.jpg");
     _cube = Cube::Create(img->GetTexture(), 5.0f);
-    SAFE_DELETE(img);
-    _cube->SetPosition(Vector3( 0, 2.5f, -30 ));
+    _cube->SetPosition(Vector3( 0, 2.6f, -30 ));
     _cube->SetRotation(Vector3(0, 0, 180));
+    
+    srand((unsigned)time(NULL));
+    for( int i = 0; i < 10; i ++ ) {
+        Cube *cube = Cube::Create(img->GetTexture(), 5.0f);
+        cube->SetPosition( Vector3( rand() % 60, 2.6f, -rand() % 60 ) );
+        cube->SetRotation( Vector3( 0, 0, 180 ) );
+        _cubes.push_back( cube );
+    }
+    
+    SAFE_DELETE(img);
+    
     
     _floorSprite = Sprite::Create("TermProject2/sand.jpg");
     if( _floorSprite == NULL ) {
@@ -63,6 +90,13 @@ bool SceneTermProject2::Init()
     WalkingSpeed = 8.0f;
     
     return true;
+}
+
+void SceneTermProject2::OnExit()
+{
+    for( int i = 0; i < _cubes.size(); i ++ ) {
+        SAFE_DELETE( _cubes[i] );
+    }
 }
 
 void SceneTermProject2::Update(float dt)
@@ -87,9 +121,17 @@ void SceneTermProject2::Draw()
     glScalef( _cameraScale.x, _cameraScale.y, _cameraScale.z );
     glTranslatef( -_cameraPosition.x, -_cameraPosition.y, -_cameraPosition.z );
     
-    
     _floorSprite->Draw();
+    
+    for( int i = 0; i < _cubes.size(); i ++ ) {
+        _cubes[i]->Draw();
+    }
+    
+    glEnable(GL_BLEND);
+    glColor4f(1.0f, 1.0f, 1.0f, 0.8f);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     _cube->Draw();
+    glDisable(GL_BLEND);
 
     glutSwapBuffers();
 }
