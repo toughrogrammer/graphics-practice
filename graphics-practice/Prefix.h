@@ -40,6 +40,8 @@ using namespace std;
 #include "Vector2.h"
 #include "Matrix.h"
 
+#include "Keyboard.h"
+
 #include "Action.h"
 #include "ActionInterval.h"
 #include "ActionManager.h"

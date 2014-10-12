@@ -84,12 +84,16 @@ void Game::ReshapedWindow(int width, int height)
     glLoadIdentity();
 }
 
-void Game::ProcessSpecialKeys(int key, int x, int y)
+void Game::ProcessSpecialKeys(bool keyDown, int key, int x, int y)
 {
+    Keyboard::EventSpecialKey(key, keyDown);
+    
     SceneManager::Instance()->GetCurrentScene()->ProcessSpecialKeys(key, x, y);
 }
 
-void Game::ProcessNormalKeys(unsigned char key, int x, int y)
+void Game::ProcessNormalKeys(bool keyDown, unsigned char key, int x, int y)
 {
+    Keyboard::EventNormalKey(key, keyDown);
+    
     SceneManager::Instance()->GetCurrentScene()->ProcessNormalKeys(key, x, y);
 }

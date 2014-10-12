@@ -17,11 +17,17 @@
 Game MyGame;
 
 void processNormalKeys(unsigned char key, int x, int y) {
-    MyGame.ProcessNormalKeys(key, x, y);
+    MyGame.ProcessNormalKeys(true, key, x, y);
+}
+void processNormalKeysUp(unsigned char key, int x, int y) {
+    MyGame.ProcessNormalKeys(false, key, x, y);
 }
 
 void processSpecialKeys(int key, int x, int y) {
-    MyGame.ProcessSpecialKeys(key, x, y);
+    MyGame.ProcessSpecialKeys(true, key, x, y);
+}
+void processSpecialKeysUp(int key, int x, int y) {
+    MyGame.ProcessSpecialKeys(false, key, x, y);
 }
 
 void changeSize(int w, int h) {
@@ -47,7 +53,9 @@ int main(int argc, char **argv) {
     
     // here are the new entries
     glutKeyboardFunc(&processNormalKeys);
+    glutKeyboardUpFunc(&processNormalKeysUp);
     glutSpecialFunc(&processSpecialKeys);
+    glutSpecialUpFunc(&processSpecialKeysUp);
     
 	// register callbacks
 	glutReshapeFunc(&changeSize);

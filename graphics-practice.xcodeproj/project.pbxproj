@@ -11,6 +11,8 @@
 		E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345F019C6EC6300B57A63 /* GLUT.framework */; };
 		E652CE3B19DA5A9F009A9B60 /* SceneTutorial11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E652CE3919DA5A9F009A9B60 /* SceneTutorial11.cpp */; };
 		E652CE3E19DAC79C009A9B60 /* SceneTutorial12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E652CE3C19DAC79C009A9B60 /* SceneTutorial12.cpp */; };
+		E663370419EA2EE300510940 /* SceneTermProject2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E663370219EA2EE300510940 /* SceneTermProject2.cpp */; };
+		E663370719EA30CC00510940 /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E663370519EA30CC00510940 /* Keyboard.cpp */; };
 		E666172D19D0884900FC1F2B /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = E666172C19D0884900FC1F2B /* image_DXT.c */; };
 		E666172F19D0884B00FC1F2B /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = E666172E19D0884B00FC1F2B /* image_helper.c */; };
 		E666173119D0885000FC1F2B /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = E666173019D0885000FC1F2B /* SOIL.c */; };
@@ -60,6 +62,10 @@
 		E652CE3A19DA5A9F009A9B60 /* SceneTutorial11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneTutorial11.h; sourceTree = "<group>"; };
 		E652CE3C19DAC79C009A9B60 /* SceneTutorial12.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneTutorial12.cpp; sourceTree = "<group>"; };
 		E652CE3D19DAC79C009A9B60 /* SceneTutorial12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneTutorial12.h; sourceTree = "<group>"; };
+		E663370219EA2EE300510940 /* SceneTermProject2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneTermProject2.cpp; sourceTree = "<group>"; };
+		E663370319EA2EE300510940 /* SceneTermProject2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneTermProject2.h; sourceTree = "<group>"; };
+		E663370519EA30CC00510940 /* Keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
+		E663370619EA30CC00510940 /* Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
 		E666172C19D0884900FC1F2B /* image_DXT.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = image_DXT.c; path = library/SOIL/src/image_DXT.c; sourceTree = "<group>"; };
 		E666172E19D0884B00FC1F2B /* image_helper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = image_helper.c; path = library/SOIL/src/image_helper.c; sourceTree = "<group>"; };
 		E666173019D0885000FC1F2B /* SOIL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = SOIL.c; path = library/SOIL/src/SOIL.c; sourceTree = "<group>"; };
@@ -146,6 +152,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E663370819EA396000510940 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E663370519EA30CC00510940 /* Keyboard.cpp */,
+				E663370619EA30CC00510940 /* Keyboard.h */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		E6A7971B19D9CC5200725598 /* Math */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +182,7 @@
 		E6D8199B19D1D3C30073359B /* graphics-practice */ = {
 			isa = PBXGroup;
 			children = (
+				E663370819EA396000510940 /* Util */,
 				E6A7971B19D9CC5200725598 /* Math */,
 				E6F4E05B19D9A12600565658 /* Scene */,
 				E6FCECCD19D9001800D29128 /* Action */,
@@ -207,6 +223,8 @@
 				E652CE3C19DAC79C009A9B60 /* SceneTutorial12.cpp */,
 				E652CE3D19DAC79C009A9B60 /* SceneTutorial12.h */,
 				E62115D619E76B3E003A5DE7 /* TutorialScenes.h */,
+				E663370219EA2EE300510940 /* SceneTermProject2.cpp */,
+				E663370319EA2EE300510940 /* SceneTermProject2.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -277,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F4E05E19D9A15C00565658 /* SceneTermProject1.cpp in Sources */,
+				E663370419EA2EE300510940 /* SceneTermProject2.cpp in Sources */,
 				E6E9294D19D52B4200DC80C3 /* Cube.cpp in Sources */,
 				E6E9295019D52D6B00DC80C3 /* Node.cpp in Sources */,
 				E6D819A019D1D3DB0073359B /* main.cpp in Sources */,
@@ -289,6 +308,7 @@
 				E666172F19D0884B00FC1F2B /* image_helper.c in Sources */,
 				E6FCECD019D9002700D29128 /* Action.cpp in Sources */,
 				E666173119D0885000FC1F2B /* SOIL.c in Sources */,
+				E663370719EA30CC00510940 /* Keyboard.cpp in Sources */,
 				E6F4E05419D9952200565658 /* Game.cpp in Sources */,
 				E6FCECD319D9028100D29128 /* ActionManager.cpp in Sources */,
 				E666173319D0885600FC1F2B /* stb_image_aug.c in Sources */,

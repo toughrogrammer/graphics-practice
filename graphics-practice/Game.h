@@ -10,6 +10,7 @@
 #define __graphics_practice__Game__
 
 #include "Prefix.h"
+#include "Keyboard.h"
 
 class Game {
 private:
@@ -25,8 +26,8 @@ public:
     void Update(float dt);
     void Render();
     void ReshapedWindow(int width, int height);
-    void ProcessSpecialKeys(int key, int x, int y);
-    void ProcessNormalKeys(unsigned char key, int x, int y);
+    void ProcessSpecialKeys(bool keyDown, int key, int x, int y);
+    void ProcessNormalKeys(bool keyDown, unsigned char key, int x, int y);
 };
 
 #endif /* defined(__graphics_practice__Game__) */
