@@ -16,6 +16,9 @@
 #include <vector>
 using namespace std;
 
+#include <math.h>
+
+
 // opengl
 #if defined(__APPLE__) && defined(__MACH__)
 /* Apple OSX and iOS (Darwin). ------------------------------ */
