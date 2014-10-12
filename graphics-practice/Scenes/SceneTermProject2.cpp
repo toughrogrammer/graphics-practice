@@ -41,7 +41,26 @@ bool SceneTermProject2::Init()
     glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);		// Setup The Diffuse Light
     glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);	// Position The Light
     glEnable(GL_LIGHT1);								// Enable Light One
+
     
+    MyImage *img = MyImage::LoadImage("TermProject2/Treasure.jpg");
+    _cube = Cube::Create(img->GetTexture(), 5.0f);
+    SAFE_DELETE(img);
+    _cube->SetPosition(Vector3( 0, 2.5f, -30 ));
+    _cube->SetRotation(Vector3(0, 0, 180));
+    
+    _floorSprite = Sprite::Create("TermProject2/sand.jpg");
+    if( _floorSprite == NULL ) {
+        return false;
+    }
+    _floorSprite->SetSize( 512, 512 );
+    _floorSprite->SetPosition( Vector3( 0, 0, 0 ) );
+    _floorSprite->SetRotation( Vector3( 90, 0, 0 ) );
+    
+    _cameraScale.Set(1.0f, 1.0f, 1.0f);
+    _cameraRotation.Set(20, 0, 0);
+    _cameraPosition.Set(0, 15, 0);
+    WalkingSpeed = 8.0f;
     
     return true;
 }
@@ -49,6 +68,9 @@ bool SceneTermProject2::Init()
 void SceneTermProject2::Update(float dt)
 {
     Scene::Update(dt);
+    cout << dt << endl;
+    
+    CameraMove(dt);
 }
 
 void SceneTermProject2::Draw()
@@ -65,6 +87,38 @@ void SceneTermProject2::Draw()
     glScalef( _cameraScale.x, _cameraScale.y, _cameraScale.z );
     glTranslatef( -_cameraPosition.x, -_cameraPosition.y, -_cameraPosition.z );
     
+    
+    _floorSprite->Draw();
+    _cube->Draw();
 
     glutSwapBuffers();
+}
+
+
+void SceneTermProject2::CameraMove(float dt)
+{
+    Vector3 forward;
+    
+    if( Keyboard::PressedNormal('w') || Keyboard::PressedNormal('W') ) {
+        _cameraPosition.z -= WalkingSpeed * dt;
+    }
+    if( Keyboard::PressedNormal('s') || Keyboard::PressedNormal('S') ) {
+        _cameraPosition.z += WalkingSpeed * dt;
+    }
+    if( Keyboard::PressedNormal('a') || Keyboard::PressedNormal('A') ) {
+        _cameraPosition.x -= WalkingSpeed * dt;
+    }
+    if( Keyboard::PressedNormal('d') || Keyboard::PressedNormal('D') ) {
+        _cameraPosition.x += WalkingSpeed * dt;
+    }
+    
+    if( Keyboard::PressedSpecial(GLUT_KEY_LEFT) ) {
+        _cameraRotation.y -= 3.0f;
+    }
+    if( Keyboard::PressedSpecial(GLUT_KEY_RIGHT) ) {
+        _cameraRotation.y += 3.0f;
+    }
+    
+    float new_y = sin(_cameraPosition.z) * 0.5 + 10;
+    _cameraPosition.y = new_y;
 }

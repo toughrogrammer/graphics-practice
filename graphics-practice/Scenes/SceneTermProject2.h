@@ -15,6 +15,11 @@ class SceneTermProject2 : public Scene
 {
 private:
     Vector3 _cameraPosition, _cameraRotation, _cameraScale;
+    Cube *_cube;
+    GLuint _texFloor;
+    Sprite *_floorSprite;
+    
+    float WalkingSpeed;
 
     
 public:
@@ -23,6 +28,8 @@ public:
     virtual bool Init();
     virtual void Update(float dt);
     virtual void Draw();
+    
+    void CameraMove(float dt);
 };
 
 #endif /* defined(__graphics_practice__SceneTermProject2__) */
