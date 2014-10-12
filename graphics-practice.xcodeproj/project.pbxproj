@@ -38,6 +38,7 @@
 		E680429E19EA49BA00DD2896 /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = E680429A19EA49BA00DD2896 /* stb_image_aug.c */; };
 		E68042A219EA7D0900DD2896 /* SceneTutorial13.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */; };
 		E6D819A019D1D3DB0073359B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6D8199D19D1D3C30073359B /* main.cpp */; };
+		E6ECE69819EAB78E0043793B /* Treasure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6ECE69619EAB78E0043793B /* Treasure.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +94,8 @@
 		E681790F19D0640C000ACCE1 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; path = library; sourceTree = "<group>"; };
 		E6D8199C19D1D3C30073359B /* graphics_pratice.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = graphics_pratice.1; sourceTree = "<group>"; };
 		E6D8199D19D1D3C30073359B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E6ECE69619EAB78E0043793B /* Treasure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Treasure.cpp; path = "graphics-practice/Scenes/TermProject2/Treasure.cpp"; sourceTree = "<group>"; };
+		E6ECE69719EAB78E0043793B /* Treasure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Treasure.h; path = "graphics-practice/Scenes/TermProject2/Treasure.h"; sourceTree = "<group>"; };
 		E6F4E05219D9952200565658 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		E6F4E05319D9952200565658 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +116,8 @@
 		E61345D919C6EC3600B57A63 = {
 			isa = PBXGroup;
 			children = (
+				E6ECE69619EAB78E0043793B /* Treasure.cpp */,
+				E6ECE69719EAB78E0043793B /* Treasure.h */,
 				E68042A019EA4B1100DD2896 /* compile-sources */,
 				E666173419D08A6200FC1F2B /* resources */,
 				E6D8199B19D1D3C30073359B /* graphics-practice */,
@@ -234,6 +239,7 @@
 			files = (
 				E680429B19EA49BA00DD2896 /* image_DXT.c in Sources */,
 				E680429C19EA49BA00DD2896 /* image_helper.c in Sources */,
+				E6ECE69819EAB78E0043793B /* Treasure.cpp in Sources */,
 				E680429D19EA49BA00DD2896 /* SOIL.c in Sources */,
 				E680429E19EA49BA00DD2896 /* stb_image_aug.c in Sources */,
 				E680429519EA49A300DD2896 /* Keyboard.cpp in Sources */,

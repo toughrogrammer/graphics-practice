@@ -7,6 +7,8 @@
 //
 
 #include "SceneTermProject2.h"
+#include "Treasure.h"
+#include <sstream>
 
 
 SceneTermProject2* SceneTermProject2::Create()
@@ -60,20 +62,20 @@ bool SceneTermProject2::Init()
     glEnable(GL_FOG);                   // Enables GL_FOG
 
     
-    MyImage *img = MyImage::LoadImage("TermProject2/Treasure.jpg");
-    _cube = Cube::Create(img->GetTexture(), 5.0f);
-    _cube->SetPosition(Vector3( 0, 2.6f, -30 ));
-    _cube->SetRotation(Vector3(0, 0, 180));
-    
     srand((unsigned)time(NULL));
+    int radius = 60;
     for( int i = 0; i < 10; i ++ ) {
-        Cube *cube = Cube::Create(img->GetTexture(), 5.0f);
-        cube->SetPosition( Vector3( rand() % 60, 2.6f, -rand() % 60 ) );
-        cube->SetRotation( Vector3( 0, 0, 180 ) );
-        _cubes.push_back( cube );
+        Treasure *treasure = Treasure::Create("TermProject2/Treasure.jpg");
+        if( treasure == NULL ) {
+            continue;
+        }
+        
+        float x, z;
+        x = rand() % radius - radius / 2;
+        z = -1 * (rand() % radius - radius / 2);
+        treasure->SetPosition( Vector3( x, 2.6f, z ) );
+        _treasures.push_back( treasure );
     }
-    
-    SAFE_DELETE(img);
     
     
     _floorSprite = Sprite::Create("TermProject2/sand.jpg");
@@ -89,22 +91,61 @@ bool SceneTermProject2::Init()
     _cameraPosition.Set(0, 15, 0);
     WalkingSpeed = 8.0f;
     
+    _takingDelay = 0;
+    _stringGainTreasure = "Remaining Treasure : 10";
+    
     return true;
 }
 
 void SceneTermProject2::OnExit()
 {
-    for( int i = 0; i < _cubes.size(); i ++ ) {
-        SAFE_DELETE( _cubes[i] );
+    for( int i = 0; i < _treasures.size(); i ++ ) {
+        SAFE_DELETE( _treasures[i] );
     }
 }
 
 void SceneTermProject2::Update(float dt)
 {
     Scene::Update(dt);
-    cout << dt << endl;
     
     CameraMove(dt);
+    
+    _takingDelay += dt;
+    if( Keyboard::PressedNormal(' ') && _takingDelay > 2.0f ) {
+        int target = -1;
+        float min_length = 9999;
+        for( int i = 0; i < _treasures.size(); i ++ ) {
+            Treasure *treasure = _treasures[i];
+            Vector3 pos = treasure->GetPosition();
+            Vector3 dist = _cameraPosition - pos;
+            float length = dist.Length();
+            if( length < 25.0f && length < min_length && ! treasure->IsOnAnimating() ) {
+                min_length = length;
+                target = i;
+            }
+        }
+        
+        if( target != -1 ) {
+            Treasure *treasure = _treasures[target];
+            treasure->Taked();
+            _takingDelay = 0;
+        }
+    }
+    
+    for( int i = 0; i < _treasures.size(); i ++ ) {
+        _treasures[i]->Update(dt);
+        if( _treasures[i]->IsFinishedAnimating() ) {
+            vector<Treasure*>::iterator it = _treasures.begin();
+            for( int j = 0; j < i; j ++ ) it++;
+            _treasures.erase(it);
+            
+            ostringstream ostr;
+            ostr << "Remaining Treasure : ";
+            ostr << _treasures.size();
+            _stringGainTreasure = ostr.str();
+            break;
+        }
+    }
 }
 
 void SceneTermProject2::Draw()
@@ -123,16 +164,18 @@ void SceneTermProject2::Draw()
     
     _floorSprite->Draw();
     
-    for( int i = 0; i < _cubes.size(); i ++ ) {
-        _cubes[i]->Draw();
+    for( int i = 0; i < _treasures.size(); i ++ ) {
+        _treasures[i]->Draw();
     }
     
-    glEnable(GL_BLEND);
-    glColor4f(1.0f, 1.0f, 1.0f, 0.8f);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    _cube->Draw();
-    glDisable(GL_BLEND);
-
+    Enter2d();
+    {
+        glColor3d(1.0f, 0.0f, 0);
+        RenderBitmapString(GLUT_BITMAP_HELVETICA_18, 20, 20, _stringGainTreasure.c_str());
+        glColor3f(1.0f, 1.0f, 1.0f);
+    }
+    Exit2d();
+    
     glutSwapBuffers();
 }
 
@@ -161,6 +204,30 @@ void SceneTermProject2::CameraMove(float dt)
         _cameraRotation.y += 3.0f;
     }
     
-    float new_y = sin(_cameraPosition.z) * 0.5 + 10;
+    float new_y = sin(_cameraPosition.z + _cameraPosition.x) * 0.5 + 15;
     _cameraPosition.y = new_y;
+}
+
+void SceneTermProject2::Enter2d()
+{
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    gluOrtho2D(0, 640, 0, 480);
+    
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+    
+    glDisable(GL_DEPTH_TEST);
+}
+
+void SceneTermProject2::Exit2d()
+{
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    
+    glEnable(GL_DEPTH_TEST);
 }

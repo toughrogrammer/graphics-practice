@@ -11,15 +11,17 @@
 
 #include "Prefix.h"
 
+class Treasure;
 class SceneTermProject2 : public Scene
 {
 private:
     Vector3 _cameraPosition, _cameraRotation, _cameraScale;
     Sprite *_floorSprite;
-    Cube *_cube;
-    vector<Cube*> _cubes;
+    vector<Treasure*> _treasures;
     
     float WalkingSpeed;
+    float _takingDelay;
+    string _stringGainTreasure;
 
     
 public:
@@ -31,6 +33,8 @@ public:
     virtual void Draw();
     
     void CameraMove(float dt);
+    void Enter2d();
+    void Exit2d();
 };
 
 #endif /* defined(__graphics_practice__SceneTermProject2__) */
