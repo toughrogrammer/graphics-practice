@@ -14,6 +14,7 @@
 #include "SceneTutorial11.h"
 #include "SceneTutorial12.h"
 #include "SceneTutorial13.h"
+#include "SceneTutorial14.h"
 #include "SceneTutorial16.h"
 
 #endif
