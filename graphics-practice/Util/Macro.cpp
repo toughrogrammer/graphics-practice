@@ -8,6 +8,7 @@
 
 #include "Macro.h"
 
+
 void GLVertexByVector3(Vector3 &v)
 {
     glVertex3f( v.x, v.y, v.z );
@@ -24,4 +25,21 @@ void RenderBitmapString(void *font, float x, float y, const char *string)
     for (c=string; *c != '\0'; c++) {
         glutBitmapCharacter(font, *c);
     }
+}
+
+double Random0to1()
+{
+    return ((double) rand() / (RAND_MAX));
+}
+
+double RandomRangeDouble(double start, double end)
+{
+    double length = (end - start);
+    return Random0to1() * length - length/2;
+}
+
+int RandomRangeInt(int start, int end)
+{
+    int length = (end - start);
+    return (int)(Random0to1() * length - length/2);
 }
