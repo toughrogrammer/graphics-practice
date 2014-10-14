@@ -27,6 +27,8 @@ public:
     virtual bool Init();
     virtual void Draw();
     
+    void SetTexture(GLuint texture);
+    
 };
 
 #endif /* defined(__graphics_practice__Cube__) */

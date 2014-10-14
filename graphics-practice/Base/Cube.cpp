@@ -107,7 +107,10 @@ void Cube::Draw()
     glTexCoord2f(0.0f, 1.0f); GLVertexByVector3( _points[3] );
     glEnd(); // Done Drawing Quads
     
-    glDisable(GL_TEXTURE_2D);
-    
     glPopMatrix();
+}
+
+void Cube::SetTexture(GLuint texture)
+{
+    _texture = texture;
 }
