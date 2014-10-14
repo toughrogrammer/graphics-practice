@@ -130,10 +130,6 @@
 		E61345D919C6EC3600B57A63 = {
 			isa = PBXGroup;
 			children = (
-				E6C2B2E419ED529700CCFA07 /* SceneTutorial18.cpp */,
-				E6C2B2E519ED529700CCFA07 /* SceneTutorial18.h */,
-				E6F68A2119ED42B600C21A97 /* SceneTutorial20.cpp */,
-				E6F68A2219ED42B600C21A97 /* SceneTutorial20.h */,
 				E68042A019EA4B1100DD2896 /* compile-sources */,
 				E666173419D08A6200FC1F2B /* resources */,
 				E6D8199B19D1D3C30073359B /* graphics-practice */,
@@ -155,6 +151,10 @@
 		E68042A019EA4B1100DD2896 /* compile-sources */ = {
 			isa = PBXGroup;
 			children = (
+				E6C2B2E419ED529700CCFA07 /* SceneTutorial18.cpp */,
+				E6C2B2E519ED529700CCFA07 /* SceneTutorial18.h */,
+				E6F68A2119ED42B600C21A97 /* SceneTutorial20.cpp */,
+				E6F68A2219ED42B600C21A97 /* SceneTutorial20.h */,
 				E6C2B2E119ECCD3900CCFA07 /* SceneTutorial19.cpp */,
 				E6C2B2E219ECCD3900CCFA07 /* SceneTutorial19.h */,
 				E6FAB13B19EC186400D9BD81 /* SceneTutorial14.cpp */,
