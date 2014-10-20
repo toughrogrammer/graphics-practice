@@ -9,8 +9,7 @@
 #ifndef __graphics_practice__Cube__
 #define __graphics_practice__Cube__
 
-#include <OpenGL/OpenGL.h>
-#include "Node.h"
+#include "Prefix.h"
 
 
 class Cube : public Node {

@@ -31,7 +31,7 @@ using namespace std;
 #endif
 
 #if defined(__linux__)
-#include <GL/gl.h>
+#include <GL/glut.h>
 #include <GL/glext.h>
 #endif
 
