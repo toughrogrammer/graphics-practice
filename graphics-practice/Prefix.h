@@ -26,11 +26,13 @@ using namespace std;
 #if TARGET_OS_MAC == 1
 /* OSX */
 #include <GLUT/glut.h>
+#include <OpenGL/glext.h>
 #endif
 #endif
 
 #if defined(__linux__)
 #include <GL/gl.h>
+#include <GL/glext.h>
 #endif
 
 #include "SOIL.h"
