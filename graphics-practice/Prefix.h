@@ -61,5 +61,6 @@ using namespace std;
 #include "Base/MyImage.h"
 #include "Base/Sprite.h"
 #include "Base/Cube.h"
+#include "Base/Color4f.h"
 
 #endif
