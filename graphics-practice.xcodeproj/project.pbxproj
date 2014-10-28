@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E61345EF19C6EC5F00B57A63 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345EE19C6EC5F00B57A63 /* OpenGL.framework */; };
 		E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345F019C6EC6300B57A63 /* GLUT.framework */; };
+		E638DF3519FF6AD500FF3C66 /* SceneTutorial23.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */; };
+		E638DF3819FF6BC500FF3C66 /* Color4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3619FF6BC500FF3C66 /* Color4f.cpp */; };
 		E680426619EA475B00DD2896 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6F4E05219D9952200565658 /* Game.cpp */; };
 		E680427419EA496A00DD2896 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E680426B19EA496A00DD2896 /* Action.cpp */; };
 		E680427519EA496A00DD2896 /* ActionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E680426C19EA496A00DD2896 /* ActionManager.cpp */; };
@@ -187,6 +189,7 @@
 				E6C2B2E219ECCD3900CCFA07 /* SceneTutorial19.h */,
 				E6F68A2119ED42B600C21A97 /* SceneTutorial20.cpp */,
 				E6F68A2219ED42B600C21A97 /* SceneTutorial20.h */,
+				E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */,
 				E680429919EA49BA00DD2896 /* SOIL.c */,
 				E680427319EA496A00DD2896 /* Sprite.cpp */,
 				E680429A19EA49BA00DD2896 /* stb_image_aug.c */,
@@ -276,6 +279,7 @@
 				E680428D19EA499500DD2896 /* SceneTermProject1.cpp in Sources */,
 				E680428E19EA499500DD2896 /* SceneTermProject2.cpp in Sources */,
 				E680428F19EA499500DD2896 /* SceneTutorial9.cpp in Sources */,
+				E638DF3519FF6AD500FF3C66 /* SceneTutorial23.cpp in Sources */,
 				E6F68A2319ED42B600C21A97 /* SceneTutorial20.cpp in Sources */,
 				E680429019EA499500DD2896 /* SceneTutorial10.cpp in Sources */,
 				E680429119EA499500DD2896 /* SceneTutorial11.cpp in Sources */,
