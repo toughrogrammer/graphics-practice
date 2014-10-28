@@ -64,6 +64,9 @@
 		E61345EE19C6EC5F00B57A63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E61345F019C6EC6300B57A63 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		E6342C3E19D983D000B354BC /* Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
+		E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial23.cpp; path = "graphics-practice/Scenes/SceneTutorial23.cpp"; sourceTree = "<group>"; };
+		E638DF3619FF6BC500FF3C66 /* Color4f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Color4f.cpp; path = "graphics-practice/Base/Color4f.cpp"; sourceTree = "<group>"; };
+		E638DF3719FF6BC500FF3C66 /* Color4f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color4f.h; path = "graphics-practice/Base/Color4f.h"; sourceTree = "<group>"; };
 		E663370919EA3A7400510940 /* Scenes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scenes; sourceTree = "<group>"; };
 		E663370A19EA3A7400510940 /* Util */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Util; sourceTree = "<group>"; };
 		E663370D19EA3A7400510940 /* Math */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Math; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 		E61345D919C6EC3600B57A63 = {
 			isa = PBXGroup;
 			children = (
+				E638DF3619FF6BC500FF3C66 /* Color4f.cpp */,
+				E638DF3719FF6BC500FF3C66 /* Color4f.h */,
 				E68042A019EA4B1100DD2896 /* compile-sources */,
 				E666173419D08A6200FC1F2B /* resources */,
 				E6D8199B19D1D3C30073359B /* graphics-practice */,
@@ -151,44 +156,44 @@
 		E68042A019EA4B1100DD2896 /* compile-sources */ = {
 			isa = PBXGroup;
 			children = (
-				E6C2B2E419ED529700CCFA07 /* SceneTutorial18.cpp */,
-				E6C2B2E519ED529700CCFA07 /* SceneTutorial18.h */,
-				E6F68A2119ED42B600C21A97 /* SceneTutorial20.cpp */,
-				E6F68A2219ED42B600C21A97 /* SceneTutorial20.h */,
-				E6C2B2E119ECCD3900CCFA07 /* SceneTutorial19.cpp */,
-				E6C2B2E219ECCD3900CCFA07 /* SceneTutorial19.h */,
-				E6FAB13B19EC186400D9BD81 /* SceneTutorial14.cpp */,
-				E6ECE69619EAB78E0043793B /* Treasure.cpp */,
-				E6ECE69719EAB78E0043793B /* Treasure.h */,
-				E6C2B2DE19EBE40000CCFA07 /* SceneTutorial16.cpp */,
-				E6C2B2DF19EBE40000CCFA07 /* SceneTutorial16.h */,
-				E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */,
+				E680426B19EA496A00DD2896 /* Action.cpp */,
+				E680426C19EA496A00DD2896 /* ActionManager.cpp */,
+				E680426D19EA496A00DD2896 /* Cube.cpp */,
 				E680429719EA49BA00DD2896 /* image_DXT.c */,
 				E680429819EA49BA00DD2896 /* image_helper.c */,
-				E680429919EA49BA00DD2896 /* SOIL.c */,
-				E680429A19EA49BA00DD2896 /* stb_image_aug.c */,
 				E680429319EA49A300DD2896 /* Keyboard.cpp */,
 				E680429419EA49A300DD2896 /* Macro.cpp */,
+				E680427D19EA498000DD2896 /* Matrix2.cpp */,
+				E680427E19EA498000DD2896 /* Matrix3.cpp */,
+				E680427F19EA498000DD2896 /* Matrix4.cpp */,
+				E680426E19EA496A00DD2896 /* MoveBy.cpp */,
+				E680426F19EA496A00DD2896 /* MyImage.cpp */,
+				E680427019EA496A00DD2896 /* Node.cpp */,
+				E680427119EA496A00DD2896 /* Scene.cpp */,
+				E680427219EA496A00DD2896 /* SceneManager.cpp */,
 				E680428719EA499500DD2896 /* SceneTermProject1.cpp */,
 				E680428819EA499500DD2896 /* SceneTermProject2.cpp */,
 				E680428919EA499500DD2896 /* SceneTutorial9.cpp */,
 				E680428A19EA499500DD2896 /* SceneTutorial10.cpp */,
 				E680428B19EA499500DD2896 /* SceneTutorial11.cpp */,
 				E680428C19EA499500DD2896 /* SceneTutorial12.cpp */,
-				E680427D19EA498000DD2896 /* Matrix2.cpp */,
-				E680427E19EA498000DD2896 /* Matrix3.cpp */,
-				E680427F19EA498000DD2896 /* Matrix4.cpp */,
+				E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */,
+				E6FAB13B19EC186400D9BD81 /* SceneTutorial14.cpp */,
+				E6C2B2DE19EBE40000CCFA07 /* SceneTutorial16.cpp */,
+				E6C2B2DF19EBE40000CCFA07 /* SceneTutorial16.h */,
+				E6C2B2E419ED529700CCFA07 /* SceneTutorial18.cpp */,
+				E6C2B2E519ED529700CCFA07 /* SceneTutorial18.h */,
+				E6C2B2E119ECCD3900CCFA07 /* SceneTutorial19.cpp */,
+				E6C2B2E219ECCD3900CCFA07 /* SceneTutorial19.h */,
+				E6F68A2119ED42B600C21A97 /* SceneTutorial20.cpp */,
+				E6F68A2219ED42B600C21A97 /* SceneTutorial20.h */,
+				E680429919EA49BA00DD2896 /* SOIL.c */,
+				E680427319EA496A00DD2896 /* Sprite.cpp */,
+				E680429A19EA49BA00DD2896 /* stb_image_aug.c */,
+				E6ECE69619EAB78E0043793B /* Treasure.cpp */,
+				E6ECE69719EAB78E0043793B /* Treasure.h */,
 				E680428019EA498000DD2896 /* Vector2.cpp */,
 				E680428119EA498000DD2896 /* Vector3.cpp */,
-				E680426B19EA496A00DD2896 /* Action.cpp */,
-				E680426C19EA496A00DD2896 /* ActionManager.cpp */,
-				E680426D19EA496A00DD2896 /* Cube.cpp */,
-				E680426E19EA496A00DD2896 /* MoveBy.cpp */,
-				E680426F19EA496A00DD2896 /* MyImage.cpp */,
-				E680427019EA496A00DD2896 /* Node.cpp */,
-				E680427119EA496A00DD2896 /* Scene.cpp */,
-				E680427219EA496A00DD2896 /* SceneManager.cpp */,
-				E680427319EA496A00DD2896 /* Sprite.cpp */,
 			);
 			name = "compile-sources";
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				E680427419EA496A00DD2896 /* Action.cpp in Sources */,
 				E680427519EA496A00DD2896 /* ActionManager.cpp in Sources */,
 				E680427619EA496A00DD2896 /* Cube.cpp in Sources */,
+				E638DF3819FF6BC500FF3C66 /* Color4f.cpp in Sources */,
 				E680427719EA496A00DD2896 /* MoveBy.cpp in Sources */,
 				E6C2B2E019EBE40000CCFA07 /* SceneTutorial16.cpp in Sources */,
 				E680427819EA496A00DD2896 /* MyImage.cpp in Sources */,
