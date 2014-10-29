@@ -10,7 +10,8 @@
 		E61345EF19C6EC5F00B57A63 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345EE19C6EC5F00B57A63 /* OpenGL.framework */; };
 		E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345F019C6EC6300B57A63 /* GLUT.framework */; };
 		E638DF3519FF6AD500FF3C66 /* SceneTutorial23.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */; };
-		E638DF3819FF6BC500FF3C66 /* Color4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3619FF6BC500FF3C66 /* Color4f.cpp */; };
+		E638DF3B1A00E69900FF3C66 /* Color4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3619FF6BC500FF3C66 /* Color4f.cpp */; };
+		E638DF3C1A00E69900FF3C66 /* SceneTutorial24.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF391A00E66200FF3C66 /* SceneTutorial24.cpp */; };
 		E680426619EA475B00DD2896 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6F4E05219D9952200565658 /* Game.cpp */; };
 		E680427419EA496A00DD2896 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E680426B19EA496A00DD2896 /* Action.cpp */; };
 		E680427519EA496A00DD2896 /* ActionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E680426C19EA496A00DD2896 /* ActionManager.cpp */; };
@@ -69,6 +70,7 @@
 		E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial23.cpp; path = "graphics-practice/Scenes/SceneTutorial23.cpp"; sourceTree = "<group>"; };
 		E638DF3619FF6BC500FF3C66 /* Color4f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Color4f.cpp; path = "graphics-practice/Base/Color4f.cpp"; sourceTree = "<group>"; };
 		E638DF3719FF6BC500FF3C66 /* Color4f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color4f.h; path = "graphics-practice/Base/Color4f.h"; sourceTree = "<group>"; };
+		E638DF391A00E66200FF3C66 /* SceneTutorial24.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial24.cpp; path = "graphics-practice/Scenes/SceneTutorial24.cpp"; sourceTree = "<group>"; };
 		E663370919EA3A7400510940 /* Scenes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scenes; sourceTree = "<group>"; };
 		E663370A19EA3A7400510940 /* Util */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Util; sourceTree = "<group>"; };
 		E663370D19EA3A7400510940 /* Math */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Math; sourceTree = "<group>"; };
@@ -135,8 +137,6 @@
 		E61345D919C6EC3600B57A63 = {
 			isa = PBXGroup;
 			children = (
-				E638DF3619FF6BC500FF3C66 /* Color4f.cpp */,
-				E638DF3719FF6BC500FF3C66 /* Color4f.h */,
 				E68042A019EA4B1100DD2896 /* compile-sources */,
 				E666173419D08A6200FC1F2B /* resources */,
 				E6D8199B19D1D3C30073359B /* graphics-practice */,
@@ -158,6 +158,9 @@
 		E68042A019EA4B1100DD2896 /* compile-sources */ = {
 			isa = PBXGroup;
 			children = (
+				E638DF3619FF6BC500FF3C66 /* Color4f.cpp */,
+				E638DF3719FF6BC500FF3C66 /* Color4f.h */,
+				E638DF391A00E66200FF3C66 /* SceneTutorial24.cpp */,
 				E680426B19EA496A00DD2896 /* Action.cpp */,
 				E680426C19EA496A00DD2896 /* ActionManager.cpp */,
 				E680426D19EA496A00DD2896 /* Cube.cpp */,
@@ -268,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E638DF3B1A00E69900FF3C66 /* Color4f.cpp in Sources */,
+				E638DF3C1A00E69900FF3C66 /* SceneTutorial24.cpp in Sources */,
 				E680429B19EA49BA00DD2896 /* image_DXT.c in Sources */,
 				E680429C19EA49BA00DD2896 /* image_helper.c in Sources */,
 				E6ECE69819EAB78E0043793B /* Treasure.cpp in Sources */,
@@ -295,7 +300,6 @@
 				E680427419EA496A00DD2896 /* Action.cpp in Sources */,
 				E680427519EA496A00DD2896 /* ActionManager.cpp in Sources */,
 				E680427619EA496A00DD2896 /* Cube.cpp in Sources */,
-				E638DF3819FF6BC500FF3C66 /* Color4f.cpp in Sources */,
 				E680427719EA496A00DD2896 /* MoveBy.cpp in Sources */,
 				E6C2B2E019EBE40000CCFA07 /* SceneTutorial16.cpp in Sources */,
 				E680427819EA496A00DD2896 /* MyImage.cpp in Sources */,
