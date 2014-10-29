@@ -17,12 +17,17 @@ private:
     unsigned char* _data;
     unsigned int _width;
     unsigned int _height;
+    int _bpp;
     
 public:
+    MyImage();
     MyImage(GLuint texture, unsigned char* data, unsigned int width, unsigned int height);
     ~MyImage();
     
     static MyImage* LoadImage(string path);
+    bool InitWithFileTGA(string path);
+    bool InitWithFileBMP();
+
     GLuint GetTexture() {
         return _texture;
     }
