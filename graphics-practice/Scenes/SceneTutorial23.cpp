@@ -76,6 +76,25 @@ void SceneTutorial23::Update(float dt)
     
     rotObject.x += 5.0f * dt;
     rotObject.y += 4.0f * dt;
+    
+    if( Keyboard::PressedNormal('w') || Keyboard::PressedNormal('W') ) {
+        _cameraPosition.z -= 1.0f * dt;
+    }
+    if( Keyboard::PressedNormal('s') || Keyboard::PressedNormal('S') ) {
+        _cameraPosition.z += 1.0f * dt;
+    }
+    if( Keyboard::PressedNormal('a') || Keyboard::PressedNormal('A') ) {
+        _cameraPosition.x -= 1.0f * dt;
+    }
+    if( Keyboard::PressedNormal('d') || Keyboard::PressedNormal('D') ) {
+        _cameraPosition.x += 1.0f * dt;
+    }
+    if( Keyboard::PressedSpecial(GLUT_KEY_UP) ) {
+        _cameraPosition.y += 1.0f * dt;
+    }
+    if( Keyboard::PressedSpecial(GLUT_KEY_DOWN) ) {
+        _cameraPosition.y -= 1.0f * dt;
+    }
 }
 
 void SceneTutorial23::Draw()
