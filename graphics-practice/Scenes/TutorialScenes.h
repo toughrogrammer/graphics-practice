@@ -19,6 +19,8 @@
 #include "SceneTutorial18.h"
 #include "SceneTutorial19.h"
 #include "SceneTutorial20.h"
+#include "SceneTutorial21.h"
+#include "SceneTutorial22.h"
 #include "SceneTutorial23.h"
 #include "SceneTutorial24.h"
 
