@@ -25,7 +25,9 @@ public:
     ~MyImage();
     
     static MyImage* LoadImage(string path);
+    static MyImage* LoadImageFromRAW(string path, int width, int height, int format);
     bool InitWithFileTGA(string path);
+    bool InitWithFileRAW(string path);
     bool InitWithFileBMP();
 
     GLuint GetTexture() {
@@ -40,6 +42,15 @@ public:
     unsigned int GetHeight() {
         return _height;
     }
+    int GetBitPerPixel() {
+        return _bpp * 8;
+    }
+    int GetBytePerPixel() {
+        return _bpp;
+    }
+    
+    void GenerateTexture(int magFilter = GL_LINEAR, int minFilter = GL_LINEAR, int type = GL_UNSIGNED_BYTE);
+    static void Blit(MyImage *src, MyImage *dst, int src_xstart, int src_ystart, int src_width, int src_height, int dst_xstart, int dst_ystart, int blend, int alpha);
 };
 
 #endif

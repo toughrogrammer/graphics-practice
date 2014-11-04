@@ -81,6 +81,43 @@ MyImage* MyImage::LoadImage(string path) {
     return image;
 }
 
+// RAW format is so special, so we need independent method
+MyImage* MyImage::LoadImageFromRAW(string path, int width, int height, int format)
+{
+    MyImage *img = new MyImage;
+    img->_width = width;
+    img->_height = height;
+    img->_data = new unsigned char[width * height];
+    img->_bpp = format;
+    
+    FILE *f;
+    int i,j,k,done=0;
+    int stride = width * format;				// Size Of A Row (Width * Bytes Per Pixel)
+    unsigned char *p = NULL;
+    
+    f = fopen(path.c_str(), "rb");									// Open "filename" For Reading Bytes
+    if( f == NULL ) {
+        SAFE_DELETE( img );
+        return NULL;
+    }
+    
+    for( i = height-1; i >= 0 ; i-- )				// Loop Through Height (Bottoms Up - Flip Image)
+    {
+        p = img->_data + (i * stride);					//
+        for ( j = 0; j < width ; j++ )				// Loop Through Width
+        {
+            for ( k = 0 ; k < format-1 ; k++, p++, done++ )
+            {
+                *p = fgetc(f);								// Read Value From File And Store In Memory
+            }
+            *p = 255; p++;									// Store 255 In Alpha Channel And Increase Pointer
+        }
+    }
+    fclose(f);												// Close The File
+    
+    return img;
+}
+
 bool MyImage::InitWithFileTGA(string path)
 {
     GLubyte     TGAheader[12]={0,0,2,0,0,0,0,0,0,0,0,0};    // Uncompressed TGA Header
@@ -118,8 +155,10 @@ bool MyImage::InitWithFileTGA(string path)
         return false;                                       // Return False
     }
 
-    _bpp    = header[4];                            // Grab The TGA's Bits Per Pixel (24 or 32)
-    bytesPerPixel   = _bpp / 8;                       // Divide By 8 To Get The Bytes Per Pixel
+    int bitPerPixel = header[4]; // Grab The TGA's Bits Per Pixel (24 or 32)
+    _bpp = bitPerPixel * 8;
+    
+    bytesPerPixel   = bitPerPixel / 8;                       // Divide By 8 To Get The Bytes Per Pixel
     imageSize       = _width * _height * bytesPerPixel; // Calculate The Memory Required For The TGA Data
 
     _data = (GLubyte *)malloc(imageSize);        // Reserve Memory To Hold The TGA Data
@@ -151,11 +190,69 @@ bool MyImage::InitWithFileTGA(string path)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);   // Linear Filtered
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);   // Linear Filtered
     
-    if (_bpp==24)                                 // Was The TGA 24 Bits
+    if (bitPerPixel == 24)                                 // Was The TGA 24 Bits
     {
         type=GL_RGB;                                        // If So Set The 'type' To GL_RGB
     }
 
     glTexImage2D(GL_TEXTURE_2D, 0, type, _width, _height, 0, type, GL_UNSIGNED_BYTE, _data);
     return true;
+}
+
+void MyImage::GenerateTexture(int magFilter, int minFilter, int type)
+{
+    if( _texture != 0 ) {
+        glDeleteTextures(1, &_texture);
+    }
+    
+    int format = GL_RGB;
+    if( GetBitPerPixel() == 32 ) {
+        format = GL_RGBA;
+    }
+    
+    glGenTextures(1, &_texture);
+    glBindTexture(GL_TEXTURE_2D, _texture);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,magFilter);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,minFilter);
+    glTexImage2D(GL_TEXTURE_2D, 0, type, _width, _height, 0, format, type, _data);
+}
+
+void MyImage::Blit(MyImage *src, MyImage *dst, int src_xstart, int src_ystart, int src_width, int src_height, int dst_xstart, int dst_ystart, int blend, int alpha)
+{
+    int i,j,k;
+    unsigned char *s, *d;										// Source & Destination
+    
+    // Clamp Alpha If Value Is Out Of Range
+    if( alpha > 255 ) alpha = 255;
+    if( alpha < 0 ) alpha = 0;
+    
+    // Check For Incorrect Blend Flag Values
+    if( blend < 0 ) blend = 0;
+    if( blend > 1 ) blend = 1;
+    
+    int bppSrc = src->GetBytePerPixel();
+    int bppDst = dst->GetBytePerPixel();
+    int widthSrc = src->GetWidth();
+    int widthDst = dst->GetWidth();
+    
+    d = dst->GetData() + (dst_ystart * widthDst * bppDst);    // Start Row - dst (Row * Width In Pixels * Bytes Per Pixel)
+    s = src->GetData() + (src_ystart * widthSrc * bppSrc);    // Start Row - src (Row * Width In Pixels * Bytes Per Pixel)
+    
+    for (i = 0 ; i < src_height ; i++ )							// Height Loop
+    {
+        s = s + (src_xstart * bppSrc);						// Move Through Src Data By Bytes Per Pixel
+        d = d + (dst_xstart * bppDst);						// Move Through Dst Data By Bytes Per Pixel
+        for (j = 0 ; j < src_width ; j++ )						// Width Loop
+        {
+            for( k = 0 ; k < bppSrc ; k++, d++, s++)		// "n" Bytes At A Time
+            {
+                if (blend)										// If Blending Is On
+                    *d = ( (*s * alpha) + (*d * (255-alpha)) ) >> 8; // Multiply Src Data*alpha Add Dst Data*(255-alpha)
+                else											// Keep in 0-255 Range With >> 8
+                    *d = *s;									// No Blending Just Do A Straight Copy
+            }
+        }
+        d = d + (widthDst - (src_width + dst_xstart)) * bppDst;	// Add End Of Row */
+        s = s + (widthSrc - (src_width + src_xstart)) * bppSrc;	// Add End Of Row */
+    }
 }
