@@ -76,6 +76,8 @@ void SceneTutorial25::Update(float dt)
         sour = dest;
         step = 0;
     }
+    
+    cout << dt << endl;
 }
 
 void SceneTutorial25::Draw()
