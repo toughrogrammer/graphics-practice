@@ -51,6 +51,9 @@ bool SceneTutorial29::Init()
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
     gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, img1->GetWidth(), img1->GetHeight(), GL_RGBA, GL_UNSIGNED_BYTE, img1->GetData());
+    
+    SAFE_DELETE(img1);
+    SAFE_DELETE(img2);
 
     return true;
 }
