@@ -28,5 +28,6 @@
 #include "SceneTutorial27.h"
 #include "SceneTutorial28.h"
 #include "SceneTutorial29.h"
+#include "SceneTutorial31.h"
 
 #endif
