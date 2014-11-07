@@ -14,6 +14,8 @@
 		E638DF3519FF6AD500FF3C66 /* SceneTutorial23.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */; };
 		E638DF3B1A00E69900FF3C66 /* Color4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3619FF6BC500FF3C66 /* Color4f.cpp */; };
 		E638DF3C1A00E69900FF3C66 /* SceneTutorial24.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF391A00E66200FF3C66 /* SceneTutorial24.cpp */; };
+		E6392ECD1A0CDDF300C6DA45 /* SceneTutorial26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6392ECB1A0CDDF300C6DA45 /* SceneTutorial26.cpp */; };
+		E6392ED01A0CEA4200C6DA45 /* SceneTutorial27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6392ECE1A0CEA4200C6DA45 /* SceneTutorial27.cpp */; };
 		E64D25591A07956500E0E96D /* SceneTutorial25.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E64D25581A07956500E0E96D /* SceneTutorial25.cpp */; };
 		E64D255C1A08705700E0E96D /* SceneTutorial29.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E64D255A1A08705700E0E96D /* SceneTutorial29.cpp */; };
 		E680426619EA475B00DD2896 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6F4E05219D9952200565658 /* Game.cpp */; };
@@ -77,6 +79,10 @@
 		E638DF3619FF6BC500FF3C66 /* Color4f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Color4f.cpp; path = "graphics-practice/Base/Color4f.cpp"; sourceTree = "<group>"; };
 		E638DF3719FF6BC500FF3C66 /* Color4f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color4f.h; path = "graphics-practice/Base/Color4f.h"; sourceTree = "<group>"; };
 		E638DF391A00E66200FF3C66 /* SceneTutorial24.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial24.cpp; path = "graphics-practice/Scenes/SceneTutorial24.cpp"; sourceTree = "<group>"; };
+		E6392ECB1A0CDDF300C6DA45 /* SceneTutorial26.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial26.cpp; path = "graphics-practice/Scenes/SceneTutorial26.cpp"; sourceTree = "<group>"; };
+		E6392ECC1A0CDDF300C6DA45 /* SceneTutorial26.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneTutorial26.h; path = "graphics-practice/Scenes/SceneTutorial26.h"; sourceTree = "<group>"; };
+		E6392ECE1A0CEA4200C6DA45 /* SceneTutorial27.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial27.cpp; path = "graphics-practice/Scenes/SceneTutorial27.cpp"; sourceTree = "<group>"; };
+		E6392ECF1A0CEA4200C6DA45 /* SceneTutorial27.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneTutorial27.h; path = "graphics-practice/Scenes/SceneTutorial27.h"; sourceTree = "<group>"; };
 		E64D25581A07956500E0E96D /* SceneTutorial25.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial25.cpp; path = "graphics-practice/Scenes/SceneTutorial25.cpp"; sourceTree = "<group>"; };
 		E64D255A1A08705700E0E96D /* SceneTutorial29.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial29.cpp; path = "graphics-practice/Scenes/SceneTutorial29.cpp"; sourceTree = "<group>"; };
 		E64D255B1A08705700E0E96D /* SceneTutorial29.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneTutorial29.h; path = "graphics-practice/Scenes/SceneTutorial29.h"; sourceTree = "<group>"; };
@@ -205,6 +211,10 @@
 				E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */,
 				E638DF391A00E66200FF3C66 /* SceneTutorial24.cpp */,
 				E64D25581A07956500E0E96D /* SceneTutorial25.cpp */,
+				E6392ECB1A0CDDF300C6DA45 /* SceneTutorial26.cpp */,
+				E6392ECC1A0CDDF300C6DA45 /* SceneTutorial26.h */,
+				E6392ECE1A0CEA4200C6DA45 /* SceneTutorial27.cpp */,
+				E6392ECF1A0CEA4200C6DA45 /* SceneTutorial27.h */,
 				E64D255A1A08705700E0E96D /* SceneTutorial29.cpp */,
 				E64D255B1A08705700E0E96D /* SceneTutorial29.h */,
 				E680429919EA49BA00DD2896 /* SOIL.c */,
@@ -287,6 +297,8 @@
 			files = (
 				E638DF3B1A00E69900FF3C66 /* Color4f.cpp in Sources */,
 				E638DF3C1A00E69900FF3C66 /* SceneTutorial24.cpp in Sources */,
+				E6392ECD1A0CDDF300C6DA45 /* SceneTutorial26.cpp in Sources */,
+				E6392ED01A0CEA4200C6DA45 /* SceneTutorial27.cpp in Sources */,
 				E680429B19EA49BA00DD2896 /* image_DXT.c in Sources */,
 				E680429C19EA49BA00DD2896 /* image_helper.c in Sources */,
 				E6ECE69819EAB78E0043793B /* Treasure.cpp in Sources */,

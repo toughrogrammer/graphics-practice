@@ -24,6 +24,8 @@
 #include "SceneTutorial23.h"
 #include "SceneTutorial24.h"
 #include "SceneTutorial25.h"
+#include "SceneTutorial26.h"
+#include "SceneTutorial27.h"
 #include "SceneTutorial29.h"
 
 #endif
