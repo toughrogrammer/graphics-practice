@@ -49,4 +49,8 @@ using namespace std;
 #include "Base/Cube.h"
 #include "Base/Color4f.h"
 
+// models
+#include "Base/Model.h"
+#include "Base/ModelMilkshape3D.h"
+
 #endif
