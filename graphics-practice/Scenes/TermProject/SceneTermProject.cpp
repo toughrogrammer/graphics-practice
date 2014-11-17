@@ -1,19 +1,19 @@
 //
-//  SceneTermProject2.cpp
+//  SceneTermProject.cpp
 //  graphics-practice
 //
 //  Created by loki on 2014. 10. 12..
 //  Copyright (c) 2014년 loki. All rights reserved.
 //
 
-#include "SceneTermProject2.h"
+#include "SceneTermProject.h"
 #include "Treasure.h"
 #include <sstream>
 
 
-SceneTermProject2* SceneTermProject2::Create()
+SceneTermProject* SceneTermProject::Create()
 {
-    SceneTermProject2 *pRet = new SceneTermProject2;
+    SceneTermProject *pRet = new SceneTermProject;
     if( pRet->Init() ) {
         return pRet;
     }
@@ -22,7 +22,7 @@ SceneTermProject2* SceneTermProject2::Create()
     return pRet;
 }
 
-bool SceneTermProject2::Init()
+bool SceneTermProject::Init()
 {
     // init GL
     glShadeModel(GL_SMOOTH);                        // Enable Smooth Shading
@@ -97,14 +97,14 @@ bool SceneTermProject2::Init()
     return true;
 }
 
-void SceneTermProject2::OnExit()
+void SceneTermProject::OnExit()
 {
     for( int i = 0; i < _treasures.size(); i ++ ) {
         SAFE_DELETE( _treasures[i] );
     }
 }
 
-void SceneTermProject2::Update(float dt)
+void SceneTermProject::Update(float dt)
 {
     Scene::Update(dt);
     
@@ -148,7 +148,7 @@ void SceneTermProject2::Update(float dt)
     }
 }
 
-void SceneTermProject2::Draw()
+void SceneTermProject::Draw()
 {
     Scene::Draw();
     
@@ -180,7 +180,7 @@ void SceneTermProject2::Draw()
 }
 
 
-void SceneTermProject2::CameraMove(float dt)
+void SceneTermProject::CameraMove(float dt)
 {
     Vector3 forward;
     
@@ -208,7 +208,7 @@ void SceneTermProject2::CameraMove(float dt)
     _cameraPosition.y = new_y;
 }
 
-void SceneTermProject2::Enter2d()
+void SceneTermProject::Enter2d()
 {
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
@@ -222,7 +222,7 @@ void SceneTermProject2::Enter2d()
     glDisable(GL_DEPTH_TEST);
 }
 
-void SceneTermProject2::Exit2d()
+void SceneTermProject::Exit2d()
 {
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();

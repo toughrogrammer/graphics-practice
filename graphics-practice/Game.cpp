@@ -8,7 +8,7 @@
 
 #include "Game.h"
 #include "Scenes/TutorialScenes.h"
-#include "Scenes/SceneTermProject2.h"
+#include "Scenes/TermProject/SceneTermProject.h"
 
 
 Game::Game()
@@ -24,7 +24,7 @@ Game::~Game()
 void Game::Initialize()
 {
     Scene *startScene;
-    startScene = SceneTermProject2::Create();
+    startScene = SceneTermProject::Create();
     
     SceneManager::Instance()->ReplaceScene(startScene);
 }
