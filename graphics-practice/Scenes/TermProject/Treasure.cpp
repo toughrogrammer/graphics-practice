@@ -30,7 +30,7 @@ bool Treasure::InitWithPath(const char *path)
     
     MyImage *img = MyImage::LoadImage(path);
     _model = Cube::Create(img->GetTexture(), 5.0f);
-    _model->SetRotation(Vector3(0, 0, 180));
+    _model->SetRotation(Vector3(0, 0, 0));
     SAFE_DELETE(img);
     
     _opacity = 1.0f;
