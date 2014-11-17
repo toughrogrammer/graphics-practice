@@ -14,6 +14,20 @@
 class Treasure;
 class SceneTermProject : public Scene
 {
+    class Sun {
+    public:
+        GLenum LightID = GL_LIGHT0;
+        GLfloat LightAmbient[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+        GLfloat LightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+        GLfloat LightAttenuation[1] = { 1.3f, };
+        GLfloat LightPosition[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
+        
+        Sun();
+        void Initialize();
+        void SetLightID(GLenum id);
+        void SetPosition(float x, float y, float z, float w = 1.0f);
+    };
+    
 private:
     Vector3 _cameraPosition, _cameraRotation, _cameraScale;
     Sprite *_floorSprite;
@@ -22,6 +36,13 @@ private:
     float WalkingSpeed;
     float _takingDelay;
     string _stringGainTreasure;
+    
+    bool _isFog = false;
+    
+    Sun _sun;
+    const float DAY_FACTOR = 0.3f;
+    const float SUN_RADIUS = 100.0f;
+    float _time = 0;
 
     
 public:
@@ -32,9 +53,13 @@ public:
     virtual void Update(float dt);
     virtual void Draw();
     
+    virtual void ProcessSpecialKeys(int key, int x, int y);
+    virtual void ProcessNormalKeys(unsigned char key, int x, int y);
+    
     void CameraMove(float dt);
     void Enter2d();
     void Exit2d();
+    void UpdateFogByState();
 };
 
 #endif /* defined(__graphics_practice__SceneTermProject__) */

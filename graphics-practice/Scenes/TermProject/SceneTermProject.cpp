@@ -11,6 +11,36 @@
 #include <sstream>
 
 
+SceneTermProject::Sun::Sun()
+{
+    Initialize();
+}
+
+void SceneTermProject::Sun::Initialize()
+{
+    glEnable(LightID);
+    glLightfv(LightID, GL_AMBIENT, LightAmbient);
+    glLightfv(LightID, GL_DIFFUSE, LightDiffuse);
+    glLightfv(LightID, GL_CONSTANT_ATTENUATION, LightAttenuation);
+}
+
+void SceneTermProject::Sun::SetLightID(GLenum id)
+{
+    glDisable(LightID);
+    LightID = id;
+    Initialize();
+}
+
+void SceneTermProject::Sun::SetPosition(float x, float y, float z, float w)
+{
+    LightPosition[0] = x;
+    LightPosition[1] = y;
+    LightPosition[2] = z;
+    LightPosition[3] = w;
+    
+    glLightfv(LightID, GL_POSITION, LightPosition);
+}
+
 SceneTermProject* SceneTermProject::Create()
 {
     SceneTermProject *pRet = new SceneTermProject;
@@ -26,25 +56,14 @@ bool SceneTermProject::Init()
 {
     // init GL
     glShadeModel(GL_SMOOTH);                        // Enable Smooth Shading
-    glClearColor(0.43f, 0.85f, 0.99f, 1.0f);                   // Black Background
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);                   // Black Background
     glClearDepth(1.0f);                         // Depth Buffer Setup
     
     glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
+    glEnable(GL_LIGHTING);
     glDepthFunc(GL_LEQUAL);                         // The Type Of Depth Testing To Do
     
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective Calculations
-    
-    
-    //
-    // light
-    //
-    GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-    GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    GLfloat LightPosition[] = { 0.0f, 0.0f, 50.0f, 1.0f };
-    glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);		// Setup The Ambient Light
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);		// Setup The Diffuse Light
-    glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);	// Position The Light
-    glEnable(GL_LIGHT1);								// Enable Light One
     
     
     //
@@ -59,7 +78,7 @@ bool SceneTermProject::Init()
     glHint(GL_FOG_HINT, GL_DONT_CARE);          // Fog Hint Value
     glFogf(GL_FOG_START, -50.0f);             // Fog Start Depth
     glFogf(GL_FOG_END, 50.0f);               // Fog End Depth
-    glEnable(GL_FOG);                   // Enables GL_FOG
+    UpdateFogByState();
 
     
     srand((unsigned)time(NULL));
@@ -86,9 +105,10 @@ bool SceneTermProject::Init()
     _floorSprite->SetPosition( Vector3( 0, 0, 0 ) );
     _floorSprite->SetRotation( Vector3( 90, 0, 0 ) );
     
+    
     _cameraScale.Set(1.0f, 1.0f, 1.0f);
-    _cameraRotation.Set(20, 0, 0);
-    _cameraPosition.Set(0, 15, 0);
+    _cameraRotation.Set(30, 45, 0);
+    _cameraPosition.Set(-90, 90, 90);
     WalkingSpeed = 8.0f;
     
     _takingDelay = 0;
@@ -109,6 +129,11 @@ void SceneTermProject::Update(float dt)
     Scene::Update(dt);
     
     CameraMove(dt);
+    
+    
+    _time += DAY_FACTOR * dt;
+    _sun.SetPosition(0.0f, sin(_time) * SUN_RADIUS, cos(_time) * SUN_RADIUS);
+    
     
     _takingDelay += dt;
     if( Keyboard::PressedNormal(' ') && _takingDelay > 2.0f ) {
@@ -176,7 +201,39 @@ void SceneTermProject::Draw()
     }
     Exit2d();
     
+    
+    GLfloat LightPosition[] = { 0.0f,
+        static_cast<GLfloat>(sin(_time) * SUN_RADIUS),
+        static_cast<GLfloat>(cos(_time) * SUN_RADIUS),
+        1.0f };
+    
+    glLineWidth(3);
+    glColor3f(1.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex3f(-100, 1, 0);
+    glVertex3f(100, 1, 0);
+    glVertex3f(0, 1, -100);
+    glVertex3f(0, 1, 100);
+    
+    glVertex3f(LightPosition[0], LightPosition[1], LightPosition[2]);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+    glEnd();
+    glColor3f(1.0f, 1.0f, 1.0f);
+    
     glutSwapBuffers();
+}
+
+void SceneTermProject::ProcessSpecialKeys(int key, int x, int y)
+{
+    
+}
+
+void SceneTermProject::ProcessNormalKeys(unsigned char key, int x, int y)
+{
+    if( key == 'f' || key == 'F' ) {
+        _isFog = ! _isFog;
+        UpdateFogByState();
+    }
 }
 
 
@@ -203,9 +260,6 @@ void SceneTermProject::CameraMove(float dt)
     if( Keyboard::PressedSpecial(GLUT_KEY_RIGHT) ) {
         _cameraRotation.y += 3.0f;
     }
-    
-    float new_y = sin(_cameraPosition.z + _cameraPosition.x) * 0.5 + 15;
-    _cameraPosition.y = new_y;
 }
 
 void SceneTermProject::Enter2d()
@@ -230,4 +284,14 @@ void SceneTermProject::Exit2d()
     glPopMatrix();
     
     glEnable(GL_DEPTH_TEST);
+}
+
+void SceneTermProject::UpdateFogByState()
+{
+    if( _isFog ) {
+        glEnable(GL_FOG);
+    }
+    else {
+        glDisable(GL_FOG);
+    }
 }
