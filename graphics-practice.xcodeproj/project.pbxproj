@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E60FDAEB1A07592600F0A1AC /* SceneTutorial21.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E60FDAEA1A07592600F0A1AC /* SceneTutorial21.cpp */; };
 		E60FDAED1A07592D00F0A1AC /* SceneTutorial22.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E60FDAEC1A07592D00F0A1AC /* SceneTutorial22.cpp */; };
+		E6109D631A1BC1D5000551D0 /* ModelObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6109D621A1BC1D5000551D0 /* ModelObj.cpp */; };
 		E61345EF19C6EC5F00B57A63 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345EE19C6EC5F00B57A63 /* OpenGL.framework */; };
 		E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345F019C6EC6300B57A63 /* GLUT.framework */; };
 		E613C2EA1A1A4ADB00648095 /* SceneTutorial34.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E613C2E91A1A4ADB00648095 /* SceneTutorial34.cpp */; };
@@ -76,6 +77,7 @@
 /* Begin PBXFileReference section */
 		E60FDAEA1A07592600F0A1AC /* SceneTutorial21.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial21.cpp; path = "graphics-practice/Scenes/SceneTutorial21.cpp"; sourceTree = "<group>"; };
 		E60FDAEC1A07592D00F0A1AC /* SceneTutorial22.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial22.cpp; path = "graphics-practice/Scenes/SceneTutorial22.cpp"; sourceTree = "<group>"; };
+		E6109D621A1BC1D5000551D0 /* ModelObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ModelObj.cpp; path = "graphics-practice/Base/ModelObj.cpp"; sourceTree = "<group>"; };
 		E61345E219C6EC3600B57A63 /* graphics-practice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "graphics-practice"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E61345EE19C6EC5F00B57A63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E61345F019C6EC6300B57A63 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -203,6 +205,7 @@
 				E6C050951A0D2F73003497F2 /* Model.h */,
 				E6C050971A0D31E7003497F2 /* ModelMilkshape3D.cpp */,
 				E6C050981A0D31E7003497F2 /* ModelMilkshape3D.h */,
+				E6109D621A1BC1D5000551D0 /* ModelObj.cpp */,
 				E680426E19EA496A00DD2896 /* MoveBy.cpp */,
 				E680426F19EA496A00DD2896 /* MyImage.cpp */,
 				E680427019EA496A00DD2896 /* Node.cpp */,
@@ -353,6 +356,7 @@
 				E680428419EA498000DD2896 /* Matrix4.cpp in Sources */,
 				E680428519EA498000DD2896 /* Vector2.cpp in Sources */,
 				E680428619EA498000DD2896 /* Vector3.cpp in Sources */,
+				E6109D631A1BC1D5000551D0 /* ModelObj.cpp in Sources */,
 				E6C050961A0D2F73003497F2 /* Model.cpp in Sources */,
 				E680427419EA496A00DD2896 /* Action.cpp in Sources */,
 				E680427519EA496A00DD2896 /* ActionManager.cpp in Sources */,

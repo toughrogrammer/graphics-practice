@@ -52,5 +52,6 @@ using namespace std;
 // models
 #include "Base/Model.h"
 #include "Base/ModelMilkshape3D.h"
+#include "Base/ModelObj.h"
 
 #endif

@@ -128,6 +128,9 @@ bool SceneTermProject::Init()
     _takingDelay = 0;
     _stringGainTreasure = "Remaining Treasure : 10";
     
+    ModelObj model;
+    model.InitWithFile("TermProject2/Models/floating-pillar.obj");
+    
     return true;
 }
 
