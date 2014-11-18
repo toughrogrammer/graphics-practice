@@ -41,6 +41,20 @@ void SceneTermProject::Sun::SetPosition(float x, float y, float z, float w)
     glLightfv(LightID, GL_POSITION, LightPosition);
 }
 
+void SceneTermProject::Sun::Update(float dt)
+{
+    _time += DAY_FACTOR * dt;
+    float y = sin(_time) * SUN_RADIUS;
+    float z = cos(_time) * SUN_RADIUS;
+    SetPosition(0.0f, y, z);
+    if( y < 0 ) {
+        glDisable(LightID);
+    }
+    else {
+        glEnable(LightID);
+    }
+}
+
 SceneTermProject* SceneTermProject::Create()
 {
     SceneTermProject *pRet = new SceneTermProject;
@@ -130,9 +144,7 @@ void SceneTermProject::Update(float dt)
     
     CameraMove(dt);
     
-    
-    _time += DAY_FACTOR * dt;
-    _sun.SetPosition(0.0f, sin(_time) * SUN_RADIUS, cos(_time) * SUN_RADIUS);
+    _sun.Update(dt);
     
     
     _takingDelay += dt;
@@ -200,12 +212,7 @@ void SceneTermProject::Draw()
         glColor3f(1.0f, 1.0f, 1.0f);
     }
     Exit2d();
-    
-    
-    GLfloat LightPosition[] = { 0.0f,
-        static_cast<GLfloat>(sin(_time) * SUN_RADIUS),
-        static_cast<GLfloat>(cos(_time) * SUN_RADIUS),
-        1.0f };
+
     
     glLineWidth(3);
     glColor3f(1.0, 0.0, 0.0);
@@ -215,7 +222,7 @@ void SceneTermProject::Draw()
     glVertex3f(0, 1, -100);
     glVertex3f(0, 1, 100);
     
-    glVertex3f(LightPosition[0], LightPosition[1], LightPosition[2]);
+    glVertex3f(_sun.LightPosition[0], _sun.LightPosition[1], _sun.LightPosition[2]);
     glVertex3f(0.0f, 0.0f, 0.0f);
     glEnd();
     glColor3f(1.0f, 1.0f, 1.0f);

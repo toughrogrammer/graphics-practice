@@ -22,10 +22,15 @@ class SceneTermProject : public Scene
         GLfloat LightAttenuation[1] = { 1.3f, };
         GLfloat LightPosition[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
         
+        const float DAY_FACTOR = 0.8f;
+        const float SUN_RADIUS = 100.0f;
+        float _time = 0;
+        
         Sun();
         void Initialize();
         void SetLightID(GLenum id);
         void SetPosition(float x, float y, float z, float w = 1.0f);
+        void Update(float dt);
     };
     
 private:
@@ -40,8 +45,6 @@ private:
     bool _isFog = false;
     
     Sun _sun;
-    const float DAY_FACTOR = 0.3f;
-    const float SUN_RADIUS = 100.0f;
     float _time = 0;
 
     
