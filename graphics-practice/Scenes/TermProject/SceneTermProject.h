@@ -22,7 +22,7 @@ class SceneTermProject : public Scene
         GLfloat LightAttenuation[1] = { 1.3f, };
         GLfloat LightPosition[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
         
-        const float DAY_FACTOR = 0.8f;
+        const float DAY_FACTOR = 0.1f;
         const float SUN_RADIUS = 100.0f;
         float _time = 0;
         
@@ -46,6 +46,8 @@ private:
     
     Sun _sun;
     float _time = 0;
+    
+    ModelObj _model;
 
     
 public:

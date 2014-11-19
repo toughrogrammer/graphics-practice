@@ -20,9 +20,7 @@ class ModelObj : public Model
 	class Material
 	{
 	public:
-		char name[256] = { '\0', };
 		int illum = 0;
-		char map_Kd[256] = { '\0', };
 		float Ns = 0;
 		float Ni = 0;
 		float d = 0;
@@ -30,7 +28,16 @@ class ModelObj : public Model
 		float Kd[3] = { 0, };
 		float Ks[3] = { 0, };
 		float Tf[3] = { 0, };
-		MyImage *img;
+        std::string textureName;
+		MyImage *img = NULL;
+        
+        ~Material()
+        {
+            if( img ) {
+                delete img;
+                img = NULL;
+            }
+        }
 	};
 
 	class Face
@@ -45,6 +52,7 @@ class ModelObj : public Model
 	{
 	public:
         std::vector<Face> _faces;
+        std::string _materialName;
 	};
 
 private:
@@ -63,6 +71,7 @@ public:
     virtual bool InitWithFile(std::string path);
     bool LoadMaterial(std::string path);
     void TokenizingFaceString(std::string str, Face& face);
+    virtual void Draw();
 
 };
 

@@ -11,6 +11,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -79,9 +80,7 @@ bool ModelObj::InitWithFile(string path)
             
             Face face;
             TokenizingFaceString(face1, face);
-            currObj->_faces.push_back(face);
             TokenizingFaceString(face2, face);
-            currObj->_faces.push_back(face);
             TokenizingFaceString(face3, face);
             currObj->_faces.push_back(face);
         }
@@ -98,6 +97,11 @@ bool ModelObj::InitWithFile(string path)
             
             _objects[name] = Object();
             currObj = &_objects[name];
+        }
+        else if( buffer.compare("usemtl") == 0 ) {
+            string matName;
+            inputFile >> matName;
+            currObj->_materialName = matName;
         }
         
         buffer.clear();
@@ -148,6 +152,7 @@ bool ModelObj::LoadMaterial(string path)
             newPath.append( filename );
 
             currMat->img = MyImage::LoadImage( newPath );
+            currMat->textureName = string(filename);
         }
         else if( buffer.compare("newmtl") == 0 ) {
             string name;
@@ -184,4 +189,66 @@ void ModelObj::TokenizingFaceString(string str, Face& face)
     num = str.substr(left, right);
     n = atoi(num.c_str());
     face._normals.push_back(n);
+}
+
+void ModelObj::Draw()
+{
+    bool isTextureEnabled = glIsEnabled( GL_TEXTURE_2D );
+    bool isBindTexture = false;
+
+    auto iterObj = _objects.begin();
+    while( iterObj != _objects.end() ) {
+        isBindTexture = false;
+        Object &obj = iterObj->second;
+        if( obj._materialName.size() > 0 ) {
+            auto iterMat = _materials.find( obj._materialName );
+            if( iterMat != _materials.end() ) {
+                Material &mat = iterMat->second;
+                glMaterialfv( GL_FRONT, GL_AMBIENT, mat.Ka );
+                glMaterialfv( GL_FRONT, GL_DIFFUSE, mat.Kd );
+                glMaterialfv( GL_FRONT, GL_SPECULAR, mat.Ks );
+                
+                if ( mat.textureName.size() > 0 )
+                {
+                    glBindTexture( GL_TEXTURE_2D, mat.img->GetTexture() );
+                    glEnable( GL_TEXTURE_2D );
+                    isBindTexture = true;
+                }
+                else {
+                    glDisable( GL_TEXTURE_2D );
+                    isBindTexture = false;
+                }
+            }
+        }
+        
+        
+        glBegin(GL_TRIANGLES);
+        auto faces = obj._faces;
+        for(Face &face : faces) {
+            vector<int> &fVertices = face._vertices;
+            vector<int> &fTexCoords = face._texcoords;
+            vector<int> &fNormals = face._normals;
+            for( int i = 0; i < 3; i ++ ) {
+                Vector3& v = _vertices[ fVertices[i] ];
+                Vector2& t = _texcoords[ fTexCoords[i] ];
+                Vector3& n = _normals[ fNormals[i] ];
+                
+                glVertex3f( v.x, v.y, v.z );
+                if( isBindTexture ) {
+                    glTexCoord2d( t.x, t.y );
+                }
+                glNormal3f( n.x, n.y, n.z );
+            }
+        }
+        glEnd();
+        
+        iterObj++;
+    }
+    
+    if ( isTextureEnabled ) {
+        glEnable( GL_TEXTURE_2D );
+    }
+    else {
+        glDisable( GL_TEXTURE_2D );
+    }
 }

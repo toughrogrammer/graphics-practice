@@ -73,8 +73,9 @@ bool SceneTermProject::Init()
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);                   // Black Background
     glClearDepth(1.0f);                         // Depth Buffer Setup
     
-    glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
     glEnable(GL_LIGHTING);
+    glEnable(GL_COLOR_MATERIAL); // Enable Coloring Of Material ( NEW )
+    glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
     glDepthFunc(GL_LEQUAL);                         // The Type Of Depth Testing To Do
     
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective Calculations
@@ -128,8 +129,7 @@ bool SceneTermProject::Init()
     _takingDelay = 0;
     _stringGainTreasure = "Remaining Treasure : 10";
     
-    ModelObj model;
-    model.InitWithFile("TermProject2/Models/floating-pillar.obj");
+    _model.InitWithFile("TermProject2/Models/floating-pillar.obj");
     
     return true;
 }
@@ -146,6 +146,7 @@ void SceneTermProject::Update(float dt)
     Scene::Update(dt);
     
     CameraMove(dt);
+    _time += dt;
     
     _sun.Update(dt);
     
@@ -229,6 +230,13 @@ void SceneTermProject::Draw()
     glVertex3f(0.0f, 0.0f, 0.0f);
     glEnd();
     glColor3f(1.0f, 1.0f, 1.0f);
+    
+    
+    glRotatef(_time * 10, 0, 1, 0);
+    glScalef(20, 20, 20);
+    glTranslatef(0, 1.5, 0);
+    _model.Draw();
+    
     
     glutSwapBuffers();
 }
