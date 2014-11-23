@@ -131,6 +131,17 @@ bool SceneTermProject::Init()
     
     _model.InitWithFile("TermProject2/Models/floating-pillar.obj");
     
+    
+    GLfloat LightAmbient[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+    GLfloat LightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    GLfloat LightAttenuation[1] = { 1.9f, };
+    GLfloat LightPosition[4] = { 50.0f, 30.0f, 0.0f, 1.0f };
+    glEnable(GL_LIGHT1);
+    glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);
+    glLightfv(GL_LIGHT1, GL_CONSTANT_ATTENUATION, LightAttenuation);
+    glLightfv(GL_LIGHT1, GL_POSITION, LightPosition);
+    
     return true;
 }
 
@@ -219,22 +230,30 @@ void SceneTermProject::Draw()
 
     
     glLineWidth(3);
-    glColor3f(1.0, 0.0, 0.0);
     glBegin(GL_LINES);
+    // x-axis
+    glColor3f(1.0, 0.0, 0.0);
     glVertex3f(-100, 1, 0);
     glVertex3f(100, 1, 0);
+    // y-axis
+    glColor3f(0.0, 1.0, 0.0);
+    glVertex3f(0, -100, 0);
+    glVertex3f(0, 100, 0);
+    // z-axis
+    glColor3f(0.0, 0.0, 1.0);
     glVertex3f(0, 1, -100);
     glVertex3f(0, 1, 100);
     
+    glColor3f(1.0f, 1.0f, 1.0f);
     glVertex3f(_sun.LightPosition[0], _sun.LightPosition[1], _sun.LightPosition[2]);
     glVertex3f(0.0f, 0.0f, 0.0f);
     glEnd();
     glColor3f(1.0f, 1.0f, 1.0f);
     
     
+    glTranslatef(50, 30, 0);
     glRotatef(_time * 10, 0, 1, 0);
     glScalef(20, 20, 20);
-    glTranslatef(0, 1.5, 0);
     _model.Draw();
     
     
