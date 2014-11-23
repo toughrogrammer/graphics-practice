@@ -195,6 +195,12 @@ void ModelObj::Draw()
 {
     bool isTextureEnabled = glIsEnabled( GL_TEXTURE_2D );
     bool isBindTexture = false;
+    float *originKa = new float[3];
+    float *originKd = new float[3];
+    float *originKs = new float[3];
+    glGetMaterialfv( GL_FRONT, GL_AMBIENT, originKa );
+    glGetMaterialfv( GL_FRONT, GL_DIFFUSE, originKd );
+    glGetMaterialfv( GL_FRONT, GL_SPECULAR, originKs );
 
     auto iterObj = _objects.begin();
     while( iterObj != _objects.end() ) {
@@ -251,4 +257,11 @@ void ModelObj::Draw()
     else {
         glDisable( GL_TEXTURE_2D );
     }
+    
+    glMaterialfv( GL_FRONT, GL_AMBIENT, originKa );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, originKd );
+    glMaterialfv( GL_FRONT, GL_SPECULAR, originKs );
+    delete[] originKa;
+    delete[] originKd;
+    delete[] originKs;
 }
