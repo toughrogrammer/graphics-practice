@@ -11,50 +11,6 @@
 #include <sstream>
 
 
-SceneTermProject::Sun::Sun()
-{
-    Initialize();
-}
-
-void SceneTermProject::Sun::Initialize()
-{
-    glEnable(LightID);
-    glLightfv(LightID, GL_AMBIENT, LightAmbient);
-    glLightfv(LightID, GL_DIFFUSE, LightDiffuse);
-    glLightfv(LightID, GL_CONSTANT_ATTENUATION, LightAttenuation);
-}
-
-void SceneTermProject::Sun::SetLightID(GLenum id)
-{
-    glDisable(LightID);
-    LightID = id;
-    Initialize();
-}
-
-void SceneTermProject::Sun::SetPosition(float x, float y, float z, float w)
-{
-    LightPosition[0] = x;
-    LightPosition[1] = y;
-    LightPosition[2] = z;
-    LightPosition[3] = w;
-    
-    glLightfv(LightID, GL_POSITION, LightPosition);
-}
-
-void SceneTermProject::Sun::Update(float dt)
-{
-    _time += DAY_FACTOR * dt;
-    float y = sin(_time) * SUN_RADIUS;
-    float z = cos(_time) * SUN_RADIUS;
-    SetPosition(0.0f, y, z);
-    if( y < 0 ) {
-        glDisable(LightID);
-    }
-    else {
-        glEnable(LightID);
-    }
-}
-
 SceneTermProject* SceneTermProject::Create()
 {
     SceneTermProject *pRet = new SceneTermProject;
@@ -66,6 +22,13 @@ SceneTermProject* SceneTermProject::Create()
     return pRet;
 }
 
+SceneTermProject::SceneTermProject()
+: _sun(GL_LIGHT0)
+, _controlLight(GL_LIGHT1)
+{
+    
+}
+
 bool SceneTermProject::Init()
 {
     // init GL
@@ -74,7 +37,6 @@ bool SceneTermProject::Init()
     glClearDepth(1.0f);                         // Depth Buffer Setup
     
     glEnable(GL_LIGHTING);
-    glEnable(GL_COLOR_MATERIAL); // Enable Coloring Of Material ( NEW )
     glEnable(GL_DEPTH_TEST);                        // Enables Depth Testing
     glDepthFunc(GL_LEQUAL);                         // The Type Of Depth Testing To Do
     
@@ -132,15 +94,16 @@ bool SceneTermProject::Init()
     _model.InitWithFile("TermProject2/Models/floating-pillar.obj");
     
     
-    GLfloat LightAmbient[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
-    GLfloat LightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    GLfloat LightAttenuation[1] = { 1.9f, };
-    GLfloat LightPosition[4] = { 50.0f, 30.0f, 0.0f, 1.0f };
-    glEnable(GL_LIGHT1);
-    glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);
-    glLightfv(GL_LIGHT1, GL_CONSTANT_ATTENUATION, LightAttenuation);
-    glLightfv(GL_LIGHT1, GL_POSITION, LightPosition);
+    _sun.SetEnabled(false);
+    _sun.SetAmbient(0.5f, 0.5f, 0.5f);
+    _sun.SetDiffuse(1.0f, 1.0f, 1.0f);
+    _sun.SetAttenuation(1.9f);
+    
+    _controlLight.SetEnabled(true);
+    _controlLight.SetAmbient(1.0f, 1.0f, 1.0f);
+    _controlLight.SetDiffuse(1.0f, 1.0f, 1.0f);
+    _controlLight.SetAttenuation(1.9f);
+    _controlLight.SetPosition( Vector3(0, 0, 0) );
     
     return true;
 }
@@ -158,9 +121,52 @@ void SceneTermProject::Update(float dt)
     
     CameraMove(dt);
     _time += dt;
+    _moveLightkeyDelay -= dt;
     
-    _sun.Update(dt);
+    float factedTime = _time * DAY_FACTOR;
+    float y = sin(factedTime) * SUN_RADIUS;
+    float z = cos(factedTime) * SUN_RADIUS;
+    _sun.SetPosition(Vector3(0.0f, y, z));
+//    if( y < 0 ) {
+//        _sun.SetEnabled( false );
+//    }
+//    else {
+//        _sun.SetEnabled( true );
+//    }
     
+    
+    if( _isMoveLight && Keyboard::PressedSpecial(GLUT_KEY_LEFT) ) {
+        Vector3 pos = _controlLight.GetPosition();
+        pos.x -= 10 * dt;
+        _controlLight.SetPosition(pos);
+    }
+    if( _isMoveLight && Keyboard::PressedSpecial(GLUT_KEY_RIGHT) ) {
+        Vector3 pos = _controlLight.GetPosition();
+        pos.x += 10 * dt;
+        _controlLight.SetPosition(pos);
+    }
+    if( _isMoveLight && Keyboard::PressedSpecial(GLUT_KEY_DOWN) ) {
+        Vector3 pos = _controlLight.GetPosition();
+        pos.y -= 10 * dt;
+        _controlLight.SetPosition(pos);
+    }
+    if( _isMoveLight && Keyboard::PressedSpecial(GLUT_KEY_UP) ) {
+        Vector3 pos = _controlLight.GetPosition();
+        pos.y += 10 * dt;
+        _controlLight.SetPosition(pos);
+    }
+    if( _isMoveLight && Keyboard::PressedNormal('z') ) {
+        Vector3 pos = _controlLight.GetPosition();
+        pos.z += 10 * dt;
+        _controlLight.SetPosition(pos);
+    }
+    if( _isMoveLight && Keyboard::PressedNormal('x') ) {
+        Vector3 pos = _controlLight.GetPosition();
+        pos.z -= 10 * dt;
+        _controlLight.SetPosition(pos);
+    }
+    
+
     
     _takingDelay += dt;
     if( Keyboard::PressedNormal(' ') && _takingDelay > 2.0f ) {
@@ -184,20 +190,11 @@ void SceneTermProject::Update(float dt)
         }
     }
     
-    for( int i = 0; i < _treasures.size(); i ++ ) {
-        _treasures[i]->Update(dt);
-        if( _treasures[i]->IsFinishedAnimating() ) {
-            vector<Treasure*>::iterator it = _treasures.begin();
-            for( int j = 0; j < i; j ++ ) it++;
-            _treasures.erase(it);
-            
-            ostringstream ostr;
-            ostr << "Remaining Treasure : ";
-            ostr << _treasures.size();
-            _stringGainTreasure = ostr.str();
-            break;
-        }
-    }
+    
+    char str[256];
+    Vector3 lightPos = _controlLight.GetPosition();
+    sprintf(str, "(%.2f, %.2f, %.2f)", lightPos.x, lightPos.y, lightPos.z);
+    _stringLightPosition = string(str);
 }
 
 void SceneTermProject::Draw()
@@ -214,41 +211,49 @@ void SceneTermProject::Draw()
     glScalef( _cameraScale.x, _cameraScale.y, _cameraScale.z );
     glTranslatef( -_cameraPosition.x, -_cameraPosition.y, -_cameraPosition.z );
     
+    
     _floorSprite->Draw();
     
     for( int i = 0; i < _treasures.size(); i ++ ) {
         _treasures[i]->Draw();
     }
     
-    Enter2d();
-    {
-        glColor3d(1.0f, 0.0f, 0);
-        RenderBitmapString(GLUT_BITMAP_HELVETICA_18, 20, 20, _stringGainTreasure.c_str());
-        glColor3f(1.0f, 1.0f, 1.0f);
-    }
-    Exit2d();
-
-    
+    glPushMatrix();
+    glTranslatef(0, 1.0f, 0);
     glLineWidth(3);
     glBegin(GL_LINES);
     // x-axis
+    glColor3f(0.0, 0.0, 0.0);
+    glVertex3f(-100, 0, 0);
     glColor3f(1.0, 0.0, 0.0);
-    glVertex3f(-100, 1, 0);
-    glVertex3f(100, 1, 0);
+    glVertex3f(100, 0, 0);
     // y-axis
-    glColor3f(0.0, 1.0, 0.0);
+    glColor3f(0.0, 0.0, 0.0);
     glVertex3f(0, -100, 0);
+    glColor3f(0.0, 1.0, 0.0);
     glVertex3f(0, 100, 0);
     // z-axis
+    glColor3f(0.0, 0.0, 0.0);
+    glVertex3f(0, 0, -100);
     glColor3f(0.0, 0.0, 1.0);
-    glVertex3f(0, 1, -100);
-    glVertex3f(0, 1, 100);
+    glVertex3f(0, 0, 100);
     
+    Vector3 sunPosition = _sun.GetPosition();
     glColor3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(_sun.LightPosition[0], _sun.LightPosition[1], _sun.LightPosition[2]);
+    glVertex3f(sunPosition.x, sunPosition.y, sunPosition.z);
     glVertex3f(0.0f, 0.0f, 0.0f);
     glEnd();
     glColor3f(1.0f, 1.0f, 1.0f);
+    glPopMatrix();
+    
+    // show light position
+    glPointSize(20);
+    glBegin(GL_POINTS);
+    glColor3f(1.0f, 1.0f, 1.0f);
+    Vector3 lightPos = _controlLight.GetPosition();
+    glVertex3f(lightPos.x, lightPos.y, lightPos.z);
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glEnd();
     
     
     glTranslatef(50, 30, 0);
@@ -256,6 +261,14 @@ void SceneTermProject::Draw()
     glScalef(20, 20, 20);
     _model.Draw();
     
+    
+    Enter2d();
+    {
+        glColor3f(1.0f, 0.0f, 0.0f);
+        RenderBitmapString(GLUT_BITMAP_HELVETICA_18, 20, 20, _stringLightPosition.c_str());
+        glColor3f(1.0f, 1.0f, 1.0f);
+    }
+    Exit2d();
     
     glutSwapBuffers();
 }
@@ -271,11 +284,20 @@ void SceneTermProject::ProcessNormalKeys(unsigned char key, int x, int y)
         _isFog = ! _isFog;
         UpdateFogByState();
     }
+    
+    if( key == 'l' && _moveLightkeyDelay < 0 ) {
+        _moveLightkeyDelay = 0.3f;
+        _isMoveLight = ! _isMoveLight;
+    }
 }
 
 
 void SceneTermProject::CameraMove(float dt)
 {
+    if( _isMoveLight ) {
+        return;
+    }
+    
     Vector3 forward;
     
     if( Keyboard::PressedNormal('w') || Keyboard::PressedNormal('W') ) {

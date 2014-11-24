@@ -11,28 +11,11 @@
 
 #include "Prefix.h"
 
+#include "MyLight.h"
+
 class Treasure;
 class SceneTermProject : public Scene
 {
-    class Sun {
-    public:
-        GLenum LightID = GL_LIGHT0;
-        GLfloat LightAmbient[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
-        GLfloat LightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
-        GLfloat LightAttenuation[1] = { 1.3f, };
-        GLfloat LightPosition[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
-        
-        const float DAY_FACTOR = 0.1f;
-        const float SUN_RADIUS = 100.0f;
-        float _time = 0;
-        
-        Sun();
-        void Initialize();
-        void SetLightID(GLenum id);
-        void SetPosition(float x, float y, float z, float w = 1.0f);
-        void Update(float dt);
-    };
-    
 private:
     Vector3 _cameraPosition, _cameraRotation, _cameraScale;
     Sprite *_floorSprite;
@@ -44,8 +27,16 @@ private:
     
     bool _isFog = false;
     
-    Sun _sun;
-    float _time = 0;
+    const float DAY_FACTOR = 0.1f;
+    const float SUN_RADIUS = 100.0f;
+    MyLight _sun;
+    float _time = 35;
+    
+    MyLight _controlLight;
+    bool _isMoveLight = true;
+    float _moveLightkeyDelay = 0.3f;
+    string _stringLightPosition;
+    
     
     ModelObj _model;
 
@@ -53,6 +44,7 @@ private:
 public:
     static SceneTermProject* Create();
     
+    SceneTermProject();
     virtual bool Init();
     virtual void OnExit();
     virtual void Update(float dt);
