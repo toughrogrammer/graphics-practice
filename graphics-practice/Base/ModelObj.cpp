@@ -195,6 +195,8 @@ void ModelObj::Draw()
 {
     bool isTextureEnabled = glIsEnabled( GL_TEXTURE_2D );
     bool isBindTexture = false;
+    
+    bool isMaterialColourEnabled = glIsEnabled( GL_COLOR_MATERIAL );
     float *originKa = new float[3];
     float *originKd = new float[3];
     float *originKs = new float[3];
@@ -207,6 +209,8 @@ void ModelObj::Draw()
         isBindTexture = false;
         Object &obj = iterObj->second;
         if( obj._materialName.size() > 0 ) {
+            glEnable( GL_COLOR_MATERIAL );
+            
             auto iterMat = _materials.find( obj._materialName );
             if( iterMat != _materials.end() ) {
                 Material &mat = iterMat->second;
@@ -225,6 +229,9 @@ void ModelObj::Draw()
                     isBindTexture = false;
                 }
             }
+        }
+        else {
+            glDisable( GL_COLOR_MATERIAL );
         }
         
         
@@ -258,6 +265,12 @@ void ModelObj::Draw()
         glDisable( GL_TEXTURE_2D );
     }
     
+    if( isMaterialColourEnabled ) {
+        glEnable( GL_COLOR_MATERIAL );
+    }
+    else {
+        glDisable( GL_COLOR_MATERIAL );
+    }
     glMaterialfv( GL_FRONT, GL_AMBIENT, originKa );
     glMaterialfv( GL_FRONT, GL_DIFFUSE, originKd );
     glMaterialfv( GL_FRONT, GL_SPECULAR, originKs );
