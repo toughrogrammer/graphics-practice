@@ -13,6 +13,7 @@
 		E61345EF19C6EC5F00B57A63 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345EE19C6EC5F00B57A63 /* OpenGL.framework */; };
 		E61345F119C6EC6300B57A63 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E61345F019C6EC6300B57A63 /* GLUT.framework */; };
 		E613C2EA1A1A4ADB00648095 /* SceneTutorial34.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E613C2E91A1A4ADB00648095 /* SceneTutorial34.cpp */; };
+		E627BCB01A23745500DBCF26 /* MyLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E627BCAE1A23745500DBCF26 /* MyLight.cpp */; };
 		E638DF3519FF6AD500FF3C66 /* SceneTutorial23.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */; };
 		E638DF3B1A00E69900FF3C66 /* Color4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF3619FF6BC500FF3C66 /* Color4f.cpp */; };
 		E638DF3C1A00E69900FF3C66 /* SceneTutorial24.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E638DF391A00E66200FF3C66 /* SceneTutorial24.cpp */; };
@@ -82,6 +83,8 @@
 		E61345EE19C6EC5F00B57A63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E61345F019C6EC6300B57A63 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		E613C2E91A1A4ADB00648095 /* SceneTutorial34.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial34.cpp; path = "graphics-practice/Scenes/SceneTutorial34.cpp"; sourceTree = "<group>"; };
+		E627BCAE1A23745500DBCF26 /* MyLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyLight.cpp; path = "graphics-practice/Scenes/TermProject/MyLight.cpp"; sourceTree = "<group>"; };
+		E627BCAF1A23745500DBCF26 /* MyLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyLight.h; path = "graphics-practice/Scenes/TermProject/MyLight.h"; sourceTree = "<group>"; };
 		E6342C3E19D983D000B354BC /* Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
 		E638DF3419FF6AD500FF3C66 /* SceneTutorial23.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial23.cpp; path = "graphics-practice/Scenes/SceneTutorial23.cpp"; sourceTree = "<group>"; };
 		E638DF3619FF6BC500FF3C66 /* Color4f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Color4f.cpp; path = "graphics-practice/Base/Color4f.cpp"; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				E6109D621A1BC1D5000551D0 /* ModelObj.cpp */,
 				E680426E19EA496A00DD2896 /* MoveBy.cpp */,
 				E680426F19EA496A00DD2896 /* MyImage.cpp */,
+				E627BCAE1A23745500DBCF26 /* MyLight.cpp */,
+				E627BCAF1A23745500DBCF26 /* MyLight.h */,
 				E680427019EA496A00DD2896 /* Node.cpp */,
 				E680427119EA496A00DD2896 /* Scene.cpp */,
 				E680427219EA496A00DD2896 /* SceneManager.cpp */,
@@ -337,6 +342,7 @@
 				E680429519EA49A300DD2896 /* Keyboard.cpp in Sources */,
 				E6C050991A0D31E7003497F2 /* ModelMilkshape3D.cpp in Sources */,
 				E680429619EA49A300DD2896 /* Macro.cpp in Sources */,
+				E627BCB01A23745500DBCF26 /* MyLight.cpp in Sources */,
 				E6C050931A0D03C4003497F2 /* SceneTutorial31.cpp in Sources */,
 				E680428F19EA499500DD2896 /* SceneTutorial9.cpp in Sources */,
 				E64D25591A07956500E0E96D /* SceneTutorial25.cpp in Sources */,
