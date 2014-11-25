@@ -31,5 +31,6 @@
 #include "SceneTutorial31.h"
 #include "SceneTutorial34.h"
 #include "SceneTutorial36.h"
+#include "SceneTutorial37.h"
 
 #endif

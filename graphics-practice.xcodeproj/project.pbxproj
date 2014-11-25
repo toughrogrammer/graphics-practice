@@ -48,6 +48,7 @@
 		E680429D19EA49BA00DD2896 /* SOIL.c in Sources */ = {isa = PBXBuildFile; fileRef = E680429919EA49BA00DD2896 /* SOIL.c */; };
 		E680429E19EA49BA00DD2896 /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = E680429A19EA49BA00DD2896 /* stb_image_aug.c */; };
 		E68042A219EA7D0900DD2896 /* SceneTutorial13.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */; };
+		E69A19991A24853800C6FD0B /* SceneTutorial37.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E69A19981A24853800C6FD0B /* SceneTutorial37.cpp */; };
 		E69F2A2F1A1AEF8600ABD1C5 /* SceneTutorial36.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E69F2A2E1A1AEF8600ABD1C5 /* SceneTutorial36.cpp */; };
 		E6BFDE9E1A1A0385008F84D4 /* SceneTermProject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BFDE9D1A1A0385008F84D4 /* SceneTermProject.cpp */; };
 		E6BFDEA01A1A038A008F84D4 /* Treasure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BFDE9F1A1A038A008F84D4 /* Treasure.cpp */; };
@@ -130,6 +131,7 @@
 		E680429A19EA49BA00DD2896 /* stb_image_aug.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = stb_image_aug.c; path = library/SOIL/src/stb_image_aug.c; sourceTree = "<group>"; };
 		E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial13.cpp; path = "graphics-practice/Scenes/SceneTutorial13.cpp"; sourceTree = "<group>"; };
 		E681790F19D0640C000ACCE1 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; path = library; sourceTree = "<group>"; };
+		E69A19981A24853800C6FD0B /* SceneTutorial37.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial37.cpp; path = "graphics-practice/Scenes/SceneTutorial37.cpp"; sourceTree = "<group>"; };
 		E69F2A2E1A1AEF8600ABD1C5 /* SceneTutorial36.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial36.cpp; path = "graphics-practice/Scenes/SceneTutorial36.cpp"; sourceTree = "<group>"; };
 		E6BFDE9D1A1A0385008F84D4 /* SceneTermProject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTermProject.cpp; path = "graphics-practice/Scenes/TermProject/SceneTermProject.cpp"; sourceTree = "<group>"; };
 		E6BFDE9F1A1A038A008F84D4 /* Treasure.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Treasure.cpp; path = "graphics-practice/Scenes/TermProject/Treasure.cpp"; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				E6C050921A0D03C4003497F2 /* SceneTutorial31.h */,
 				E613C2E91A1A4ADB00648095 /* SceneTutorial34.cpp */,
 				E69F2A2E1A1AEF8600ABD1C5 /* SceneTutorial36.cpp */,
+				E69A19981A24853800C6FD0B /* SceneTutorial37.cpp */,
 				E680429919EA49BA00DD2896 /* SOIL.c */,
 				E680427319EA496A00DD2896 /* Sprite.cpp */,
 				E680429A19EA49BA00DD2896 /* stb_image_aug.c */,
@@ -354,6 +357,7 @@
 				E64D255C1A08705700E0E96D /* SceneTutorial29.cpp in Sources */,
 				E68042A219EA7D0900DD2896 /* SceneTutorial13.cpp in Sources */,
 				E6FAB13C19EC186400D9BD81 /* SceneTutorial14.cpp in Sources */,
+				E69A19991A24853800C6FD0B /* SceneTutorial37.cpp in Sources */,
 				E680428219EA498000DD2896 /* Matrix2.cpp in Sources */,
 				E6C2B2E319ECCD3900CCFA07 /* SceneTutorial19.cpp in Sources */,
 				E60FDAEB1A07592600F0A1AC /* SceneTutorial21.cpp in Sources */,
