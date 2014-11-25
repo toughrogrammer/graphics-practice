@@ -38,7 +38,7 @@ Vector3::~Vector3()
 
 float Vector3::Length()
 {
-    return float(sqrt(x*x + y*y + z*z));
+    return Magnitude();
 }
 
 void Vector3::Normalize()
@@ -73,6 +73,16 @@ void Vector3::Set(float sx, float sy, float sz)
     x = sx;
     y = sy;
     z = sz;
+}
+
+float Vector3::DotProduct(const Vector3& vec) const
+{
+    return x * vec.x + y * vec.y + z * vec.z;
+}
+
+float Vector3::Magnitude() const
+{
+    return sqrtf( x*x + y*y + z*z );
 }
 
 

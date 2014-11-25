@@ -26,6 +26,8 @@ public:
     float Length();
     void Init();
     void Set(float sx, float sy, float sz);
+    float DotProduct(const Vector3& vec) const;
+    float Magnitude() const;
     
     Vector3 operator+(const Vector3& vec) const;
     Vector3 operator-(const Vector3& vec) const;
