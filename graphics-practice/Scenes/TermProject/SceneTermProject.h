@@ -27,10 +27,10 @@ private:
     
     bool _isFog = false;
     
-    const float DAY_FACTOR = 0.1f;
+    const float DAY_FACTOR = 0.2f;
     const float SUN_RADIUS = 100.0f;
     MyLight _sun;
-    float _time = 35;
+    float _time = 0;
     
     MyLight _controlLight;
     bool _isMoveLight = true;

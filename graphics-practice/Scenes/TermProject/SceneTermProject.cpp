@@ -95,15 +95,15 @@ bool SceneTermProject::Init()
     
     
     _sun.SetEnabled(false);
-    _sun.SetAmbient(0.5f, 0.5f, 0.5f);
+    _sun.SetAmbient(1.0f, 1.0f, 1.0f);
     _sun.SetDiffuse(1.0f, 1.0f, 1.0f);
-    _sun.SetAttenuation(1.9f);
+    _sun.SetAttenuation(GL_LINEAR_ATTENUATION, 0.005f);
     
     _controlLight.SetEnabled(true);
-    _controlLight.SetAmbient(1.0f, 1.0f, 1.0f);
+    _controlLight.SetAmbient(1.0f, 0.0f, 0.0f);
     _controlLight.SetDiffuse(1.0f, 1.0f, 1.0f);
-    _controlLight.SetAttenuation(1.1f);
-    _controlLight.SetPosition( Vector3(0, 0, 0) );
+    _controlLight.SetPosition( Vector3(50, 50, 0) );
+    _controlLight.SetAttenuation(GL_QUADRATIC_ATTENUATION, 0.002);
     
     return true;
 }
@@ -127,12 +127,12 @@ void SceneTermProject::Update(float dt)
     float y = sin(factedTime) * SUN_RADIUS;
     float z = cos(factedTime) * SUN_RADIUS;
     _sun.SetPosition(Vector3(0.0f, y, z));
-//    if( y < 0 ) {
-//        _sun.SetEnabled( false );
-//    }
-//    else {
-//        _sun.SetEnabled( true );
-//    }
+    if( y < 0 ) {
+        _sun.SetEnabled( false );
+    }
+    else {
+        _sun.SetEnabled( true );
+    }
     
     
     if( _isMoveLight && Keyboard::PressedSpecial(GLUT_KEY_LEFT) ) {
