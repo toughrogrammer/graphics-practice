@@ -102,7 +102,7 @@ bool SceneTermProject::Init()
     _controlLight.SetEnabled(true);
     _controlLight.SetAmbient(1.0f, 1.0f, 1.0f);
     _controlLight.SetDiffuse(1.0f, 1.0f, 1.0f);
-    _controlLight.SetAttenuation(1.9f);
+    _controlLight.SetAttenuation(1.1f);
     _controlLight.SetPosition( Vector3(0, 0, 0) );
     
     return true;
@@ -210,6 +210,10 @@ void SceneTermProject::Draw()
     glRotatef( _cameraRotation.z, 0.0f, 0.0f, 1.0f );
     glScalef( _cameraScale.x, _cameraScale.y, _cameraScale.z );
     glTranslatef( -_cameraPosition.x, -_cameraPosition.y, -_cameraPosition.z );
+    
+    
+    _sun.Draw();
+    _controlLight.Draw();
     
     
     _floorSprite->Draw();

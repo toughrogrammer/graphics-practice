@@ -31,6 +31,11 @@ bool MyLight::Init()
 	return true;
 }
 
+void MyLight::Draw()
+{
+    glLightfv(LightID, GL_POSITION, LightPosition);
+}
+
 void MyLight::SetPosition(Vector3 vec)
 {
 	Node::SetPosition(vec);
@@ -38,8 +43,6 @@ void MyLight::SetPosition(Vector3 vec)
 	LightPosition[0] = _position.x;
 	LightPosition[1] = _position.y;
 	LightPosition[2] = _position.z;
-
-	glLightfv(LightID, GL_POSITION, LightPosition);
 }
 
 void MyLight::SetEnabled(bool enable)

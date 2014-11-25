@@ -24,6 +24,7 @@ private:
 public:
 	MyLight(GLuint id);
 	virtual bool Init();
+    virtual void Draw();
     virtual void SetPosition(Vector3 vec);
     void SetEnabled(bool enable);
     void SetAmbient(float r, float g, float b, float a = 1.0f);
