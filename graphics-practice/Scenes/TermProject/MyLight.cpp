@@ -24,7 +24,7 @@ bool MyLight::Init()
     glLightfv(LightID, GL_AMBIENT, LightAmbient);
     glLightfv(LightID, GL_DIFFUSE, LightDiffuse);
     glLightfv(LightID, GL_SPECULAR, LightSpecular);
-    glLightfv(LightID, GL_CONSTANT_ATTENUATION, LightAttenuation);
+    glLightfv(LightID, GL_LINEAR_ATTENUATION, LightAttenuation);
     
     SetPosition(Vector3(0, 0, 0));
 
@@ -74,8 +74,25 @@ void MyLight::SetDiffuse(float r, float g, float b, float a)
 	glLightfv(LightID, GL_DIFFUSE, LightDiffuse);
 }
 
-void MyLight::SetAttenuation(float d)
+void MyLight::SetAttenuation(GLuint attenuationType, float d)
 {
-    LightAttenuation[0] = d;
-    glLightfv(LightID, GL_CONSTANT_ATTENUATION, LightAttenuation);
+    // default type is constant
+    int i = ATTENUATION_TYPE_CONSTANT;
+    switch( attenuationType ) {
+        case GL_CONSTANT_ATTENUATION:
+            i = ATTENUATION_TYPE_CONSTANT;
+            break;
+        case GL_LINEAR_ATTENUATION:
+            i = ATTENUATION_TYPE_LINEAR;
+            break;
+        case GL_QUADRATIC_ATTENUATION:
+            i = ATTENUATION_TYPE_QUADRATIC;
+            break;
+    }
+    
+    LightAttenuation[i] = d;
+    
+    glLightf(LightID, GL_CONSTANT_ATTENUATION, LightAttenuation[ATTENUATION_TYPE_CONSTANT]);
+    glLightf(LightID, GL_LINEAR_ATTENUATION, LightAttenuation[ATTENUATION_TYPE_LINEAR]);
+    glLightf(LightID, GL_QUADRATIC_ATTENUATION, LightAttenuation[ATTENUATION_TYPE_QUADRATIC]);
 }

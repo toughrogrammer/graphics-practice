@@ -12,13 +12,19 @@
 #include "Prefix.h"
 
 class MyLight : public Node {
+public:
+    static const int ATTENUATION_TYPE_CONSTANT = 0;
+    static const int ATTENUATION_TYPE_LINEAR = 1;
+    static const int ATTENUATION_TYPE_QUADRATIC = 2;
+
+    
 private:
     bool enable = false;
 	GLuint LightID = 0;
 	GLfloat LightAmbient[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
     GLfloat LightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
     GLfloat LightSpecular[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
-    GLfloat LightAttenuation[1] = { 1.0f, };
+    GLfloat LightAttenuation[3] = { 1.0f, 0.0f, 0.0f };
 	float LightPosition[4] = { 0.0f, 0.0f, 0.0f, 1.0f };
 
 public:
@@ -29,7 +35,7 @@ public:
     void SetEnabled(bool enable);
     void SetAmbient(float r, float g, float b, float a = 1.0f);
     void SetDiffuse(float r, float g, float b, float a = 1.0f);
-    void SetAttenuation(float d);
+    void SetAttenuation(GLuint attenuationType, float d);
 };
 
 
