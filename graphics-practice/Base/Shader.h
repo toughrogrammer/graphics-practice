@@ -29,7 +29,7 @@ public:
     void LoadShader(const std::string pathVertex, const std::string pathFragment);
     void LoadVertexShader(const std::string path);
     void LoadFragmentShader(const std::string path);
-    void ReadContentFromFile(const std::string path, std::string &result, bool linefeed = false);
+    void ReadContentFromFile(const std::string path, std::string &result);
 };
 
 
