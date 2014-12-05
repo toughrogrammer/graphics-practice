@@ -31,6 +31,29 @@ Matrix4::Matrix4()
     a44 = 0.0f;
 }
 
+Matrix4::Matrix4(float m)
+{
+    a11 = m;
+    a12 = m;
+    a13 = m;
+    a14 = m;
+    
+    a21 = m;
+    a22 = m;
+    a23 = m;
+    a24 = m;
+    
+    a31 = m;
+    a32 = m;
+    a33 = m;
+    a34 = m;
+    
+    a41 = m;
+    a42 = m;
+    a43 = m;
+    a44 = m;
+}
+
 Matrix4::Matrix4(float m11, float m12, float m13, float m14,
                  float m21, float m22, float m23, float m24,
                  float m31, float m32, float m33, float m34,
@@ -55,6 +78,52 @@ Matrix4::Matrix4(float m11, float m12, float m13, float m14,
     a42 = m42;
     a43 = m43;
     a44 = m44;
+}
+
+Matrix4::Matrix4(float* arr) 
+{
+    a11 = arr[0];
+    a12 = arr[1];
+    a13 = arr[2];
+    a14 = arr[3];
+
+    a21 = arr[4];
+    a22 = arr[5];
+    a23 = arr[6];
+    a24 = arr[7];
+
+    a31 = arr[8];
+    a32 = arr[9];
+    a33 = arr[10];
+    a34 = arr[11];
+
+    a41 = arr[12];
+    a42 = arr[13];
+    a43 = arr[14];
+    a44 = arr[15];    
+}
+
+void Matrix4::WriteToArray(float *arr)
+{
+    arr[0] = a11;
+    arr[1] = a12;
+    arr[2] = a13;
+    arr[3] = a14;
+    
+    arr[4] = a21;
+    arr[5] = a22;
+    arr[6] = a23;
+    arr[7] = a24;
+    
+    arr[8] = a31;
+    arr[9] = a32;
+    arr[10] = a33;
+    arr[11] = a34;
+    
+    arr[12] = a41;
+    arr[13] = a42;
+    arr[14] = a43;
+    arr[15] = a44;
 }
 
 void Matrix4::Identity()

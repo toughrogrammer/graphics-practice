@@ -17,7 +17,7 @@ Vector3::Vector3()
     z = 0.0f;
 }
 
-Vector3::Vector3(float initx, float inity,float initz)
+Vector3::Vector3(float initx, float inity, float initz)
 {
     x = initx;
     y = inity;
@@ -59,6 +59,13 @@ Vector3 Vector3::Normalize(Vector3 v)
     result.z = v.z/fLength;
     
     return result;
+}
+
+Vector3 Vector3::Cross(const Vector3 &v1, const Vector3 &v2)
+{
+    return Vector3(v1.y * v2.z - v1.z * v2.y,
+                   v1.z * v2.x - v1.x * v2.z,
+                   v1.x * v2.y - v1.y * v2.x);
 }
 
 void Vector3::Init()

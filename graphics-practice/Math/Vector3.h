@@ -21,8 +21,10 @@ public:
     Vector3(const Vector2& vec);
     ~Vector3();
     
-    void Normalize();
     static Vector3 Normalize(Vector3 v);
+    static Vector3 Cross(const Vector3 &v1, const Vector3 &v2);
+    void Normalize();
+    
     float Length();
     void Init();
     void Set(float sx, float sy, float sz);
