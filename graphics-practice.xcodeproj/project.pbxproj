@@ -49,6 +49,7 @@
 		E680429E19EA49BA00DD2896 /* stb_image_aug.c in Sources */ = {isa = PBXBuildFile; fileRef = E680429A19EA49BA00DD2896 /* stb_image_aug.c */; };
 		E68042A219EA7D0900DD2896 /* SceneTutorial13.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */; };
 		E69A19991A24853800C6FD0B /* SceneTutorial37.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E69A19981A24853800C6FD0B /* SceneTutorial37.cpp */; };
+		E69B3ADB1A31576A0088704D /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E69B3AD91A31576A0088704D /* Shader.cpp */; };
 		E69F2A2F1A1AEF8600ABD1C5 /* SceneTutorial36.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E69F2A2E1A1AEF8600ABD1C5 /* SceneTutorial36.cpp */; };
 		E6BF9A5F1A29FD650050D73A /* SceneTutorial38.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BF9A5E1A29FD650050D73A /* SceneTutorial38.cpp */; };
 		E6BF9A611A2A063D0050D73A /* SceneTutorial39.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6BF9A601A2A063D0050D73A /* SceneTutorial39.cpp */; };
@@ -135,6 +136,8 @@
 		E68042A119EA7D0900DD2896 /* SceneTutorial13.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial13.cpp; path = "graphics-practice/Scenes/SceneTutorial13.cpp"; sourceTree = "<group>"; };
 		E681790F19D0640C000ACCE1 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; path = library; sourceTree = "<group>"; };
 		E69A19981A24853800C6FD0B /* SceneTutorial37.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial37.cpp; path = "graphics-practice/Scenes/SceneTutorial37.cpp"; sourceTree = "<group>"; };
+		E69B3AD91A31576A0088704D /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = "graphics-practice/Base/Shader.cpp"; sourceTree = "<group>"; };
+		E69B3ADA1A31576A0088704D /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shader.h; path = "graphics-practice/Base/Shader.h"; sourceTree = "<group>"; };
 		E69F2A2E1A1AEF8600ABD1C5 /* SceneTutorial36.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial36.cpp; path = "graphics-practice/Scenes/SceneTutorial36.cpp"; sourceTree = "<group>"; };
 		E6BF9A5E1A29FD650050D73A /* SceneTutorial38.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial38.cpp; path = "graphics-practice/Scenes/SceneTutorial38.cpp"; sourceTree = "<group>"; };
 		E6BF9A601A2A063D0050D73A /* SceneTutorial39.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SceneTutorial39.cpp; path = "graphics-practice/Scenes/SceneTutorial39.cpp"; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 		E68042A019EA4B1100DD2896 /* compile-sources */ = {
 			isa = PBXGroup;
 			children = (
+				E69B3AD91A31576A0088704D /* Shader.cpp */,
+				E69B3ADA1A31576A0088704D /* Shader.h */,
 				E680426B19EA496A00DD2896 /* Action.cpp */,
 				E680426C19EA496A00DD2896 /* ActionManager.cpp */,
 				E638DF3619FF6BC500FF3C66 /* Color4f.cpp */,
@@ -356,6 +361,7 @@
 				E680429619EA49A300DD2896 /* Macro.cpp in Sources */,
 				E627BCB01A23745500DBCF26 /* MyLight.cpp in Sources */,
 				E6C050931A0D03C4003497F2 /* SceneTutorial31.cpp in Sources */,
+				E69B3ADB1A31576A0088704D /* Shader.cpp in Sources */,
 				E680428F19EA499500DD2896 /* SceneTutorial9.cpp in Sources */,
 				E64D25591A07956500E0E96D /* SceneTutorial25.cpp in Sources */,
 				E638DF3519FF6AD500FF3C66 /* SceneTutorial23.cpp in Sources */,

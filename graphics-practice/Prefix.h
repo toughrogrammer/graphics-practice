@@ -54,4 +54,8 @@ using namespace std;
 #include "Base/ModelMilkshape3D.h"
 #include "Base/ModelObj.h"
 
+// shaders
+#include "Base/Shader.h"
+
+
 #endif
