@@ -36,6 +36,10 @@ public:
     void SetAmbient(float r, float g, float b, float a = 1.0f);
     void SetDiffuse(float r, float g, float b, float a = 1.0f);
     void SetAttenuation(GLuint attenuationType, float d);
+
+    GLfloat* GetAmbient();
+    GLfloat* GetDeffuse();
+    GLfloat* GetSpecular();
 };
 
 

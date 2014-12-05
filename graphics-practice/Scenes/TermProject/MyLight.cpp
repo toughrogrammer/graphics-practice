@@ -96,3 +96,18 @@ void MyLight::SetAttenuation(GLuint attenuationType, float d)
     glLightf(LightID, GL_LINEAR_ATTENUATION, LightAttenuation[ATTENUATION_TYPE_LINEAR]);
     glLightf(LightID, GL_QUADRATIC_ATTENUATION, LightAttenuation[ATTENUATION_TYPE_QUADRATIC]);
 }
+
+GLfloat* MyLight::GetAmbient()
+{
+    return LightAmbient;
+}
+
+GLfloat* MyLight::GetDeffuse()
+{
+    return LightDiffuse;
+}
+
+GLfloat* MyLight::GetSpecular()
+{
+    return LightSpecular;
+}
